@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBehaviour<T> : StateMachineBehaviour {
+public class BasicFSM<T> : StateMachineBehaviour {
     public T ob;
     public Rigidbody2D rb;
 
