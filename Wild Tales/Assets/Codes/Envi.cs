@@ -7,6 +7,7 @@ public class Envi : MonoBehaviour {
 
     public void hit(Vector2 direction) {
         GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+        GameObject.Destroy(this.gameObject);
     }
 
     public void knock() {
