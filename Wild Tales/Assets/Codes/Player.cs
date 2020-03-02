@@ -11,6 +11,17 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public Vector2 mouse_input;
 
+    [HideInInspector]
+    public Area attack_area;
+
+    [HideInInspector]
+    public Area kick_area;
+
+    void Start() {
+        attack_area = transform.Find("Attack Area").GetComponent<Area>();
+        kick_area = transform.Find("Kick Area").GetComponent<Area>();
+    }
+
     void FixedUpdate() {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
