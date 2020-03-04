@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
+    public float speed;
     [HideInInspector]
     public Eye eye;
     [HideInInspector]
