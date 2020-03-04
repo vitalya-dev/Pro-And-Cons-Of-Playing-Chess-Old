@@ -37,5 +37,7 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("fire2");
         if (Input.GetButtonDown("Fire3"))
             GetComponent<Animator>().SetTrigger("fire3");
+
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

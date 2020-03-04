@@ -13,4 +13,7 @@ public class Enemy : MonoBehaviour {
         eye = transform.Find("Eye").GetComponent<Eye>();
     }
 
+    void FixedUpdate() {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
 }
