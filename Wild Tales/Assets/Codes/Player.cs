@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public Area kick_area;
 
+    public GameObject[] particles;
+
     void Start() {
         attack_area = transform.Find("Attack Area").GetComponent<Area>();
         kick_area = transform.Find("Kick Area").GetComponent<Area>();
@@ -39,5 +41,12 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("fire3");
 
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
+
+    public void hit(Vector2 direction) {
+        foreach (var particle in particles) {
+             GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+        }
+        GameObject.Destroy(this.gameObject);
     }
 }

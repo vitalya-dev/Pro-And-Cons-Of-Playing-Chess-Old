@@ -9,21 +9,20 @@ public class EnemyChase : BasicFSM<Enemy> {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         /* ======================================================= */
-        if (ob.player) {
+        if (ob.player)
             ob.GetComponent<Pathfinding.Seeker>().StartPath(rb.position, ob.player.GetComponent<Rigidbody2D>().position, on_path_complete);
-        }
-        else {
+        else
             ob.GetComponent<Animator>().SetTrigger("idle");
-        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (!ob.player) {
             ob.GetComponent<Animator>().SetTrigger("idle");
-            return;
         }
-        if (path != null && waypoint < path.vectorPath.Count) {
+        else if (ob.attack_area.overlap<Player>(LayerMask.GetMask("Top Layer")))
+            ob.GetComponent<Animator>().SetTrigger("attack");
+        else if (path != null && waypoint < path.vectorPath.Count) {
             Vector2 dir = (Vector2)path.vectorPath[waypoint] - rb.position;
             dir.Normalize();
             /* ============================================ */

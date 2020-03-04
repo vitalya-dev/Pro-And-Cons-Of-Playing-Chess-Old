@@ -7,10 +7,13 @@ public class Enemy : MonoBehaviour {
     [HideInInspector]
     public Eye eye;
     [HideInInspector]
+    public Area attack_area;
+    [HideInInspector]
     public Player player;
 
     void Start() {
         eye = transform.Find("Eye").GetComponent<Eye>();
+        attack_area = transform.Find("Attack Area").GetComponent<Area>();
     }
 
     void FixedUpdate() {
