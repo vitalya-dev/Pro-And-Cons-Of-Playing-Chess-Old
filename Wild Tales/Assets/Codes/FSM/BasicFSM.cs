@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicFSM<T> : StateMachineBehaviour {
+    [HideInInspector]
     public T ob;
+    [HideInInspector]
     public Rigidbody2D rb;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
