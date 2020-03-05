@@ -25,7 +25,8 @@ public class Enemy : MonoBehaviour {
 
     public void hit(Vector2 direction) {
         foreach (var particle in particles) {
-            GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+            Debug.Log(particle.transform.position);
+            GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
         }
         /* ================================ */
         health -= 1;
