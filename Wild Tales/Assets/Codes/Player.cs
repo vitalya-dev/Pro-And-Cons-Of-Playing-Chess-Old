@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
         kick_area = transform.Find("Kick Area").GetComponent<Area>();
     }
 
-    void FixedUpdate() {
+    void Update() {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         GetComponent<Animator>().SetFloat("movement", movement.magnitude);
@@ -49,5 +49,6 @@ public class Player : MonoBehaviour {
             GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
         }
         GameObject.Destroy(this.gameObject);
+        PlayMakerFSM.BroadcastEvent("WASTED");
     }
 }
