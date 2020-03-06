@@ -22,6 +22,8 @@ public class EnemyChase : BasicFSM<Enemy> {
         }
         else if (ob.attack_area.overlap<Player>(LayerMask.GetMask("Top Layer")))
             ob.GetComponent<Animator>().SetTrigger("attack");
+        else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")))
+            ob.GetComponent<Animator>().SetTrigger("attack");
         else if (path != null && waypoint < path.vectorPath.Count) {
             Vector2 dir = (Vector2)path.vectorPath[waypoint] - rb.position;
             dir.Normalize();
