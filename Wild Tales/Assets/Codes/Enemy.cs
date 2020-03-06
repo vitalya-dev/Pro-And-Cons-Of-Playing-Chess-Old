@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
         attack_area = transform.Find("Attack Area").GetComponent<Area>();
     }
 
-    void FixedUpdate() {
+    void Update() {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
