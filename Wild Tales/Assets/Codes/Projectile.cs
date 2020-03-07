@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        collision.gameObject.SendMessage("stun");
+        collision.gameObject.SendMessage("stun", SendMessageOptions.DontRequireReceiver);
         /* ========================================================= */
         GameObject.Instantiate(particle, transform.position, Quaternion.identity);
         GameObject.Destroy(this.gameObject);

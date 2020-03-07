@@ -35,4 +35,8 @@ public class Enemy : MonoBehaviour {
         else
             GetComponent<Animator>().SetTrigger("hurt");
     }
+
+    public void stun() {
+        GetComponent<Animator>().SetTrigger("stun");
+    }
 }
