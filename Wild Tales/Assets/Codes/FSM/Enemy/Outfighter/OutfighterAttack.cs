@@ -5,16 +5,17 @@ public class OutfighterAttack : BasicFSM<Outfighter> {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         /* ============================================== */
-        ob.GetComponent<Collider2D>().enabled = false;
-        ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * ((Vector2)ob.player.transform.position - rb.position).normalized));
+        if (!ob.player)
+            return;
         /* ============================================== */
-        GameObject throwing = Instantiate(ob.throwing, new Vector3(rb.position.x, rb.position.y, ob.throwing.transform.position.z), Quaternion.identity);
+        Vector2 throwing_pos = rb.position + (Vector2)(-1 * ob.transform.up);
+        GameObject throwing = Instantiate(ob.throwing, new Vector3(throwing_pos.x, throwing_pos.y, ob.throwing.transform.position.z), Quaternion.identity);
         throwing.GetComponent<Throwing>().throwing(-1 * ob.transform.up);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateExit(animator, stateInfo, layerIndex);
         /* ============================================== */
-        ob.GetComponent<Collider2D>().enabled = true;
+        ob.GetComponent<Animator>().SetFloat("attack speed", 1.0f);
     }
 }

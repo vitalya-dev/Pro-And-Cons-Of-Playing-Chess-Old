@@ -19,10 +19,16 @@ public class OutfighterChase : BasicFSM<Outfighter> {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (!ob.player)
             ob.GetComponent<Animator>().SetTrigger("idle");
-        else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")) && Random.Range(0, 100) > 95)
+        else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")) && Random.Range(0, 100) > 95) {
+            ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * ((Vector2)ob.player.transform.position - rb.position).normalized));
+            ob.GetComponent<Animator>().SetFloat("attack speed", 2.0f);
             ob.GetComponent<Animator>().SetTrigger("attack");
-        else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")))
+        }
+        else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")) && Random.Range(0, 100) > 95) {
+            ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * ((Vector2)ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).transform.position - rb.position).normalized));
+            ob.GetComponent<Animator>().SetFloat("attack speed", 5.0f);
             ob.GetComponent<Animator>().SetTrigger("attack");
+        }
         else if (path != null && waypoint < path.vectorPath.Count) {
             Vector2 dir = (Vector2)path.vectorPath[waypoint] - rb.position;
             dir.Normalize();
