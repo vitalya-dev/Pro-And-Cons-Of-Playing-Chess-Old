@@ -2,6 +2,9 @@
 using System.Collections;
 
 abstract public class Enemy : MonoBehaviour {
-     abstract public void hit(Vector2 direction);
-     abstract public void stun();
+    [HideInInspector]
+    public Player player;
+
+    abstract public void hit(Vector2 direction);
+    abstract public void stun();
 }

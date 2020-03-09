@@ -10,7 +10,7 @@ public class InfighterIdle : BasicFSM<Infighter> {
             ob.player = ob.eye.see<Player>(LayerMask.GetMask("Top Layer"));
         /* ============================================== */
         if (ob.player) {
-            foreach (var enemy in ob.eye.see_all<Infighter>(LayerMask.GetMask("Top Layer"))) {
+            foreach (var enemy in ob.eye.see_all<Enemy>(LayerMask.GetMask("Top Layer"))) {
                 if (!enemy.player)
                     enemy.player = ob.player;
             }

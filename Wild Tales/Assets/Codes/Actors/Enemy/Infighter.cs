@@ -7,8 +7,6 @@ public class Infighter : Enemy {
     public Eye eye;
     [HideInInspector]
     public Area attack_area;
-    [HideInInspector]
-    public Player player;
 
     public int health;
 
