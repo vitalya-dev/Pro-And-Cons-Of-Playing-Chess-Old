@@ -25,7 +25,6 @@ public class Infighter : Enemy {
 
     override public void hit(Vector2 direction) {
         foreach (var particle in particles) {
-            Debug.Log(particle.transform.position);
             GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
         }
         /* ================================ */
@@ -36,7 +35,7 @@ public class Infighter : Enemy {
             GetComponent<Animator>().SetTrigger("hurt");
     }
 
-    public void stun() {
+    override public void stun() {
         GetComponent<Animator>().SetTrigger("stun");
     }
 }
