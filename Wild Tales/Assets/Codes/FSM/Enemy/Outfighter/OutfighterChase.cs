@@ -12,20 +12,21 @@ public class OutfighterChase : BasicFSM<Outfighter> {
         if (ob.player)
             ob.GetComponent<Pathfinding.Seeker>().StartPath(rb.position, ob.player.GetComponent<Rigidbody2D>().position, on_path_complete);
         else
-            ob.GetComponent<Animator>().SetTrigger("idle");
+            ob.GetComponent<Animator>().SetTrigger("finished");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        if (!ob.player)
-            ob.GetComponent<Animator>().SetTrigger("idle");
+        if (!ob.player) {
+            ob.GetComponent<Animator>().SetTrigger("finished");
+        }
         else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")) && Random.Range(0, 100) > 95) {
-            ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * ((Vector2)ob.player.transform.position - rb.position).normalized));
+            ob.look_at((Vector2)ob.player.transform.position - rb.position);
             ob.GetComponent<Animator>().SetFloat("attack speed", 2.0f);
             ob.GetComponent<Animator>().SetTrigger("attack");
         }
         else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")) && Random.Range(0, 100) > 95) {
-            ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * ((Vector2)ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).transform.position - rb.position).normalized));
+            ob.look_at((Vector2)ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).transform.position - rb.position);
             ob.GetComponent<Animator>().SetFloat("attack speed", 5.0f);
             ob.GetComponent<Animator>().SetTrigger("attack");
         }
@@ -35,7 +36,7 @@ public class OutfighterChase : BasicFSM<Outfighter> {
             /* ============================================ */
             rb.MovePosition(rb.position + dir * ob.speed * Time.fixedDeltaTime);
             /* ============================================ */
-            ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * dir));
+            ob.look_at(dir);
             /* ============================================ */
             float distance = Vector2.Distance(rb.position, path.vectorPath[waypoint]);
             if (distance <= 1) {

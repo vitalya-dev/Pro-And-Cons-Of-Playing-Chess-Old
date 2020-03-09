@@ -12,13 +12,13 @@ public class InfighterChase : BasicFSM<Infighter> {
         if (ob.player)
             ob.GetComponent<Pathfinding.Seeker>().StartPath(rb.position, ob.player.GetComponent<Rigidbody2D>().position, on_path_complete);
         else
-            ob.GetComponent<Animator>().SetTrigger("idle");
+            ob.GetComponent<Animator>().SetTrigger("finished");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (!ob.player) {
-            ob.GetComponent<Animator>().SetTrigger("idle");
+            ob.GetComponent<Animator>().SetTrigger("finished");
         }
         else if (ob.attack_area.overlap<Player>(LayerMask.GetMask("Top Layer")))
             ob.GetComponent<Animator>().SetTrigger("attack");
@@ -30,7 +30,7 @@ public class InfighterChase : BasicFSM<Infighter> {
             /* ============================================ */
             rb.MovePosition(rb.position + dir * ob.speed * Time.fixedDeltaTime);
             /* ============================================ */
-            ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(-1 * dir));
+            ob.look_at(dir);
             /* ============================================ */
             float distance = Vector2.Distance(rb.position, path.vectorPath[waypoint]);
             if (distance <= 1) {
