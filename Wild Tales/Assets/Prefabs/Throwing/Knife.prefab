@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1490934340674665820}
   - component: {fileID: 1490934340674665821}
-  - component: {fileID: 1490934340674665822}
   - component: {fileID: 1490934340674665823}
   - component: {fileID: 1490934340674665818}
+  - component: {fileID: 331480328348189369}
   m_Layer: 9
   m_Name: Knife
   m_TagString: Untagged
@@ -85,35 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1490934340674665822
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490934340674665808}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.3125}
-    newSize: {x: 1, y: 0.3125}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: 0.15625}
-      - {x: -0.5, y: -0.15625}
-      - {x: 0.5, y: -0.15625}
-      - {x: 0.5, y: 0.15625}
 --- !u!50 &1490934340674665823
 Rigidbody2D:
   serializedVersion: 4
@@ -125,8 +96,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.3125
+  m_UseAutoMass: 0
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -148,3 +119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 353387753491725722, guid: 1ac9aff250d5d3246ad61e39b11cc27b, type: 3}
+--- !u!58 &331480328348189369
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490934340674665808}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.01

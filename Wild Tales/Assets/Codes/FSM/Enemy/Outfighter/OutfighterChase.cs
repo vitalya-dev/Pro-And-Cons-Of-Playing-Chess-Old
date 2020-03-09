@@ -19,7 +19,7 @@ public class OutfighterChase : BasicFSM<Outfighter> {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (!ob.player)
             ob.GetComponent<Animator>().SetTrigger("idle");
-        else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")))
+        else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")) && Random.Range(0, 100) > 95)
             ob.GetComponent<Animator>().SetTrigger("attack");
         else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")))
             ob.GetComponent<Animator>().SetTrigger("attack");
