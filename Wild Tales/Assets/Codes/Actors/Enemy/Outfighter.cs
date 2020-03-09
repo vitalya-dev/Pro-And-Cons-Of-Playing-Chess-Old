@@ -2,5 +2,5 @@
 using System.Collections;
 
 public class Outfighter : Infighter {
-    public GameObject knife;
+    public GameObject throwing ;
 }
