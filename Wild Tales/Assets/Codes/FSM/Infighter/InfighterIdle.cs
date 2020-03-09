@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyIdle : BasicFSM<Enemy> {
+public class InfighterIdle : BasicFSM<Infighter> {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
@@ -10,7 +10,7 @@ public class EnemyIdle : BasicFSM<Enemy> {
             ob.player = ob.eye.see<Player>(LayerMask.GetMask("Top Layer"));
         /* ============================================== */
         if (ob.player) {
-            foreach (var enemy in ob.eye.see_all<Enemy>(LayerMask.GetMask("Top Layer"))) {
+            foreach (var enemy in ob.eye.see_all<Infighter>(LayerMask.GetMask("Top Layer"))) {
                 if (!enemy.player)
                     enemy.player = ob.player;
             }

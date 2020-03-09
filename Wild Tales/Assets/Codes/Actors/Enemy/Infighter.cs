@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Infighter : Enemy {
     public float speed;
     [HideInInspector]
     public Eye eye;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-    public void hit(Vector2 direction) {
+    override public void hit(Vector2 direction) {
         foreach (var particle in particles) {
             Debug.Log(particle.transform.position);
             GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);

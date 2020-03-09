@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyChase : BasicFSM<Enemy> {
+public class InfighterChase : BasicFSM<Infighter> {
     Pathfinding.Path path;
     int waypoint;
 
