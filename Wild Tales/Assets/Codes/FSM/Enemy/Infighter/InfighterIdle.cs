@@ -14,7 +14,7 @@ public class InfighterIdle : BasicFSM<Infighter> {
                 if (!enemy.player)
                     enemy.player = ob.player;
             }
-            ob.GetComponent<Animator>().SetTrigger("chase");
+            animator.SetTrigger("chase");
         }
     }
 }

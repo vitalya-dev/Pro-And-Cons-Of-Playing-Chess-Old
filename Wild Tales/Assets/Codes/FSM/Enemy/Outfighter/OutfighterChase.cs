@@ -12,23 +12,22 @@ public class OutfighterChase : BasicFSM<Outfighter> {
         if (ob.player)
             ob.GetComponent<Pathfinding.Seeker>().StartPath(rb.position, ob.player.GetComponent<Rigidbody2D>().position, on_path_complete);
         else
-            ob.GetComponent<Animator>().SetTrigger("finished");
+            animator.SetTrigger("finished");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         if (!ob.player) {
-            ob.GetComponent<Animator>().SetTrigger("finished");
+            animator.SetTrigger("finished");
         }
         else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")) && Random.Range(0, 100) > 95) {
             ob.look_at((Vector2)ob.player.transform.position - rb.position);
-            ob.GetComponent<Animator>().SetFloat("attack speed", 2.0f);
-            ob.GetComponent<Animator>().SetTrigger("attack");
+            animator.SetTrigger("attack");
         }
         else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")) && Random.Range(0, 100) > 95) {
             ob.look_at((Vector2)ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).transform.position - rb.position);
-            ob.GetComponent<Animator>().SetFloat("attack speed", 5.0f);
-            ob.GetComponent<Animator>().SetTrigger("attack");
+            animator.SetFloat("attack speed", 5.0f);
+            animator.SetTrigger("attack");
         }
         else if (path != null && waypoint < path.vectorPath.Count) {
             Vector2 dir = (Vector2)path.vectorPath[waypoint] - rb.position;
