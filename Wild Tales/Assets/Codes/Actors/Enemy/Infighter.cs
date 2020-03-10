@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Infighter : Enemy {
-    public float speed;
     [HideInInspector]
     public Eye eye;
     [HideInInspector]
