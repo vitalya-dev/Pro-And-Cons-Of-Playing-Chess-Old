@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[SelectionBase]
 abstract public class Enemy : MonoBehaviour {
     public float speed;
     [HideInInspector]
@@ -62,3 +64,6 @@ abstract public class Enemy : MonoBehaviour {
     /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 }
+
+
+
