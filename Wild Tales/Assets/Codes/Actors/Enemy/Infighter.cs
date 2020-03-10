@@ -16,9 +16,6 @@ public class Infighter : Enemy {
         attack_area = transform.Find("Attack Area").GetComponent<Area>();
     }
 
-    void Update() {
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-    }
 
     override public void hit(Vector2 direction) {
         foreach (var particle in particles) {

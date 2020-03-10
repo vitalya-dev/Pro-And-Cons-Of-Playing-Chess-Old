@@ -15,6 +15,12 @@ abstract public class Enemy : MonoBehaviour {
         transform.rotation = Quaternion.LookRotation(Vector3.forward, -1 * direction.normalized);
     }
 
+    void Update() {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().inertia = 0f;
+        GetComponent<Rigidbody2D>().angularVelocity = 0f;
+    }
+
 
     /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
     Pathfinding.Path path = null;
@@ -29,19 +35,18 @@ abstract public class Enemy : MonoBehaviour {
         }
         /* ============================================ */
         if (path == null || waypoint >= path.vectorPath.Count) {
-            GetComponent<Pathfinding.Seeker>().StartPath(GetComponent<Rigidbody2D>().position, player.GetComponent<Rigidbody2D>().position, on_path_complete);
+            GetComponent<Pathfinding.Seeker>().StartPath((Vector2)transform.position, (Vector2)player.transform.position, on_path_complete);
         }
         else {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (path != null && waypoint < path.vectorPath.Count) {
-                Vector2 dir = (Vector2)path.vectorPath[waypoint] - rb.position;
+                Vector2 dir = path.vectorPath[waypoint] - transform.position;
                 dir.Normalize();
                 /* ============================================ */
-                rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+                transform.position += (Vector3)dir * speed * Time.fixedDeltaTime;
                 /* ============================================ */
                 look_at(dir);
                 /* ============================================ */
-                float distance = Vector2.Distance(rb.position, path.vectorPath[waypoint]);
+                float distance = Vector2.Distance(transform.position, path.vectorPath[waypoint]);
                 if (distance <= 1) {
                     waypoint += 1;
                     if (waypoint >= path.vectorPath.Count) {

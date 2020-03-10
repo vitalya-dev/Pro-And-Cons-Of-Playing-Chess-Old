@@ -13,6 +13,6 @@ public class PlayerWalk : BasicFSM<Player> {
         /* =============================================================================*/
         ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(ob.transform.position - crosshair.transform.position));
         /* ============================================== */
-        rb.MovePosition(rb.position + ob.movement * ob.speed * Time.fixedDeltaTime);
+        ob.transform.position += (Vector3)ob.movement * ob.speed * Time.fixedDeltaTime;
     }
 }

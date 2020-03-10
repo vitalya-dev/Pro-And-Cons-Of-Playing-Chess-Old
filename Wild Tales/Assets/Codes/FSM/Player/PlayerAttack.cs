@@ -16,12 +16,12 @@ public class PlayerAttack : BasicFSM<Player> {
             ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).hit(-1 * ob.transform.up);
             animator.SetFloat("attack speed", 2.0f);
         }
-        rb.MovePosition(rb.position + (Vector2)rb.transform.up * -1);
+        ob.transform.position += ob.transform.up * -1;
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateExit(animator, stateInfo, layerIndex);
-         /* ============================================== */
+        /* ============================================== */
         animator.SetFloat("attack speed", 1.0f);
     }
 }

@@ -8,7 +8,7 @@ public class OutfighterAttack : BasicFSM<Outfighter> {
         if (!ob.player)
             return;
         /* ============================================== */
-        Vector2 throwing_pos = rb.position + (Vector2)(-1 * ob.transform.up);
+        Vector2 throwing_pos = ob.transform.position + (-1 * ob.transform.up);
         GameObject throwing = Instantiate(ob.throwing, new Vector3(throwing_pos.x, throwing_pos.y, ob.throwing.transform.position.z), Quaternion.identity);
         throwing.GetComponent<Throwing>().throwing(-1 * ob.transform.up);
     }

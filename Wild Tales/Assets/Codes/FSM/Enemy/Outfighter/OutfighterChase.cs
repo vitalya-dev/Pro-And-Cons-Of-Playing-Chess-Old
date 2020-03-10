@@ -14,11 +14,11 @@ public class OutfighterChase : BasicFSM<Outfighter> {
             animator.SetTrigger("finished");
         }
         else if (ob.eye.see<Player>(LayerMask.GetMask("Top Layer")) && Random.Range(0, 100) > 95) {
-            ob.look_at((Vector2)ob.player.transform.position - rb.position);
+            ob.look_at(ob.player.transform.position - ob.transform.position);
             animator.SetTrigger("attack");
         }
         else if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")) && Random.Range(0, 100) > 95) {
-            ob.look_at((Vector2)ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).transform.position - rb.position);
+            ob.look_at(ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).transform.position - ob.transform.position);
             animator.SetFloat("attack speed", 5.0f);
             animator.SetTrigger("attack");
         }

@@ -42,6 +42,8 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("fire3");
 
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().inertia = 0f;
+        GetComponent<Rigidbody2D>().angularVelocity = 0f;
     }
 
     public void hit(Vector2 direction) {
