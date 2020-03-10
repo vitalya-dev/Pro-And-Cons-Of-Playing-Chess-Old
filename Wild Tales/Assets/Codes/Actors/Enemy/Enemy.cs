@@ -6,10 +6,36 @@ using System.Collections;
 abstract public class Enemy : MonoBehaviour {
     public float speed;
     [HideInInspector]
+    public Eye eye;
+    [HideInInspector]
+    public Area body_area;
+    [HideInInspector]
     public Player player;
 
-    abstract public void hit(Vector2 direction);
-    abstract public void stun();
+    public int health;
+
+    public GameObject[] particles;
+
+    virtual protected void Start() {
+        eye = transform.Find("Eye").GetComponent<Eye>();
+        body_area = GetComponent<Area>();
+    }
+
+    public void hit(Vector2 direction) {
+        foreach (var particle in particles) {
+            GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
+        }
+        /* ================================ */
+        health -= 1;
+        if (health <= 0)
+            GameObject.Destroy(this.gameObject);
+        else
+            GetComponent<Animator>().SetTrigger("hurt");
+    }
+
+    public void stun() {
+        GetComponent<Animator>().SetTrigger("stun");
+    }
 
     public void look_at(Vector2 direction) {
         transform.rotation = Quaternion.LookRotation(Vector3.forward, -1 * direction.normalized);

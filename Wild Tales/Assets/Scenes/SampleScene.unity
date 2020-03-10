@@ -18750,6 +18750,7 @@ GameObject:
   - component: {fileID: 298121526}
   - component: {fileID: 298121525}
   - component: {fileID: 298121527}
+  - component: {fileID: 298121531}
   m_Layer: 10
   m_Name: Outfighter_1
   m_TagString: Untagged
@@ -18848,10 +18849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f6d3ff5cdf92641a32fe9e23669594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  player: {fileID: 0}
+  speed: 5
   eye: {fileID: 0}
-  attack_area: {fileID: 0}
+  body_area: {fileID: 0}
+  player: {fileID: 0}
   health: 3
   particles:
   - {fileID: 8369225913463304776, guid: 7e2324313f7d8ce4d905d4706ebf05d6, type: 3}
@@ -18885,7 +18886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298121524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13, y: -1.5, z: -10}
+  m_LocalPosition: {x: -18.15, y: 12.53, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 82893520}
@@ -18900,6 +18901,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298121531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298121524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5387fba7d23c97b4ab5f50d94dfeafd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &299639648
 GameObject:
   m_ObjectHideFlags: 0
@@ -68916,7 +68929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b6b21ccabe4324a86d8bd801fac824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 10
   movement: {x: 0, y: 0}
   mouse_input: {x: 0, y: 0}
   attack_area: {fileID: 0}
@@ -92208,6 +92221,7 @@ GameObject:
   - component: {fileID: 1492267632}
   - component: {fileID: 1492267637}
   - component: {fileID: 1492267633}
+  - component: {fileID: 1492267638}
   m_Layer: 10
   m_Name: Infighter_1
   m_TagString: Untagged
@@ -92293,7 +92307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492267631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 13.5, z: -10}
+  m_LocalPosition: {x: -1.7, y: 11.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533497784}
@@ -92320,14 +92334,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128580456e2e35845a733ab22b8c0a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  player: {fileID: 0}
+  speed: 5
   eye: {fileID: 0}
-  attack_area: {fileID: 0}
+  body_area: {fileID: 0}
+  player: {fileID: 0}
   health: 3
   particles:
   - {fileID: 8369225913463304776, guid: 7e2324313f7d8ce4d905d4706ebf05d6, type: 3}
   - {fileID: 2326455973052155703, guid: 79917af2527238346898d88d54567ca4, type: 3}
+  attack_area: {fileID: 0}
 --- !u!114 &1492267637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92356,6 +92371,18 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &1492267638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492267631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5387fba7d23c97b4ab5f50d94dfeafd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1493499036
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Outfighter : Infighter {
+public class Outfighter : Enemy {
     public GameObject throwing ;
 }
