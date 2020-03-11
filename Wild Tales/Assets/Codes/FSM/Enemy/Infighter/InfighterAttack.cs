@@ -8,6 +8,9 @@ public class InfighterAttack : BasicFSM<Infighter> {
         if (ob.attack_area.overlap<Player>(LayerMask.GetMask("Top Layer"))) {
             ob.attack_area.overlap<Player>(LayerMask.GetMask("Top Layer")).hit(-1 * ob.transform.up);
         }
+        else if (ob.body_area.overlap<Enemy>(LayerMask.GetMask("Top Layer"))) {
+            ob.body_area.overlap<Enemy>(LayerMask.GetMask("Top Layer")).hit(-1 * ob.transform.up);
+        }
         else if (ob.body_area.overlap<Envi>(LayerMask.GetMask("Middle Layer"))) {
             ob.body_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).hit(-1 * ob.transform.up);
         }
