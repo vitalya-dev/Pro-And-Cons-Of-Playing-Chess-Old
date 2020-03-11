@@ -18849,7 +18849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f6d3ff5cdf92641a32fe9e23669594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   eye: {fileID: 0}
   body_area: {fileID: 0}
   player: {fileID: 0}
@@ -68929,7 +68929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b6b21ccabe4324a86d8bd801fac824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   movement: {x: 0, y: 0}
   mouse_input: {x: 0, y: 0}
   attack_area: {fileID: 0}
@@ -92334,7 +92334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128580456e2e35845a733ab22b8c0a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   eye: {fileID: 0}
   body_area: {fileID: 0}
   player: {fileID: 0}

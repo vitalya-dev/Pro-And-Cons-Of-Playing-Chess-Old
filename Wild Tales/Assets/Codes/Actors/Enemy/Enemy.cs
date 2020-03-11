@@ -68,7 +68,7 @@ abstract public class Enemy : MonoBehaviour {
                 Vector2 dir = path.vectorPath[waypoint] - transform.position;
                 dir.Normalize();
                 /* ============================================ */
-                transform.position += (Vector3)dir * speed * Time.fixedDeltaTime;
+                GetComponent<Rigidbody2D>().MovePosition(transform.position + (Vector3)dir * speed * Time.fixedDeltaTime);
                 /* ============================================ */
                 look_at(dir);
                 /* ============================================ */

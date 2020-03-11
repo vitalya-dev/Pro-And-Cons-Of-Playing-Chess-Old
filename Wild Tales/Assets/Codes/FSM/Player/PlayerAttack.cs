@@ -16,7 +16,7 @@ public class PlayerAttack : BasicFSM<Player> {
             ob.attack_area.overlap<Envi>(LayerMask.GetMask("Middle Layer")).hit(-1 * ob.transform.up);
             animator.SetFloat("attack speed", 2.0f);
         }
-        ob.transform.position += ob.transform.up * -1;
+        rb.MovePosition(ob.transform.position + ob.transform.up * -1);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
