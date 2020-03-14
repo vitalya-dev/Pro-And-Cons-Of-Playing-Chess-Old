@@ -20,7 +20,8 @@ public class MenuItems {
 
     [MenuItem("Tools/Select Parent &w")]
     static void select_parent() {
-        Selection.activeGameObject = Selection.activeGameObject.transform.parent.gameObject;
+        if (Selection.activeGameObject.transform.parent)
+            Selection.activeGameObject = Selection.activeGameObject.transform.parent.gameObject;
 
     }
 
