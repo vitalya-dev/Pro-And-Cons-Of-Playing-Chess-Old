@@ -18,9 +18,22 @@ public class MenuItems {
         }
     }
 
-    [MenuItem("Tools/Select parent &w")]
+    [MenuItem("Tools/Select Parent &w")]
     static void select_parent() {
         Selection.activeGameObject = Selection.activeGameObject.transform.parent.gameObject;
+
+    }
+
+    [MenuItem("Tools/Remove Intersection")]
+    static void remove_intersection() {
+        for (int i = 0; i < Selection.gameObjects.Length - 1; i++) {
+            for (int j = i + 1; j < Selection.gameObjects.Length; j++) {
+                if (Vector3.Distance(Selection.gameObjects[i].transform.position, Selection.gameObjects[j].transform.position) <= 0.01f) {
+                    GameObject.DestroyImmediate(Selection.gameObjects[j]);
+                    Debug.Log("Destroy Intersection");
+                }
+            }
+        }
 
     }
 }
