@@ -10,7 +10,7 @@ public class MenuItems {
         }
     }
 
-    [MenuItem("Tools/Snap")]
+    [MenuItem("Tools/Snap &q")]
     static void snap() {
         foreach (var go in Selection.gameObjects) {
             go.transform.localPosition = new Vector3((int)go.transform.localPosition.x, (int)go.transform.localPosition.y, (int)go.transform.localPosition.z);
