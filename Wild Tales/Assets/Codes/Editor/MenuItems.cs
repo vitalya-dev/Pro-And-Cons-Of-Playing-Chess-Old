@@ -25,6 +25,12 @@ public class MenuItems {
 
     }
 
+    [MenuItem("Tools/Fold &e")]
+    static void fold() {
+        EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
+        EditorWindow.focusedWindow.SendEvent(Event.KeyboardEvent("left"));
+    }
+
     [MenuItem("Tools/Remove Intersection")]
     static void remove_intersection() {
         for (int i = 0; i < Selection.gameObjects.Length - 1; i++) {
