@@ -10,7 +10,7 @@ public class MenuItems {
         }
     }
 
-    [MenuItem("Tools/Snap &q")]
+    [MenuItem("Tools/Align")]
     static void snap() {
         foreach (var go in Selection.gameObjects) {
             go.transform.localPosition = new Vector3((int)go.transform.localPosition.x, (int)go.transform.localPosition.y, (int)go.transform.localPosition.z);
@@ -18,14 +18,14 @@ public class MenuItems {
         }
     }
 
-    [MenuItem("Tools/Select Parent &w")]
+    [MenuItem("Tools/Select Parent")]
     static void select_parent() {
         if (Selection.activeGameObject.transform.parent)
             Selection.activeGameObject = Selection.activeGameObject.transform.parent.gameObject;
 
     }
 
-    [MenuItem("Tools/Fold &e")]
+    [MenuItem("Tools/Fold")]
     static void fold() {
         EditorApplication.ExecuteMenuItem("Window/General/Hierarchy");
         EditorWindow.focusedWindow.SendEvent(Event.KeyboardEvent("left"));
