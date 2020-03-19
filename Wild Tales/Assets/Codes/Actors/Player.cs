@@ -23,6 +23,8 @@ public class Player : MonoBehaviour {
     void Start() {
         attack_area = transform.Find("Attack Area").GetComponent<Area>();
         kick_area = transform.Find("Kick Area").GetComponent<Area>();
+
+        Debug.Log(JsonUtility.ToJson(this));
     }
 
     void Update() {
@@ -32,7 +34,6 @@ public class Player : MonoBehaviour {
 
         mouse_input.x = Input.GetAxisRaw("Mouse X");
         mouse_input.y = Input.GetAxisRaw("Mouse Y");
-
 
         if (Input.GetButtonDown("Fire1"))
             GetComponent<Animator>().SetTrigger("fire1");

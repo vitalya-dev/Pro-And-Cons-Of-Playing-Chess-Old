@@ -11,5 +11,6 @@ public class Envi : MonoBehaviour {
     }
 
     public void knock() {
+        Debug.Log("Knock " + GetInstanceID());
     }
 }
