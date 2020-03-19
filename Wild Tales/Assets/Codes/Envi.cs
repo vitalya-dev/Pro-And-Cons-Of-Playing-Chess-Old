@@ -10,7 +10,10 @@ public class Envi : MonoBehaviour {
         GameObject.Destroy(this.gameObject);
     }
 
-    public void knock() {
-        Debug.Log("Knock " + GetInstanceID());
+    public void knock(GameObject knocker) {
+        if (GetComponent<PlayMakerFSM>()) {
+            GetComponent<PlayMakerFSM>().FsmVariables.GetVariable("player").RawValue = knocker;
+            GetComponent<PlayMakerFSM>().SendEvent("KNOCK");
+        }
     }
 }

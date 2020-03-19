@@ -6,7 +6,7 @@ public class PlayerKnockKnock : BasicFSM<Player> {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         /* ============================================== */
         if (ob.attack_area.overlap<Envi>(LayerMask.GetMask("Top Layer"))) {
-            ob.attack_area.overlap<Envi>(LayerMask.GetMask("Top Layer")).knock();
+            ob.attack_area.overlap<Envi>(LayerMask.GetMask("Top Layer")).knock(ob.gameObject);
         }
     }
 }
