@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class LevelManager {
-
-    public static List<GameObject> gameobjects = new List<GameObject>();
+    public static UnityEvent restart_event = new UnityEvent();
 }

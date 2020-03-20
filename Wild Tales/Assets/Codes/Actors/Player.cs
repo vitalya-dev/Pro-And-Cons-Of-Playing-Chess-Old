@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
     Quaternion backup_rotation;
 
     void Awake() {
-        LevelManager.gameobjects.Add(this.gameObject);
+        LevelManager.restart_event.AddListener(restart);
         /* ================================================== */
         backup_position = transform.position;
         backup_rotation = transform.rotation;
@@ -50,9 +50,7 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown("Fire3"))
             GetComponent<Animator>().SetTrigger("fire3");
         if (Input.GetKeyDown(KeyCode.R)) {
-            foreach (var ob in LevelManager.gameobjects) {
-                ob.SendMessage("restart");
-            }
+            LevelManager.restart_event.Invoke();
         }
 
 

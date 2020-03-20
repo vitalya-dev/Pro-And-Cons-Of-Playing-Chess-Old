@@ -5,9 +5,14 @@ public class Envi : MonoBehaviour {
 
     public GameObject particle;
 
+
+    void Awake() {
+        LevelManager.restart_event.AddListener(restart);
+    }
+
     public void hit(Vector2 direction) {
         GameObject.Instantiate(particle, transform.position, Quaternion.identity);
-        GameObject.Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     public void knock(GameObject knocker) {
@@ -15,5 +20,9 @@ public class Envi : MonoBehaviour {
             GetComponent<PlayMakerFSM>().FsmVariables.GetVariable("player").RawValue = knocker;
             GetComponent<PlayMakerFSM>().SendEvent("KNOCK");
         }
+    }
+
+    public void restart() {
+        gameObject.SetActive(true);
     }
 }
