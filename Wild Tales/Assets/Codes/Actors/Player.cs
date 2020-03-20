@@ -20,11 +20,19 @@ public class Player : MonoBehaviour {
 
     public GameObject[] particles;
 
+    Vector3 backup_position;
+    Quaternion backup_rotation;
+
+    void Awake() {
+        LevelManager.gameobjects.Add(this.gameObject);
+        /* ================================================== */
+        backup_position = transform.position;
+        backup_rotation = transform.rotation;
+    }
+
     void Start() {
         attack_area = transform.Find("Attack Area").GetComponent<Area>();
         kick_area = transform.Find("Kick Area").GetComponent<Area>();
-
-        Debug.Log(JsonUtility.ToJson(this));
     }
 
     void Update() {
@@ -41,6 +49,12 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("fire2");
         if (Input.GetButtonDown("Fire3"))
             GetComponent<Animator>().SetTrigger("fire3");
+        if (Input.GetKeyDown(KeyCode.R)) {
+            foreach (var ob in LevelManager.gameobjects) {
+                ob.SendMessage("restart");
+            }
+        }
+
 
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().inertia = 0f;
@@ -52,7 +66,12 @@ public class Player : MonoBehaviour {
             Debug.Log(particle.transform.position);
             GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
         }
-        GameObject.Destroy(this.gameObject);
         PlayMakerFSM.BroadcastEvent("WASTED");
+        gameObject.SetActive(false);
+    }
+
+    public void restart() {
+        transform.position = backup_position;
+        transform.rotation = backup_rotation;
     }
 }
