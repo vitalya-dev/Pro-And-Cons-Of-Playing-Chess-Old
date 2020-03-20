@@ -49,14 +49,15 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("fire2");
         if (Input.GetButtonDown("Fire3"))
             GetComponent<Animator>().SetTrigger("fire3");
-        if (Input.GetKeyDown(KeyCode.R)) {
-            LevelManager.restart_event.Invoke();
-        }
 
 
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().inertia = 0f;
         GetComponent<Rigidbody2D>().angularVelocity = 0f;
+    }
+
+    public void kill() {
+        hit(Vector2.zero);
     }
 
     public void hit(Vector2 direction) {
@@ -71,5 +72,6 @@ public class Player : MonoBehaviour {
     public void restart() {
         transform.position = backup_position;
         transform.rotation = backup_rotation;
+        gameObject.SetActive(true);
     }
 }
