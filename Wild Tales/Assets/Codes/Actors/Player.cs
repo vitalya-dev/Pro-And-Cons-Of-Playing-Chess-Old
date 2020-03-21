@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 
     void Awake() {
         LevelManager.restart_event.AddListener(restart);
+        LevelManager.save_event.AddListener(save);
+        LevelManager.load_event.AddListener(load);
         /* ================================================== */
         backup_position = transform.position;
         backup_rotation = transform.rotation;
@@ -73,5 +75,13 @@ public class Player : MonoBehaviour {
         transform.position = backup_position;
         transform.rotation = backup_rotation;
         gameObject.SetActive(true);
+    }
+
+    public void save() {
+        Debug.Log("Save " + gameObject.GetInstanceID());
+    }
+
+    public void load() {
+        Debug.Log("Load " + gameObject.GetInstanceID());
     }
 }
