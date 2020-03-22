@@ -9,13 +9,9 @@ public class LevelManager {
         restart_event.Invoke();
     }
 
-    public static UnityEvent save_event = new UnityEvent();
-    public static void save() {
-        save_event.Invoke();
+    public static UnityEvent control_point_event = new UnityEvent();
+    public static void control_point() {
+        control_point_event.Invoke();
     }
 
-    public static UnityEvent load_event = new UnityEvent();
-    public static void load() {
-        load_event.Invoke();
-    }
 }

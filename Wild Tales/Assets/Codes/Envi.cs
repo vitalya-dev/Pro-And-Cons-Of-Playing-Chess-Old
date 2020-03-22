@@ -5,9 +5,13 @@ public class Envi : MonoBehaviour {
 
     public GameObject particle;
 
+    bool is_active;
 
     void Awake() {
         LevelManager.restart_event.AddListener(restart);
+        LevelManager.control_point_event.AddListener(control_point);
+        /* ================================================== */
+        is_active = gameObject.activeSelf;
     }
 
     public void hit(Vector2 direction) {
@@ -23,6 +27,10 @@ public class Envi : MonoBehaviour {
     }
 
     public void restart() {
-        gameObject.SetActive(true);
+        gameObject.SetActive(is_active);
+    }
+
+    public void control_point() {
+        is_active = gameObject.activeSelf;
     }
 }
