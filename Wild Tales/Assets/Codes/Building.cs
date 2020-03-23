@@ -16,5 +16,8 @@ public class Building : MonoBehaviour {
         if (area.overlap<Enemy>(LayerMask.GetMask("Top Layer"))) {
             Debug.Log("Still Have Enemy");
         }
+        else {
+            Debug.Log("All Enemies are gone");
+        }
     }
 }

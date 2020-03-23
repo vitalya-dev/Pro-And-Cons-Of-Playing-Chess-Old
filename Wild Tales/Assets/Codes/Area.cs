@@ -8,7 +8,7 @@ public class Area : MonoBehaviour {
         ContactFilter2D contact_filter = new ContactFilter2D();
         contact_filter.SetLayerMask(mask);
         /* ========================================================== */
-        Collider2D[] colliders = new Collider2D[10];
+        Collider2D[] colliders = new Collider2D[1000];
         int count = GetComponent<Collider2D>().OverlapCollider(contact_filter, colliders);
         System.Array.Resize(ref colliders, count);
         /* ========================================================== */
@@ -23,7 +23,7 @@ public class Area : MonoBehaviour {
         ContactFilter2D contact_filter = new ContactFilter2D();
         contact_filter.SetLayerMask(mask);
         /* ========================================================== */
-        Collider2D[] colliders = new Collider2D[10];
+        Collider2D[] colliders = new Collider2D[1000];
         int count = GetComponent<Collider2D>().OverlapCollider(contact_filter, colliders);
         System.Array.Resize(ref colliders, count);
         /* ========================================================== */
