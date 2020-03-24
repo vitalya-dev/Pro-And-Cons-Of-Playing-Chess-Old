@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
     public float speed;
 
     [HideInInspector]
@@ -37,6 +36,7 @@ public class Player : MonoBehaviour
         kick_area = transform.Find("Kick Area").GetComponent<Area>();
         /* ================================================== */
         GetComponent<PlayMakerFSM>().SendEvent("OPEN");
+
     }
 
     void Update() {
