@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 
 [SelectionBase]
@@ -16,6 +17,8 @@ abstract public class Enemy : MonoBehaviour {
 
     public GameObject[] particles;
 
+    public static UnityEvent kill_event = new UnityEvent();
+
     virtual protected void Start() {
         eye = transform.Find("Eye").GetComponent<Eye>();
         body_area = GetComponent<Area>();
@@ -27,8 +30,11 @@ abstract public class Enemy : MonoBehaviour {
         }
         /* ================================ */
         health -= 1;
-        if (health <= 0)
+        if (health <= 0) {
             GameObject.Destroy(this.gameObject);
+            /* ================================ */
+            kill_event.Invoke();
+        }
         else
             GetComponent<Animator>().SetTrigger("hurt");
     }
