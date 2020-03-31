@@ -34,9 +34,6 @@ public class Player : MonoBehaviour {
     void Start() {
         attack_area = transform.Find("Attack Area").GetComponent<Area>();
         kick_area = transform.Find("Kick Area").GetComponent<Area>();
-        /* ================================================== */
-        GetComponent<PlayMakerFSM>().SendEvent("OPEN");
-
     }
 
     void Update() {

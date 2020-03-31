@@ -34,3 +34,5 @@ MonoBehaviour:
   events:
   - FIRST BUILDING CLEANUP
   - FIRST BUILDING CLEAN
+  - CAMERA UP
+  - CAMERA DOWN

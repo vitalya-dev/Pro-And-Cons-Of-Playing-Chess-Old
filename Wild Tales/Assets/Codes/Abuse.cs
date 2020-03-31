@@ -36,4 +36,8 @@ public class Abuse {
         else
             return adj[Random.Range(0, adj.Length)] + " " + nouns[Random.Range(0, nouns.Length)];
     }
+
+    public static string make_big_abuse() {
+        return nouns[Random.Range(0, nouns.Length)] + " " + adj[Random.Range(0, adj.Length)] + " " + nouns[Random.Range(0, nouns.Length)];
+    }
 }
