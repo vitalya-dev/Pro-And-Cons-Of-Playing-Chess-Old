@@ -14,6 +14,10 @@ public class Envi : MonoBehaviour {
         is_active = gameObject.activeSelf;
     }
 
+    public void hit() {
+        hit(Vector2.zero);
+    }
+
     public void hit(Vector2 direction) {
         GameObject.Instantiate(particle, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
