@@ -7,13 +7,15 @@ public class Building : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        area = transform.Find("Area").GetComponent<Area>();
+        if (transform.Find("Area"))
+            area = transform.Find("Area").GetComponent<Area>();
         Enemy.kill_event.AddListener(enemy_killed);
     }
 
     public void enemy_killed() {
-        if (!area.overlap<Enemy>(LayerMask.GetMask("Top Layer"))) {
+        if (area && !area.overlap<Enemy>(LayerMask.GetMask("Top Layer"))) {
             GetComponent<PlayMakerFSM>().SendEvent("CLEAN");
         }
     }
 }
+
