@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour {
+public abstract class Projectile : MonoBehaviour {
     public GameObject particle;
     private bool fly = false;
 
-    public void hit(Vector2 direction) {
+    public void fire(Vector2 direction) {
         gameObject.layer = LayerMask.NameToLayer("Middle Layer");
         GetComponent<Rigidbody2D>().AddForce(direction * 25, ForceMode2D.Impulse);
         /* ========================================================= */
@@ -14,10 +14,12 @@ public class Projectile : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (fly) {
-            collision.gameObject.SendMessage("stun", SendMessageOptions.DontRequireReceiver);
-            /* ========================================================= */
+            on_collision(collision);
             GameObject.Instantiate(particle, transform.position, Quaternion.identity);
             GameObject.Destroy(this.gameObject);
         }
     }
+
+    protected abstract void on_collision(Collision2D collision);
+
 }

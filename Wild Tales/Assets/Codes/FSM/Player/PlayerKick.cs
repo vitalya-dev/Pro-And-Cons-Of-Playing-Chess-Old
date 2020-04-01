@@ -8,7 +8,7 @@ public class PlayerKick : BasicFSM<Player> {
         ob.GetComponent<Collider2D>().enabled = false;
         /* ======================================================== */
         if (ob.attack_area.overlap<Projectile>(LayerMask.GetMask("Floor Layer"))) {
-            ob.attack_area.overlap<Projectile>(LayerMask.GetMask("Floor Layer")).hit(-1 * ob.transform.up);
+            ob.attack_area.overlap<Projectile>(LayerMask.GetMask("Floor Layer")).fire(-1 * ob.transform.up);
         }
     }
 
