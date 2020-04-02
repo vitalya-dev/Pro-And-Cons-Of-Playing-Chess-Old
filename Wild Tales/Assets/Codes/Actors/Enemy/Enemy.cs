@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 [SelectionBase]
 abstract public class Enemy : MonoBehaviour {
+    public static UnityEvent kill_event = new UnityEvent();
+
     public float speed;
     [HideInInspector]
     public Eye eye;
@@ -16,8 +18,6 @@ abstract public class Enemy : MonoBehaviour {
     public int health;
 
     public GameObject[] particles;
-
-    public static UnityEvent kill_event = new UnityEvent();
 
     virtual protected void Start() {
         eye = transform.Find("Eye").GetComponent<Eye>();

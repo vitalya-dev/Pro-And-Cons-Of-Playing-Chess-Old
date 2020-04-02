@@ -12,10 +12,14 @@ public class Building : MonoBehaviour {
         Enemy.kill_event.AddListener(enemy_killed);
     }
 
-    public void enemy_killed() {
+    void enemy_killed() {
         if (area && !area.overlap<Enemy>(LayerMask.GetMask("Top Layer"))) {
             GetComponent<PlayMakerFSM>().SendEvent("CLEAN");
         }
+    }
+
+    void burn() {
+        Debug.Log("Burn It Down " + Time.time);
     }
 }
 
