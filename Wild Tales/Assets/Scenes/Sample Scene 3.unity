@@ -9584,7 +9584,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 3}
+  m_Size: {x: 2, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: -1.5}
 --- !u!114 &2521210729377281065
 MonoBehaviour:
@@ -9598,6 +9598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6d51abe5b65484184b3053fd2bc0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slide: {x: 0, y: 0, z: 0}
 --- !u!95 &2521210729377281080
 Animator:
   serializedVersion: 3

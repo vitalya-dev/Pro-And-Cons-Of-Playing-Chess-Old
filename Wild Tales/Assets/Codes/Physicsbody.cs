@@ -18,35 +18,26 @@ public class Physicsbody : MonoBehaviour {
     }
 
 
-    public void move_position(Vector3 position, bool slide = true) {
-        bool can_move = true;
-        /* =========================================== */
-        Collider[] colliders = Physics.OverlapBox(position + GetComponent<BoxCollider>().center, GetComponent<BoxCollider>().size / 2);
-        foreach (var collider in colliders)
-            if (collider.gameObject != gameObject) {
-                can_move = false;
-                break;
-            }
-        /* =========================================== */
-        if (can_move)
+    public void move_position(Vector3 position) {
+        if (can_move(position))
             transform.position = position;
-        else if (slide) {
+        else {
             // slide
             Vector3 a = position - transform.position;
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position + GetComponent<BoxCollider>().center, a, out hit, 2)) {
-                Vector3 n = -1 * hit.normal;
-                move_position(transform.position + a - (Vector3.Dot(a, n) * n), false);
-            }
+            if (can_move(transform.position + new Vector3(a.x, 0, 0)))
+                transform.position += new Vector3(a.x, 0, 0);
+            else if (can_move(transform.position + new Vector3(0, a.y, 0)))
+                transform.position += new Vector3(0, a.y, 0);
         }
     }
+
 
     bool can_move(Vector3 position) {
         Collider[] colliders = Physics.OverlapBox(position + GetComponent<BoxCollider>().center, GetComponent<BoxCollider>().size / 2);
         foreach (var collider in colliders)
             if (collider.gameObject != gameObject) {
-                return true;
+                return false;
             }
-        return false;
+        return true;
     }
 }
