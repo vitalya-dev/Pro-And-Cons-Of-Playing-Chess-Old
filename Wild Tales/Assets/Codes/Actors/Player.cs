@@ -14,6 +14,9 @@ public class Player : MonoBehaviour {
 
     public GameObject[] particles;
 
+    [HideInInspector]
+    public Area attack_area;
+
     Vector3 backup_position;
     Quaternion backup_rotation;
 
@@ -23,6 +26,10 @@ public class Player : MonoBehaviour {
         /* ================================================== */
         backup_position = transform.position;
         backup_rotation = transform.rotation;
+    }
+
+    void Start() {
+        attack_area = transform.Find("Attack Area").GetComponent<Area>();
     }
 
 
@@ -48,7 +55,6 @@ public class Player : MonoBehaviour {
 
     public void hit(Vector2 direction) {
         foreach (var particle in particles) {
-            Debug.Log(particle.transform.position);
             GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
         }
         PlayMakerFSM.BroadcastEvent("WASTED");

@@ -19,14 +19,20 @@ public class Physicsbody : MonoBehaviour {
 
     public void move_position(Vector3 position) {
         bool can_move = true;
-
+        /* =========================================== */
         Collider[] colliders = Physics.OverlapBox(position + GetComponent<BoxCollider>().center, GetComponent<BoxCollider>().size / 2);
         foreach (var collider in colliders)
             if (collider.gameObject != gameObject) {
                 can_move = false;
                 break;
             }
+        /* =========================================== */
         if (can_move)
             transform.position = position;
+        else slide(position);
+    }
+
+    private void slide(Vector3 position) {
+        Debug.Log(position);
     }
 }
