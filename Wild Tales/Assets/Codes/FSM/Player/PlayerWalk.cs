@@ -7,7 +7,6 @@ public class PlayerWalk : BasicFSM<Player> {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         /* ============================================== */
         ob.transform.rotation = Quaternion.LookRotation(Vector3.forward, (Vector2)(ob.transform.position - GameObject.FindObjectOfType<Crosshair>().transform.position));
-        /* ============================================== */
-        rb.MovePosition(ob.transform.position + (Vector3)ob.movement * ob.speed * Time.fixedDeltaTime);
+        pb.move_position(ob.transform.position + (Vector3)(ob.movement * ob.speed * Time.fixedDeltaTime));
     }
 }

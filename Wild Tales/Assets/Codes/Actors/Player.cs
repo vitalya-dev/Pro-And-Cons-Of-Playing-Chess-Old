@@ -12,12 +12,6 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public Vector2 mouse_input;
 
-    [HideInInspector]
-    public Area attack_area;
-
-    [HideInInspector]
-    public Area kick_area;
-
     public GameObject[] particles;
 
     Vector3 backup_position;
@@ -31,10 +25,6 @@ public class Player : MonoBehaviour {
         backup_rotation = transform.rotation;
     }
 
-    void Start() {
-        attack_area = transform.Find("Attack Area").GetComponent<Area>();
-        kick_area = transform.Find("Kick Area").GetComponent<Area>();
-    }
 
     void Update() {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -50,11 +40,6 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetTrigger("fire2");
         if (Input.GetButtonDown("Fire3"))
             GetComponent<Animator>().SetTrigger("fire3");
-
-
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        GetComponent<Rigidbody2D>().inertia = 0f;
-        GetComponent<Rigidbody2D>().angularVelocity = 0f;
     }
 
     public void kill() {
@@ -80,4 +65,6 @@ public class Player : MonoBehaviour {
         backup_position = transform.position;
         backup_rotation = transform.rotation;
     }
+
+
 }
