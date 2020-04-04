@@ -72,7 +72,7 @@ TextureImporter:
       213: 6706048856353666618
     second: Graphics_21
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -126,6 +126,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -281,27 +282,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Graphics_6
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e33c7b4bcaf90fb0800000000000000
-      internalID: -4680934586623183899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Graphics_7
       rect:
         serializedVersion: 2
@@ -323,31 +303,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Graphics_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 16
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dbebfbd79a62f91f0800000000000000
-      internalID: -1036066879870878019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Graphics_9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 32
         width: 16
         height: 16
@@ -407,31 +366,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Graphics_12
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 820d2cdcb8f83d090800000000000000
-      internalID: -8010901481546657752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Graphics_13
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 48
         width: 16
         height: 16
@@ -452,7 +390,7 @@ TextureImporter:
       name: Graphics_14
       rect:
         serializedVersion: 2
-        x: 144
+        x: 112
         y: 48
         width: 16
         height: 16
@@ -473,7 +411,7 @@ TextureImporter:
       name: Graphics_15
       rect:
         serializedVersion: 2
-        x: 112
+        x: 80
         y: 48
         width: 16
         height: 16
@@ -494,7 +432,7 @@ TextureImporter:
       name: Graphics_16
       rect:
         serializedVersion: 2
-        x: 144
+        x: 112
         y: 32
         width: 16
         height: 16
@@ -515,7 +453,7 @@ TextureImporter:
       name: Graphics_17
       rect:
         serializedVersion: 2
-        x: 112
+        x: 80
         y: 16
         width: 16
         height: 16
@@ -536,7 +474,7 @@ TextureImporter:
       name: Graphics_18
       rect:
         serializedVersion: 2
-        x: 144
+        x: 112
         y: 16
         width: 16
         height: 16
@@ -557,7 +495,7 @@ TextureImporter:
       name: Graphics_20
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 16
         width: 16
         height: 16
@@ -578,7 +516,7 @@ TextureImporter:
       name: Graphics_21
       rect:
         serializedVersion: 2
-        x: 112
+        x: 80
         y: 32
         width: 16
         height: 16

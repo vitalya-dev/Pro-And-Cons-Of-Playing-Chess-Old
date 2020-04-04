@@ -4,16 +4,17 @@ using System.Collections;
 
 public class Area : MonoBehaviour {
     public T overlap<T>() {
-        Collider[] colliders = Physics.OverlapBox(transform.position + GetComponent<BoxCollider>().center, GetComponent<BoxCollider>().size / 2);
-        foreach (var collider in colliders)
+        Collider[] colliders = Physics.OverlapBox(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size / 2, transform.rotation);
+        foreach (var collider in colliders) {
             if (collider.gameObject != gameObject && collider.GetComponent<T>() != null) {
                 return collider.GetComponent<T>();
             }
+        }
         return default;
     }
 
     public T[] overlap_all<T>() {
-        Collider[] colliders = Physics.OverlapBox(transform.position + GetComponent<BoxCollider>().center, GetComponent<BoxCollider>().size / 2);
+        Collider[] colliders = Physics.OverlapBox(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size / 2);
         List<T> ts = new List<T>();
         foreach (var collider in colliders)
             if (collider.gameObject != gameObject && collider.GetComponent<T>() != null) {
