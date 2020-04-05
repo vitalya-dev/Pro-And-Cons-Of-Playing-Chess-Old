@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Molotov : Projectile {
     override protected void on_collision(Collision2D collision) {
-        if (collision.gameObject.GetComponent<Building>())
+        if (collision.gameObject.GetComponent<House>())
             collision.gameObject.SendMessage("burn", SendMessageOptions.DontRequireReceiver);
     }
 }

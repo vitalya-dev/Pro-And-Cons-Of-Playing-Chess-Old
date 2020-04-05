@@ -4,6 +4,9 @@ using UnityEngine;
 
 [SelectionBase]
 public class Player : MonoBehaviour {
+    [SerializeField]
+    private Color gizmo_color;
+
     public float speed;
 
     [HideInInspector]
@@ -17,6 +20,9 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public Area attack_area;
 
+    [HideInInspector]
+    public Area kick_area;
+
     Vector3 backup_position;
     Quaternion backup_rotation;
 
@@ -29,7 +35,10 @@ public class Player : MonoBehaviour {
     }
 
     void Start() {
-        attack_area = transform.Find("Attack Area").GetComponent<Area>();
+        if (transform.Find("Attack Area"))
+            attack_area = transform.Find("Attack Area").GetComponent<Area>();
+        if (transform.Find("Kick Area"))
+            kick_area = transform.Find("Kick Area").GetComponent<Area>();
     }
 
 
@@ -70,6 +79,11 @@ public class Player : MonoBehaviour {
     public void control_point() {
         backup_position = transform.position;
         backup_rotation = transform.rotation;
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.color = gizmo_color;
+        Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
     }
 
 

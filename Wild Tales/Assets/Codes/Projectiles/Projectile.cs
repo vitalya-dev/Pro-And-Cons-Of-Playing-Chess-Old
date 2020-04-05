@@ -5,7 +5,7 @@ public abstract class Projectile : MonoBehaviour {
     public GameObject particle;
     private bool fly = false;
 
-    public void fire(Vector2 direction) {
+    public void kick(Vector2 direction) {
         gameObject.layer = LayerMask.NameToLayer("Middle Layer");
         GetComponent<Rigidbody2D>().AddForce(direction * 25, ForceMode2D.Impulse);
         /* ========================================================= */
