@@ -3,13 +3,18 @@ using System.Collections;
 
 public class PlayerKick : BasicFSM<Player> {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        if (ob.attack_area.overlap<Projectile>()) {
-            ob.attack_area.overlap<Envi>().hit();
-            animator.SetFloat("attack speed", 2.0f);
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+        /* ============================================== */
+        ob.GetComponent<Collider>().enabled = false;
+        if (ob.kick_area.overlap<Projectile>()) {
+            ob.kick_area.overlap<Projectile>().hit(-1 * ob.transform.up);
         }
     }
 
 
-    public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) {
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        base.OnStateExit(animator, stateInfo, layerIndex);
+        /* ============================================== */
+        ob.GetComponent<Collider>().enabled = true;
     }
 }

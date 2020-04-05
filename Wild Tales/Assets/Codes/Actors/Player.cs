@@ -4,8 +4,6 @@ using UnityEngine;
 
 [SelectionBase]
 public class Player : MonoBehaviour {
-    [SerializeField]
-    private Color gizmo_color;
 
     public float speed;
 
@@ -81,10 +79,9 @@ public class Player : MonoBehaviour {
         backup_rotation = transform.rotation;
     }
 
-    void OnDrawGizmos() {
-        Gizmos.color = gizmo_color;
-        Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
-    }
 
+    void on_collision(Collider collider) {
+        Debug.Log(collider.name);
+    }
 
 }

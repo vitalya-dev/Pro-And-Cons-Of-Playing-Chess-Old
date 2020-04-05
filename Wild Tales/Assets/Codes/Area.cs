@@ -5,6 +5,8 @@ using System.Collections;
 public class Area : MonoBehaviour {
     [SerializeField]
     private Color gizmo_color;
+    [SerializeField]
+    private bool selected_only;
 
     public T overlap<T>() {
         Collider[] colliders = Physics.OverlapBox(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size / 2, transform.rotation);
@@ -26,8 +28,23 @@ public class Area : MonoBehaviour {
         return ts.ToArray();
     }
 
-    private void OnDrawGizmosSelected() {
+
+    /* ============================================== */
+    void OnDrawGizmos() {
+        if (!selected_only) {
+            draw_gizmo();
+        }
+    }
+
+    void OnDrawGizmosSelected() {
+        if (selected_only) {
+            draw_gizmo();
+        }
+    }
+
+    void draw_gizmo() {
         Gizmos.color = gizmo_color;
         Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
     }
+    /* ============================================== */
 }
