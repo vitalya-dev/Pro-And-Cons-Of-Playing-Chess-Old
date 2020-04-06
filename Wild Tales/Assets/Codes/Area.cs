@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -37,7 +38,7 @@ public class Area : MonoBehaviour {
     }
 
     void OnDrawGizmosSelected() {
-        if (selected_only) {
+        if (selected_only && (Selection.activeGameObject == gameObject)) {
             draw_gizmo();
         }
     }

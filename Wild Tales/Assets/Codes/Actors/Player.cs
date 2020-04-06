@@ -21,6 +21,9 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public Area kick_area;
 
+    [HideInInspector]
+    public BoxCollider walkable_box;
+
     Vector3 backup_position;
     Quaternion backup_rotation;
 
@@ -37,6 +40,8 @@ public class Player : MonoBehaviour {
             attack_area = transform.Find("Attack Area").GetComponent<Area>();
         if (transform.Find("Kick Area"))
             kick_area = transform.Find("Kick Area").GetComponent<Area>();
+        if (transform.Find("Walkable Box"))
+            walkable_box = transform.Find("Walkable Box").GetComponent<BoxCollider>();
     }
 
 
