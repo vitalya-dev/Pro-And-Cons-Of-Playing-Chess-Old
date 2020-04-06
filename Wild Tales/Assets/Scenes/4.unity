@@ -161,7 +161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345944083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.5, z: 1.5}
+  m_LocalPosition: {x: 1.5, y: -4.5, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1532326605}
@@ -180,8 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6d51abe5b65484184b3053fd2bc0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmo_color: {r: 0.4528302, g: 0.29690284, b: 0.29690284, a: 0.69411767}
   velocity: {x: 0, y: 0, z: 0}
+  friction: 2.83
+  gizmo_color: {r: 0.4528302, g: 0.29690284, b: 0.29690284, a: 0.69411767}
 --- !u!114 &345944087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016108608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1274952147}
@@ -456,7 +457,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049116852}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1}
@@ -532,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274952145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.52, y: 3.91, z: 0.5}
+  m_LocalPosition: {x: 1.23, y: -7.84, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 649660489}
@@ -598,8 +599,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6d51abe5b65484184b3053fd2bc0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmo_color: {r: 0, g: 0, b: 0, a: 0.5529412}
   velocity: {x: 0, y: 0, z: 0}
+  friction: 0
+  gizmo_color: {r: 0, g: 0, b: 0, a: 0.5529412}
 --- !u!114 &1329221307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,7 +625,6 @@ GameObject:
   - component: {fileID: 1389308642}
   - component: {fileID: 1389308641}
   - component: {fileID: 1389308643}
-  - component: {fileID: 1389308644}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -673,20 +674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle: {fileID: 5806143358602876855, guid: 7fc6da82b46ea82409f83973519b7ae8,
     type: 3}
---- !u!114 &1389308644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389308640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5387fba7d23c97b4ab5f50d94dfeafd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gizmo_color: {r: 0.7221673, g: 0.8113208, b: 0.3023318, a: 0.4745098}
-  selected_only: 0
+  gizmo_color: {r: 0.26088, g: 0.5019608, b: 0.2509804, a: 0.53333336}
 --- !u!1 &1478237308
 GameObject:
   m_ObjectHideFlags: 0

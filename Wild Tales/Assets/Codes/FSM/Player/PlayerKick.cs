@@ -7,7 +7,7 @@ public class PlayerKick : BasicFSM<Player> {
         /* ============================================== */
         ob.GetComponent<Collider>().enabled = false;
         if (ob.kick_area.overlap<Projectile>()) {
-            ob.kick_area.overlap<Projectile>().hit(-1 * ob.transform.up);
+            ob.kick_area.overlap<Projectile>().hit(-1 * ob.transform.up, 10);
         }
     }
 

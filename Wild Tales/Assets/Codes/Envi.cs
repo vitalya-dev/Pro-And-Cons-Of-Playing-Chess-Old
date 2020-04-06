@@ -34,4 +34,12 @@ public class Envi : MonoBehaviour {
     public void control_point() {
         is_active = gameObject.activeSelf;
     }
+
+
+    [SerializeField]
+    private Color gizmo_color;
+    void OnDrawGizmos() {
+        Gizmos.color = gizmo_color;
+        Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
+    }
 }
