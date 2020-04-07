@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 345944087}
   - component: {fileID: 345944086}
   m_Layer: 0
-  m_Name: Box
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e1b395d8b167f4ba93ed8539807761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 0}
+  particle: {fileID: 353387753491725722, guid: 1ac9aff250d5d3246ad61e39b11cc27b, type: 3}
 --- !u!1 &469791129
 GameObject:
   m_ObjectHideFlags: 0
