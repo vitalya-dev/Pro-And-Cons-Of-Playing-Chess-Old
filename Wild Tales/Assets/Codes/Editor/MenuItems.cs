@@ -75,5 +75,16 @@ public class MenuItems {
             go.transform.localScale = new Vector3(Mathf.RoundToInt(go.transform.localScale.x), Mathf.RoundToInt(go.transform.localScale.y), Mathf.RoundToInt(go.transform.localScale.z));
         }
     }
+
+    [MenuItem("Tools/Edit Box Collider")]
+    static void edit_box_collider() {
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        foreach (var assembly in assemblies) {
+            if (assembly.GetType("UnityEditor.BoxPrimitiveColliderTool") != null) {
+                UnityEditor.EditorTools.EditorTools.SetActiveTool(assembly.GetType("UnityEditor.BoxPrimitiveColliderTool"));
+            }
+        }
+    }
 }
+
 
