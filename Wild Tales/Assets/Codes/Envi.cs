@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[SelectionBase]
 public class Envi : MonoBehaviour {
 
     public GameObject particle;
@@ -40,6 +42,7 @@ public class Envi : MonoBehaviour {
     private Color gizmo_color;
     void OnDrawGizmos() {
         Gizmos.color = gizmo_color;
-        Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
+        Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
+        Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size- new Vector3(0.1f, 0.1f, 0.1f));
     }
 }

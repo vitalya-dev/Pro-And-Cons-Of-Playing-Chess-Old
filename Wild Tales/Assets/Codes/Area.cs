@@ -45,7 +45,7 @@ public class Area : MonoBehaviour {
 
     void draw_gizmo() {
         Gizmos.color = gizmo_color;
-        Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
+        Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
     }
     /* ============================================== */
 }

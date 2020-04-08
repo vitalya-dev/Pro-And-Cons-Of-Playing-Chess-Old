@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[SelectionBase]
 public class Physicsbody : MonoBehaviour {
 
     void Update() {
@@ -43,6 +44,6 @@ public class Physicsbody : MonoBehaviour {
     private Color gizmo_color;
     void OnDrawGizmos() {
         Gizmos.color = gizmo_color;
-        Gizmos.DrawCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
+        Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
     }
 }

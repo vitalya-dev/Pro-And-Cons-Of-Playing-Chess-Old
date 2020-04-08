@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[SelectionBase]
 public class Projectile : MonoBehaviour {
     public GameObject particle;
 
