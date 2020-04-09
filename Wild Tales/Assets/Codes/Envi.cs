@@ -43,6 +43,5 @@ public class Envi : MonoBehaviour {
     void OnDrawGizmos() {
         Gizmos.color = gizmo_color;
         Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
-        Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size- new Vector3(0.1f, 0.1f, 0.1f));
     }
 }
