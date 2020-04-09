@@ -11,10 +11,17 @@ public class Enemy : MonoBehaviour {
     [HideInInspector]
     public Player player;
 
+    [HideInInspector]
+    public Eye eye;
+
     public int health;
 
     [Sirenix.OdinInspector.AssetsOnly]
     public GameObject[] particles;
+
+    void Start() {
+        eye = transform.Find("Eye").GetComponent<Eye>();
+    }
 
     public void hit(Vector2 direction) {
         foreach (var particle in particles) {

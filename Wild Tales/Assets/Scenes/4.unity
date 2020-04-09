@@ -1040,7 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5387fba7d23c97b4ab5f50d94dfeafd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmo_color: {r: 0.58003813, g: 0.69803923, b: 0.39215687, a: 0.42745098}
+  gizmo_color: {r: 0, g: 0, b: 0, a: 1}
   selected_only: 0
 --- !u!65 &792078211
 BoxCollider:
@@ -1488,7 +1488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6d51abe5b65484184b3053fd2bc0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gizmo_color: {r: 0, g: 0, b: 0, a: 1}
+  gizmo_color: {r: 0.082013145, g: 0.9150943, b: 0.20033348, a: 1}
 --- !u!114 &1329221307
 MonoBehaviour:
   m_ObjectHideFlags: 0
