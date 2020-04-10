@@ -1,5 +1,5 @@
 {
-	"workbench.colorTheme": "Visual Studio Light",
+	"workbench.colorTheme": "Delphi (Classic)",
 	"workbench.iconTheme": "vs-minimal",
 	"workbench.preferredDarkColorTheme": "Default Light+",
 	"workbench.activityBar.visible": false,
@@ -45,18 +45,65 @@
 	},
 	"editor.rename.enablePreview": false,
 	"editor.hover.enabled": true,
-	"editor.hover.sticky": false,
+	"editor.hover.sticky": true,
 	"editor.lightbulb.enabled": false,
 	"editor.parameterHints.enabled": true,
 	"editor.renderFinalNewline": false,
 	"editor.foldingHighlight": false,
 	"editor.highlightActiveIndentGuide": false,
 	"editor.semanticHighlighting.enabled": false,
-	"editor.colorDecorators": false,
-	"editor.tokenColorCustomizations": null,
+	"editor.colorDecorators": true,
 	"scm.diffDecorations": "none",
 	"workbench.colorCustomizations": {
-		"editorUnnecessaryCode.opacity": "#ffffff"
+		"editorHoverWidget.background": "#000080",
+		"editorUnnecessaryCode.opacity": "#FFFFFF",
+		"editor.lineHighlightBackground": "#000000",
+	},
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": "entity.name.type",
+				"settings": {
+					"foreground": "#FFFFFF"
+				}
+			},
+			{
+				"scope": "entity.name.function",
+				"settings": {
+					"foreground": "#FFFFFF"
+				}
+			},
+			{
+				"scope": "punctuation",
+				"settings": {
+					"foreground": "#ffffff"
+				}
+			},
+			{
+				"scope": "entity.name.variable",
+				"settings": {
+					"foreground": "#ffffff"
+				}
+			},
+			{
+				"scope": "support.type.property-name",
+				"settings": {
+					"foreground": "#ffffff"
+				}
+			},
+			{
+				"scope": "string",
+				"settings": {
+					"foreground": "#ffffff"
+				}
+			},
+			{
+				"scope": "constant.numeric",
+				"settings": {
+					"foreground": "#ffffff"
+				}
+			}
+		]
 	},
 	"workbench.editor.showTabs": false,
 	"workbench.editor.showIcons": false
