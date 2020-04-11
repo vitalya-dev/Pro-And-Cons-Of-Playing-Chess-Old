@@ -25,5 +25,15 @@
 	{
 		"key": "ctrl+shift+p",
 		"command": "-workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+alt+space",
+		"command": "editor.action.jumpToBracket",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+shift+\\",
+		"command": "-editor.action.jumpToBracket",
+		"when": "editorTextFocus"
 	}
 ]
