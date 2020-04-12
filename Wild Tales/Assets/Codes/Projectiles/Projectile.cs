@@ -16,8 +16,7 @@ public class Projectile : MonoBehaviour {
     }
 
     void on_collision(Collider collider) {
-        GameObject.Instantiate(particle, transform.position, Quaternion.identity);
-        gameObject.SetActive(false);
+
     }
 
 }

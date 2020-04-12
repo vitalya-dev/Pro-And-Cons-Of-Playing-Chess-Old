@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour {
 	public Transform target;
-	public float smooth = 10f;
+	public float smooth;
 
-	void LateUpdate () {
-		if (target != null && Vector2.Distance (target.position, transform.position) > 0.5) {
-			Vector3 new_position = Vector2.Lerp (transform.position, target.position, smooth * Time.fixedDeltaTime);
-			transform.position = new Vector3 (new_position.x, new_position.y, transform.position.z);
-		}
+	void Update() {
+		Vector3 new_position = Vector3.Lerp(transform.position, target.position, smooth * Time.deltaTime);
+		transform.position += Vector3.Scale(new_position - transform.position, new Vector3(1, 0, 1));
 	}
 }
