@@ -4,16 +4,12 @@ using System.Collections;
 public class PlayerAttack : BasicFSM<Player> {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-
+		/* ============================================== */
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         /* ============================================== */
-        if (stateInfo.normalizedTime < 0.1 && ob.attack_area.overlap<Envi>()) {
-            ob.attack_area.overlap<Envi>().hit();
-            animator.SetFloat("attack speed", 2.0f);
-        }
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

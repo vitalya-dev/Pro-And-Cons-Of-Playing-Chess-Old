@@ -72,7 +72,7 @@ public class MenuItems {
 	[MenuItem("Tools/Reset Position")]
 	static void reset_position() {
 		foreach (var go in Selection.gameObjects) {
-			go.transform.position = new Vector3(0, 0, 0);
+			go.transform.localPosition = new Vector3(0, 0, 0);
 		}
 	}
 
