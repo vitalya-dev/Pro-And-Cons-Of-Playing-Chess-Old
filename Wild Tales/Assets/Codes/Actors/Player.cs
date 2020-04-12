@@ -8,14 +8,13 @@ public class Player : MonoBehaviour {
     public float speed;
 
     [HideInInspector]
-    public Vector2 movement;
+    public Vector3 movement;
 
 
     public GameObject[] particles;
 
     [HideInInspector]
     public Area attack_area;
-
 
 
     Vector3 backup_position;
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour {
 
     void Update() {
         movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.z = Input.GetAxisRaw("Vertical");
         GetComponent<Animator>().SetFloat("movement", movement.magnitude);
 
         if (Input.GetButtonDown("Fire1"))

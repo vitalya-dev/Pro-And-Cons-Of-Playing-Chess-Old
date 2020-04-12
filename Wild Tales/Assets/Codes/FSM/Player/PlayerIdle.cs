@@ -9,8 +9,7 @@ public class PlayerIdle : BasicFSM<Player> {
 		/* ============================================== */
 		Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
 		ob.transform.rotation = Quaternion.LookRotation(
-			Vector3.Scale(crosshair.transform.position - ob.transform.position, new Vector3(1, 0, 1)) * -1,
-			Vector3.up
+			Vector3.Scale(crosshair.transform.position - ob.transform.position, new Vector3(1, 0, 1))
 		);
 		/* ============================================== */
 	}
