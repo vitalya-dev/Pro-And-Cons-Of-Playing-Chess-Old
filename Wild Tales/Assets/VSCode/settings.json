@@ -55,6 +55,7 @@
 	"scm.diffDecorations": "none",
 	"window.titleBarStyle": "native",
 	"workbench.colorCustomizations": {
+		"editor.background": "#012456",
 		"editorUnnecessaryCode.opacity": "#ffffff",
 		"editorWidget.background": "#555555",
 		"dropdown.background": "#ffffff",
@@ -78,7 +79,7 @@
 					"entity.name.function",
 					"constant.numeric",
 					"constant.language",
-					"string"
+					
 				],
 				"settings": {
 					"foreground": "#FFFFFF"
@@ -87,6 +88,7 @@
 			{
 				"scope": [
 					"comment",
+					"string"
 				],
 				"settings": {
 					"foreground": "#ffff55"
@@ -107,11 +109,12 @@
 	},
 	"workbench.editor.showTabs": false,
 	"workbench.editor.showIcons": false,
-	"window.zoomLevel": 3,
+	"window.zoomLevel": 2,
 	"editor.defaultFormatter": "Leopotam.csharpfixformat",
 	"csharpfixformat.style.spaces.afterBracket": false,
 	"csharpfixformat.style.spaces.afterParenthesis": false,
 	"csharpfixformat.style.spaces.beforeParenthesis": false,
 	"csharpfixformat.style.spaces.insideEmptyBraces": false,
-	"csharpfixformat.style.spaces.removeAfterCommandBeforeParenthesis": "true"
+	"csharpfixformat.style.spaces.removeAfterCommandBeforeParenthesis": "true",
+
 }

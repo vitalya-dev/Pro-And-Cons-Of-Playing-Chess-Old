@@ -13,9 +13,6 @@ public class Player : MonoBehaviour {
 
     public GameObject[] particles;
 
-    [HideInInspector]
-    public Area attack_area;
-
 
     Vector3 backup_position;
     Quaternion backup_rotation;

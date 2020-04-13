@@ -7,10 +7,10 @@ public class Projectile : MonoBehaviour {
 
     private Vector3 velocity;
 
-    public void hit(Vector2 direction, float force) {
-
+    public void hit(Vector3 direction, float force) {
+		transform.Translate(Vector3.up);
     }
-
+ 
     void Update() {
 
     }
