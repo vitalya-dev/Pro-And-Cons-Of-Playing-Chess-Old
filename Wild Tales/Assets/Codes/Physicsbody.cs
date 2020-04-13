@@ -1,9 +1,18 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-[SelectionBase]
 public class Physicsbody : MonoBehaviour {
 
-    void Update() {
-    }
+	void Update() {
+	
+	}
+
+	Collider collider_there() {
+		Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2, transform.rotation);
+		foreach (var collider in colliders)
+			if (collider.gameObject != gameObject) {
+				return collider;
+			}
+		return null;
+	}
 }
