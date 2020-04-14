@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 [SelectionBase]
 public class Player : MonoBehaviour {
@@ -27,12 +26,6 @@ public class Player : MonoBehaviour {
 	void Start() {}
 
 	void Update() {
-		NavMeshHit hit;
-		if (NavMesh.FindClosestEdge(transform.position, out hit, NavMesh.AllAreas)) {
-			DrawCircle(transform.position, hit.distance, Color.red);
-			Debug.DrawRay(hit.position, Vector3.up, Color.red);
-		}
-
 		movement.x = Input.GetAxisRaw("Horizontal");
 		movement.z = Input.GetAxisRaw("Vertical");
 		GetComponent<Animator>().SetFloat("movement", movement.magnitude);
