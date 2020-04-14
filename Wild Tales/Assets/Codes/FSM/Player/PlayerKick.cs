@@ -12,7 +12,7 @@ public class PlayerKick : BasicFSM<Player> {
 		base.OnStateUpdate(animator, stateInfo, layerIndex);
 		/* ============================================== */
 		if (ob.transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>()) {
-			ob.transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>().hit(ob.transform.forward, 10);
+			ob.transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>().hit(ob.transform.forward, 20);
 		}
 	}
 

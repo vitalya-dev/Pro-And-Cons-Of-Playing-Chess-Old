@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour {
     private Vector3 velocity;
 
     public void hit(Vector3 direction, float force) {
-		transform.Translate(Vector3.up * 0.1f);
+		transform.Translate(Vector3.up * 0.01f * force);
 		velocity = direction * force;
     }
 
