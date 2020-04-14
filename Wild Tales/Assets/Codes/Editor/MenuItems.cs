@@ -76,6 +76,11 @@ public class MenuItems {
 		}
 	}
 
+	[MenuItem("Tools/Domain Reload")]
+	static void domain_reload() {
+		EditorUtility.RequestScriptReload();
+	}
+
 	[MenuItem("Tools/Edit Box Collider")]
 	static void edit_box_collider() {
 		var assemblies = AppDomain.CurrentDomain.GetAssemblies();

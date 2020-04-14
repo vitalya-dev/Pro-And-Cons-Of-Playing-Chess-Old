@@ -3,6 +3,8 @@ using System.Collections;
 
 [SelectionBase]
 public class Projectile : MonoBehaviour {
+	static int i = 0;
+
     public GameObject particle;
 
     private Vector3 velocity;
@@ -11,6 +13,10 @@ public class Projectile : MonoBehaviour {
 		transform.Translate(Vector3.up * 0.1f);
 		velocity = direction * force;
     }
+
+	void Start() {
+		Debug.Log(i++);
+	}
  
     void Update() {
 		transform.position += velocity * Time.deltaTime;
