@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.AI;
 
 [SelectionBase]
 public class Envi : MonoBehaviour {
@@ -37,11 +37,4 @@ public class Envi : MonoBehaviour {
         is_active = gameObject.activeSelf;
     }
 
-
-    [SerializeField]
-    private Color gizmo_color;
-    void OnDrawGizmos() {
-        Gizmos.color = gizmo_color;
-        Gizmos.DrawWireCube(transform.TransformPoint(GetComponent<BoxCollider>().center), GetComponent<BoxCollider>().size);
-    }
 }
