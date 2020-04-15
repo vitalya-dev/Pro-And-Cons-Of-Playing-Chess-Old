@@ -12,9 +12,13 @@ public class PlayerWalk : BasicFSM<Player> {
 		/* ============================================== */
 		if (NavMesh.FindClosestEdge(ob.transform.position + offset_x, out hit, NavMesh.AllAreas) && hit.distance > 0.2) {
 			ob.transform.position += offset_x;
+		} else {
+			ob.transform.position += hit.normal * ob.speed * Time.deltaTime * Vector3.Dot(hit.normal, Vector3.forward * Mathf.Sign(hit.normal.z));
 		}
 		if (NavMesh.FindClosestEdge(ob.transform.position + offset_z, out hit, NavMesh.AllAreas) && hit.distance > 0.2) {
 			ob.transform.position += offset_z;
+		} else {
+			ob.transform.position += hit.normal * ob.speed * Time.deltaTime * Vector3.Dot(hit.normal, Vector3.right * Mathf.Sign(hit.normal.x));
 		}
 		/* ============================================== */
 		Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
