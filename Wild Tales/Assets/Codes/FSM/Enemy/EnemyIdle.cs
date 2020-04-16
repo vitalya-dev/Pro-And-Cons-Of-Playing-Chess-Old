@@ -7,9 +7,5 @@ public class EnemyIdle : BasicFSM<Enemy> {
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         /* ============================================== */
-        if (ob.eye.see<Player>()) {
-            Debug.Log("I See You");
-            ob.player = ob.eye.see<Player>();
-        }
     }
 }
