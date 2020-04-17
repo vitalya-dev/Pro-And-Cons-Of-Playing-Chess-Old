@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 [SelectionBase]
@@ -15,9 +16,16 @@ public class Enemy : MonoBehaviour {
 
 	public GameObject[] particles;
 
-	void Update() {
-		if (transform.Find("Sight") && transform.Find("Sight").GetComponent<Sight>().see<Player>())
-			Debug.Log("I See You");
+	NavMeshPath path;
+
+	void Awake() {
+		path = new NavMeshPath();
+	}
+
+
+	public NavMeshPath calculate_path(Vector3 source, Vector3 target) {
+		NavMesh.CalculatePath(source, target, NavMesh.AllAreas, path);
+		return path;
 	}
 
 }

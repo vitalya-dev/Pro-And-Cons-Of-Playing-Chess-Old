@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyChase : BasicFSM<Enemy> {
+
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		base.OnStateUpdate(animator, stateInfo, layerIndex);
 		/* ============================================== */
-		if (!ob.player) {
-			animator.SetTrigger("finished");
-		}
-		Debug.DrawLine(ob.transform.position, ob.player.transform.position, Color.red);
+		NavMeshPath path = ob.calculate_path(ob.transform.position, ob.player.transform.position);
+		for (int i = 0; i < path.corners.Length - 1; i++)
+			Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
 	}
 }
 
@@ -43,8 +44,6 @@ public class EnemyChase : BasicFSM<Enemy> {
 //         }
 //     }
 // }
-
-
 
 // -    /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 // -    Pathfinding.Path path = null;

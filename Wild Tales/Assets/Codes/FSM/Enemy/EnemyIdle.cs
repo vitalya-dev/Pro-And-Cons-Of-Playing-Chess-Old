@@ -7,9 +7,8 @@ public class EnemyIdle : BasicFSM<Enemy> {
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		base.OnStateUpdate(animator, stateInfo, layerIndex);
 		/* ============================================== */
-		if (ob.transform.Find("Sight") && ob.transform.Find("Sight").GetComponent<Sight>().see<Player>()) {
+		if (ob.transform.Find("Sight") && ob.transform.Find("Sight").GetComponent<Sight>().see<Player>())
 			ob.player = ob.transform.Find("Sight").GetComponent<Sight>().see<Player>();
-		}
 		if (ob.player)
 			ob.GetComponent<Animator>().SetTrigger("chase");
 	}
