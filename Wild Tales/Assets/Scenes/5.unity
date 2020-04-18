@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 585d8b86595b9bd4bbb9f8610b71ea54, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &53192549
 GameObject:
   m_ObjectHideFlags: 0
@@ -4315,7 +4315,7 @@ GameObject:
   - component: {fileID: 1532132135}
   - component: {fileID: 1532132134}
   m_Layer: 0
-  m_Name: Navmesh Surface
+  m_Name: Player Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4349,7 +4349,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.033333335
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 36d4b82fe5e7762438acc860c7941baf, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 697509df5eea093429b9dc5dabcd828d, type: 2}
 --- !u!4 &1532132135
 Transform:
   m_ObjectHideFlags: 0
