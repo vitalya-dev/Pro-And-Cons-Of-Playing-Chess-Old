@@ -9,7 +9,7 @@ public class EnemyIdle : BasicFSM<Enemy> {
 		/* ============================================== */
 		if (ob.transform.Find("Sight") && ob.transform.Find("Sight").GetComponent<Sight>().see<Player>())
 			ob.player = ob.transform.Find("Sight").GetComponent<Sight>().see<Player>();
-		if (ob.player)
+		if (ob.player && ob.player.isActiveAndEnabled)
 			ob.GetComponent<Animator>().SetTrigger("chase");
 	}
 }

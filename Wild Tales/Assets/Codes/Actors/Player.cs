@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
 
 	public void hit() {
 		foreach (var particle in particles) {
-			GameObject.Instantiate(particle, new Vector3(transform.position.x, transform.position.y, particle.transform.position.z), Quaternion.identity);
+			GameObject.Instantiate(particle, transform.position, Quaternion.identity);
 		}
 		gameObject.SetActive(false);
 	}
