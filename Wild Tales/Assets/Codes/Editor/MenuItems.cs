@@ -4,6 +4,8 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+using AssetImporterEditor = UnityEditor.Experimental.AssetImporters.AssetImporterEditor;
+
 public class MenuItems {
 	/*    [MenuItem("Tools/Add Obstacle")]
 	    static void add_obstacle() {
@@ -15,14 +17,13 @@ public class MenuItems {
 
 	[MenuItem("Tools/Collapse")]
 	static void collapse() {
-		if (EditorWindow.focusedWindow.titleContent.text == "Hierarchy") {
-			EditorWindow.focusedWindow.SendEvent(Event.KeyboardEvent("left"));
-		} else if (EditorWindow.focusedWindow.titleContent.text == "Inspector") {
-			ActiveEditorTracker tracker = ActiveEditorTracker.sharedTracker;
-			for (int i = 0, length = tracker.activeEditors.Length; i < length; i++)
-				tracker.SetVisible(i, 0);
-			EditorWindow.focusedWindow.Repaint();
+		EditorApplication.ExecuteMenuItem("Window/General/Inspector");
+		ActiveEditorTracker tracker = ActiveEditorTracker.sharedTracker;
+		for (int i = 0, length = tracker.activeEditors.Length; i < length; i++) {
+			tracker.SetVisible(i, 0);
+			UnityEditorInternal.InternalEditorUtility.SetIsInspectorExpanded(tracker.activeEditors[i].serializedObject.targetObject, false);
 		}
+		EditorWindow.focusedWindow.Repaint();
 	}
 
 	/* static void hierarchy_collapse() {
@@ -32,14 +33,13 @@ public class MenuItems {
 
 	[MenuItem("Tools/Expand")]
 	static void expand() {
-		if (EditorWindow.focusedWindow.titleContent.text == "Hierarchy")
-			EditorWindow.focusedWindow.SendEvent(Event.KeyboardEvent("right"));
-		else if (EditorWindow.focusedWindow.titleContent.text == "Inspector") {
-			ActiveEditorTracker tracker = ActiveEditorTracker.sharedTracker;
-			for (int i = 0, length = tracker.activeEditors.Length; i < length; i++)
-				tracker.SetVisible(i, 1);
-			EditorWindow.focusedWindow.Repaint();
+		EditorApplication.ExecuteMenuItem("Window/General/Inspector");
+		ActiveEditorTracker tracker = ActiveEditorTracker.sharedTracker;
+		for (int i = 0, length = tracker.activeEditors.Length; i < length; i++) {
+			tracker.SetVisible(i, 1);
+			UnityEditorInternal.InternalEditorUtility.SetIsInspectorExpanded(tracker.activeEditors[i].serializedObject.targetObject, true);
 		}
+		EditorWindow.focusedWindow.Repaint();
 	}
 
 	[MenuItem("Tools/Hierarchy/Parent")]
@@ -64,7 +64,7 @@ public class MenuItems {
 	[MenuItem("Tools/Align")]
 	static void snap() {
 		foreach (var go in Selection.gameObjects) {
-			go.transform.localPosition = new Vector3((int)go.transform.localPosition.x, (int)go.transform.localPosition.y, (int)go.transform.localPosition.z);
+			go.transform.localPosition = new Vector3((int) go.transform.localPosition.x, (int) go.transform.localPosition.y, (int) go.transform.localPosition.z);
 			go.transform.localScale = new Vector3(Mathf.RoundToInt(go.transform.localScale.x), Mathf.RoundToInt(go.transform.localScale.y), Mathf.RoundToInt(go.transform.localScale.z));
 		}
 	}

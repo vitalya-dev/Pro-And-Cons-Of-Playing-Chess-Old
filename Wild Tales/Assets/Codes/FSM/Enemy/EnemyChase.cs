@@ -11,7 +11,7 @@ public class EnemyChase : BasicFSM<Enemy> {
 		base.OnStateEnter(animator, stateInfo, layerIndex);
 		/* ============================================== */
 		if (ob.player.isActiveAndEnabled)
-			corners = ob.calculate_path(ob.transform.position, ob.player.transform.position).corners.Clone() as Vector3[];
+			corners = ai.calculate_path(ob.transform.position, ob.player.transform.position).corners.Clone() as Vector3[];
 		else
 			ob.GetComponent<Animator>().SetTrigger("finished");
 	}
@@ -38,7 +38,7 @@ public class EnemyChase : BasicFSM<Enemy> {
 			}
 			/********************* debug *********************/
 		} else {
-			corners = ob.calculate_path(ob.transform.position, ob.player.transform.position).corners.Clone() as Vector3[];
+			corners = ai.calculate_path(ob.transform.position, ob.player.transform.position).corners.Clone() as Vector3[];
 		}
 		/********************* chase *********************/
 

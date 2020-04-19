@@ -13,6 +13,9 @@ public class PlayerAttack : BasicFSM<Player> {
 		if (stateInfo.normalizedTime < 0.2f && ob.transform.Find("Jab") && ob.transform.Find("Jab").GetComponent<Area>().overlap<Envi>()) {
 			ob.transform.Find("Jab").GetComponent<Area>().overlap<Envi>().hit();
 		}
+		if (stateInfo.normalizedTime < 0.2f && ob.transform.Find("Jab") && ob.transform.Find("Jab").GetComponent<Area>().overlap<Enemy>()) {
+			ob.transform.Find("Jab").GetComponent<Area>().overlap<Enemy>().hit();
+		}
 
 	}
 
