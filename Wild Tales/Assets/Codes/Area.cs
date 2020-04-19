@@ -8,7 +8,7 @@ public class Area : MonoBehaviour {
 		Collider[] colliders = new Collider[0];
 		if (GetComponent<BoxCollider>())
 			colliders = Physics.OverlapBox(
-				transform.position,
+				transform.position + Vector3.Scale(transform.lossyScale, GetComponent<BoxCollider>().center),
 				Vector3.Scale(transform.lossyScale, GetComponent<BoxCollider>().size) / 2,
 				transform.rotation
 			);

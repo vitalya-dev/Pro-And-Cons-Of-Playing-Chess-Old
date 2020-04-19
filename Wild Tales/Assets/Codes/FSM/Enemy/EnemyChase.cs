@@ -23,10 +23,9 @@ public class EnemyChase : BasicFSM<Enemy> {
 		if (corners.Length > 1) {
 			var d = Vector3.Scale(corners[1] - ob.transform.position, new Vector3(1, 0, 1));
 			if (d.magnitude > 0.1) {
-				ob.transform.position += Vector3.ClampMagnitude(d.normalized * ob.speed * Time.deltaTime, d.magnitude);
+				pb.move_position(ob.transform.position + Vector3.ClampMagnitude(d.normalized * ob.speed * Time.deltaTime, d.magnitude), ob.GetComponent<BoxCollider>());
 				ob.transform.rotation = Quaternion.LookRotation(d.normalized);
 			} else {
-				ob.transform.position = corners[1] + Vector3.Scale(ob.transform.position, new Vector3(0, 1, 0));
 				/********************* shifting corners *********************/
 				Array.Copy(corners, 1, corners, 0, corners.Length - 1);
 				Array.Resize(ref corners, corners.Length - 1);
