@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour {
 	public GameObject[] particles;
 
 	public void hit() {
-		
+		foreach (var particle in particles) {
+			GameObject.Instantiate(particle, transform.position, Quaternion.identity);
+		}
+		gameObject.SetActive(false);
 	}
-
 }

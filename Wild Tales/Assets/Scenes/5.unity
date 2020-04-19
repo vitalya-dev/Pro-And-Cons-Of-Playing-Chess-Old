@@ -4884,7 +4884,7 @@ MonoBehaviour:
   player: {fileID: 0}
   health: 0
   particles:
-  - {fileID: 0}
+  - {fileID: 1317824321087499582, guid: 79917af2527238346898d88d54567ca4, type: 3}
 --- !u!114 &1972919764
 MonoBehaviour:
   m_ObjectHideFlags: 0
