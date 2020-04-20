@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Physicsbody : MonoBehaviour {
+public class PhysicBody : MonoBehaviour {
 
-	public bool move_position(Vector3 position, BoxCollider collider) {
-		if (!collider_there(position + Vector3.Scale(transform.lossyScale, collider.center), Vector3.Scale(transform.lossyScale, collider.size) / 2)) {
+	public Collider move_position(Vector3 position, BoxCollider collider) {
+		Collider c = collider_there(position + Vector3.Scale(transform.lossyScale, collider.center), Vector3.Scale(transform.lossyScale, collider.size) / 2);
+		if (!c)
 			transform.position = position;
-			return true;
-		} else
-			return false;
+		return c;
 	}
 
 	Collider collider_there(Vector3 center, Vector3 half_extents) {

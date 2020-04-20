@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour {
 
 	public float speed;
 
-	[HideInInspector]
 	public Player player;
 
 	public int health;

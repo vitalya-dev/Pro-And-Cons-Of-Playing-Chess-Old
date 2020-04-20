@@ -45,6 +45,9 @@ public class EnemyChase : BasicFSM<Enemy> {
 		if (ob.transform.Find("Attack Area") && ob.transform.Find("Attack Area").GetComponent<Area>().overlap<Player>()) {
 			ob.GetComponent<Animator>().SetTrigger("attack");
 		}
+		if (ob.transform.Find("Attack Area") && ob.transform.Find("Attack Area").GetComponent<Area>().overlap<Envi>()) {
+			ob.GetComponent<Animator>().SetTrigger("attack");
+		}
 		/********************* attack *********************/
 	}
 }
