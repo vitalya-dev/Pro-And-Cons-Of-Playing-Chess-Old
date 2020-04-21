@@ -23,9 +23,6 @@ public class Player : MonoBehaviour {
 		backup_rotation = transform.rotation;
 	}
 
-	void Start() {
-		GetComponent<Animator>().Play("Idle", 0);
-	}
 
 	void Update() {
 		movement.x = Input.GetAxisRaw("Horizontal");
