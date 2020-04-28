@@ -1,0 +1,906 @@
+fileFormatVersion: 2
+guid: b0881b860eef12845b2311d805ea2568
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      74: -6260039666148163207
+    second: Male Head|Circle.001Action
+  - first:
+      74: -6047515406790067832
+    second: Male Head|Circle.001Action.001
+  - first:
+      74: 3583838369311499192
+    second: Male Head|Circle.001Action.002
+  - first:
+      74: -5294700764206375859
+    second: Male Head|Circle.001Action.003
+  - first:
+      74: -1295911632854775069
+    second: Male Head|Circle.001Action.004
+  - first:
+      74: -6789183660837859976
+    second: Male Head|Circle.002Action
+  - first:
+      74: -1839629961993656525
+    second: Male Head|Circle.002Action.001
+  - first:
+      74: 31288445836381753
+    second: Male Head|Circle.002Action.002
+  - first:
+      74: -4259882406124497162
+    second: Male Head|Circle.002Action.003
+  - first:
+      74: 6971603260681515264
+    second: Male Head|Circle.002Action.004
+  - first:
+      74: -3798880745116603737
+    second: Male Head|Circle.003Action
+  - first:
+      74: 5421983217997472722
+    second: Male Head|Circle.003Action.001
+  - first:
+      74: 8171303257693566935
+    second: Male Head|Circle.003Action.002
+  - first:
+      74: 783090687320677993
+    second: Male Head|Circle.003Action.003
+  - first:
+      74: 3827214795026271688
+    second: Male Head|Circle.003Action.004
+  - first:
+      74: -218943930525386292
+    second: Male Head|CircleAction
+  - first:
+      74: -3158378196945109130
+    second: Male Head|CircleAction.001
+  - first:
+      74: 5259989246638540380
+    second: Male Head|CircleAction.002
+  - first:
+      74: -7168753127984214849
+    second: Male Head|CircleAction.003
+  - first:
+      74: -2300984730570606952
+    second: Male Head|CircleAction.004
+  - first:
+      74: 7479894987522533773
+    second: Male Head|CircleAction.005
+  - first:
+      74: -4594933046472450753
+    second: Male Head|Male HeadAction
+  - first:
+      74: 5165308159670271707
+    second: Male Head|Male Left HandAction
+  - first:
+      74: -4941890528227768788
+    second: Male Head|Male Left LegAction
+  - first:
+      74: -5026286008067668394
+    second: Male Head|Male Right HandAction
+  - first:
+      74: 7887749041358881856
+    second: Male Head|Male Right LegAction
+  - first:
+      74: -6388966971526379325
+    second: Male Head|Male TorsoAction
+  - first:
+      74: 3922418532756687171
+    second: Male Right Leg|Circle.001Action
+  - first:
+      74: -6938787824247530343
+    second: Male Right Leg|Circle.001Action.001
+  - first:
+      74: -6018207499498182584
+    second: Male Right Leg|Circle.001Action.002
+  - first:
+      74: 464635650584023316
+    second: Male Right Leg|Circle.001Action.003
+  - first:
+      74: 6381094064275538195
+    second: Male Right Leg|Circle.001Action.004
+  - first:
+      74: -2085239237617965198
+    second: Male Right Leg|Circle.002Action
+  - first:
+      74: -3103340822414091001
+    second: Male Right Leg|Circle.002Action.001
+  - first:
+      74: -6462724173452388190
+    second: Male Right Leg|Circle.002Action.002
+  - first:
+      74: -843379463878483505
+    second: Male Right Leg|Circle.002Action.003
+  - first:
+      74: 7461785078033281566
+    second: Male Right Leg|Circle.002Action.004
+  - first:
+      74: -9206869009619175157
+    second: Male Right Leg|Circle.003Action
+  - first:
+      74: 4970986781901794832
+    second: Male Right Leg|Circle.003Action.001
+  - first:
+      74: 1509140222075619292
+    second: Male Right Leg|Circle.003Action.002
+  - first:
+      74: -1130564075479374633
+    second: Male Right Leg|Circle.003Action.003
+  - first:
+      74: 6925410485972694208
+    second: Male Right Leg|Circle.003Action.004
+  - first:
+      74: 8958700407294472084
+    second: Male Right Leg|CircleAction
+  - first:
+      74: 2160642087671511625
+    second: Male Right Leg|CircleAction.001
+  - first:
+      74: 628645026902028521
+    second: Male Right Leg|CircleAction.002
+  - first:
+      74: -6090689791405251052
+    second: Male Right Leg|CircleAction.003
+  - first:
+      74: -7289163326470014086
+    second: Male Right Leg|CircleAction.004
+  - first:
+      74: -4634857682532454991
+    second: Male Right Leg|CircleAction.005
+  - first:
+      74: -8312923579366218108
+    second: Male Right Leg|Male HeadAction
+  - first:
+      74: -5102888003530503861
+    second: Male Right Leg|Male Left HandAction
+  - first:
+      74: -6679585719964819500
+    second: Male Right Leg|Male Left LegAction
+  - first:
+      74: -8353279529504616472
+    second: Male Right Leg|Male Right HandAction
+  - first:
+      74: -4419293723257914749
+    second: Male Right Leg|Male Right LegAction
+  - first:
+      74: 4718185960506692864
+    second: Male Right Leg|Male TorsoAction
+  - first:
+      74: -3305130541899987237
+    second: Male Right Hand|Circle.001Action
+  - first:
+      74: -6830145973261707344
+    second: Male Right Hand|Circle.001Action.001
+  - first:
+      74: -8839648974451268504
+    second: Male Right Hand|Circle.001Action.002
+  - first:
+      74: -2135646100726698343
+    second: Male Right Hand|Circle.001Action.003
+  - first:
+      74: -3721247650712897032
+    second: Male Right Hand|Circle.001Action.004
+  - first:
+      74: -6669734327816217285
+    second: Male Right Hand|Circle.002Action
+  - first:
+      74: 1633292640469809598
+    second: Male Right Hand|Circle.002Action.001
+  - first:
+      74: -3698727906581936553
+    second: Male Right Hand|Circle.002Action.002
+  - first:
+      74: 3362750515237803258
+    second: Male Right Hand|Circle.002Action.003
+  - first:
+      74: -1200947592537477710
+    second: Male Right Hand|Circle.002Action.004
+  - first:
+      74: -6849274667876375136
+    second: Male Right Hand|Circle.003Action
+  - first:
+      74: -4961886388400574252
+    second: Male Right Hand|Circle.003Action.001
+  - first:
+      74: 3880750632794533740
+    second: Male Right Hand|Circle.003Action.002
+  - first:
+      74: 1725274234653604190
+    second: Male Right Hand|Circle.003Action.003
+  - first:
+      74: -4640070455745812326
+    second: Male Right Hand|Circle.003Action.004
+  - first:
+      74: -5067463707449088178
+    second: Male Right Hand|CircleAction
+  - first:
+      74: 1564519841880589087
+    second: Male Right Hand|CircleAction.001
+  - first:
+      74: -5116583274939913968
+    second: Male Right Hand|CircleAction.002
+  - first:
+      74: 1684937405348209744
+    second: Male Right Hand|CircleAction.003
+  - first:
+      74: 6755714146318503689
+    second: Male Right Hand|CircleAction.004
+  - first:
+      74: 849896268260126818
+    second: Male Right Hand|CircleAction.005
+  - first:
+      74: -3257983274583834149
+    second: Male Right Hand|Male HeadAction
+  - first:
+      74: -3416436860038601463
+    second: Male Right Hand|Male Left HandAction
+  - first:
+      74: -5000647520739548410
+    second: Male Right Hand|Male Left LegAction
+  - first:
+      74: -1211025294761920536
+    second: Male Right Hand|Male Right HandAction
+  - first:
+      74: -4717579273210227477
+    second: Male Right Hand|Male Right LegAction
+  - first:
+      74: 2735143655034558450
+    second: Male Right Hand|Male TorsoAction
+  - first:
+      74: 3732599050680189092
+    second: Male Torso|Circle.001Action
+  - first:
+      74: -288863545276701113
+    second: Male Torso|Circle.001Action.001
+  - first:
+      74: 5370798960743837451
+    second: Male Torso|Circle.001Action.002
+  - first:
+      74: 1158586060779805622
+    second: Male Torso|Circle.001Action.003
+  - first:
+      74: 50700480978531516
+    second: Male Torso|Circle.001Action.004
+  - first:
+      74: 1398238759302125693
+    second: Male Torso|Circle.002Action
+  - first:
+      74: 7907968948773813743
+    second: Male Torso|Circle.002Action.001
+  - first:
+      74: 2188981280970315929
+    second: Male Torso|Circle.002Action.002
+  - first:
+      74: 4197774512430479873
+    second: Male Torso|Circle.002Action.003
+  - first:
+      74: -5137132118585197689
+    second: Male Torso|Circle.002Action.004
+  - first:
+      74: -2349743238929648657
+    second: Male Torso|Circle.003Action
+  - first:
+      74: 3486268924566785528
+    second: Male Torso|Circle.003Action.001
+  - first:
+      74: 1305678372650807137
+    second: Male Torso|Circle.003Action.002
+  - first:
+      74: -8885196639437348761
+    second: Male Torso|Circle.003Action.003
+  - first:
+      74: -9192553997603461242
+    second: Male Torso|Circle.003Action.004
+  - first:
+      74: 3194926365595570602
+    second: Male Torso|CircleAction
+  - first:
+      74: -5687659462699097261
+    second: Male Torso|CircleAction.001
+  - first:
+      74: -823796711572957929
+    second: Male Torso|CircleAction.002
+  - first:
+      74: 3617298836412368408
+    second: Male Torso|CircleAction.003
+  - first:
+      74: 312258384759231780
+    second: Male Torso|CircleAction.004
+  - first:
+      74: -1261533236020945515
+    second: Male Torso|CircleAction.005
+  - first:
+      74: -4863999793460117140
+    second: Male Torso|Male HeadAction
+  - first:
+      74: -694356785218800532
+    second: Male Torso|Male Left HandAction
+  - first:
+      74: 7511136533463278513
+    second: Male Torso|Male Left LegAction
+  - first:
+      74: -7296087663020130846
+    second: Male Torso|Male Right HandAction
+  - first:
+      74: 599807181868658466
+    second: Male Torso|Male Right LegAction
+  - first:
+      74: 5163402552332831260
+    second: Male Torso|Male TorsoAction
+  - first:
+      74: 8004484441918501094
+    second: Male Left Leg|Circle.001Action
+  - first:
+      74: 6938926038505195591
+    second: Male Left Leg|Circle.001Action.001
+  - first:
+      74: 5149711282931748695
+    second: Male Left Leg|Circle.001Action.002
+  - first:
+      74: -6552912492081854892
+    second: Male Left Leg|Circle.001Action.003
+  - first:
+      74: 4331250585929208029
+    second: Male Left Leg|Circle.001Action.004
+  - first:
+      74: 8011050641569193038
+    second: Male Left Leg|Circle.002Action
+  - first:
+      74: -1998036771422176598
+    second: Male Left Leg|Circle.002Action.001
+  - first:
+      74: 4691903869389102672
+    second: Male Left Leg|Circle.002Action.002
+  - first:
+      74: -1862838450447656553
+    second: Male Left Leg|Circle.002Action.003
+  - first:
+      74: -3485080465585673490
+    second: Male Left Leg|Circle.002Action.004
+  - first:
+      74: 3990550172811928838
+    second: Male Left Leg|Circle.003Action
+  - first:
+      74: 8299776309932301712
+    second: Male Left Leg|Circle.003Action.001
+  - first:
+      74: 9181557578590101394
+    second: Male Left Leg|Circle.003Action.002
+  - first:
+      74: -6375004283648958007
+    second: Male Left Leg|Circle.003Action.003
+  - first:
+      74: -3248994879198566854
+    second: Male Left Leg|Circle.003Action.004
+  - first:
+      74: 4810049943771694799
+    second: Male Left Leg|CircleAction
+  - first:
+      74: 8889266217296993170
+    second: Male Left Leg|CircleAction.001
+  - first:
+      74: -2106552818518085065
+    second: Male Left Leg|CircleAction.002
+  - first:
+      74: -836749192404669907
+    second: Male Left Leg|CircleAction.003
+  - first:
+      74: -7140781214858435269
+    second: Male Left Leg|CircleAction.004
+  - first:
+      74: -4881764457022910464
+    second: Male Left Leg|CircleAction.005
+  - first:
+      74: 3975648446624237733
+    second: Male Left Leg|Male HeadAction
+  - first:
+      74: -6632995308441265749
+    second: Male Left Leg|Male Left HandAction
+  - first:
+      74: 4422428424450344171
+    second: Male Left Leg|Male Left LegAction
+  - first:
+      74: -8940074557313562254
+    second: Male Left Leg|Male Right HandAction
+  - first:
+      74: 2029514995524885469
+    second: Male Left Leg|Male Right LegAction
+  - first:
+      74: 7779020418788147229
+    second: Male Left Leg|Male TorsoAction
+  - first:
+      74: 150646452190339004
+    second: Male Left Hand|Circle.001Action
+  - first:
+      74: 4914225324115046265
+    second: Male Left Hand|Circle.001Action.001
+  - first:
+      74: 9073482670136708297
+    second: Male Left Hand|Circle.001Action.002
+  - first:
+      74: -182369582926237205
+    second: Male Left Hand|Circle.001Action.003
+  - first:
+      74: -4837173318439417496
+    second: Male Left Hand|Circle.001Action.004
+  - first:
+      74: -7694952096857530754
+    second: Male Left Hand|Circle.002Action
+  - first:
+      74: -1831534846394829513
+    second: Male Left Hand|Circle.002Action.001
+  - first:
+      74: -3459120000969309884
+    second: Male Left Hand|Circle.002Action.002
+  - first:
+      74: -8300825809794159795
+    second: Male Left Hand|Circle.002Action.003
+  - first:
+      74: 9209107485647501902
+    second: Male Left Hand|Circle.002Action.004
+  - first:
+      74: -7350910327325339106
+    second: Male Left Hand|Circle.003Action
+  - first:
+      74: 3432134469288142892
+    second: Male Left Hand|Circle.003Action.001
+  - first:
+      74: -3152145251906746911
+    second: Male Left Hand|Circle.003Action.002
+  - first:
+      74: -3118995966439296173
+    second: Male Left Hand|Circle.003Action.003
+  - first:
+      74: -5499505623265205708
+    second: Male Left Hand|Circle.003Action.004
+  - first:
+      74: 4817929529549909393
+    second: Male Left Hand|CircleAction
+  - first:
+      74: 966065947723062062
+    second: Male Left Hand|CircleAction.001
+  - first:
+      74: -8418674931500802282
+    second: Male Left Hand|CircleAction.002
+  - first:
+      74: -5424057484436930322
+    second: Male Left Hand|CircleAction.003
+  - first:
+      74: 6629051286550308876
+    second: Male Left Hand|CircleAction.004
+  - first:
+      74: -8446473780453948663
+    second: Male Left Hand|CircleAction.005
+  - first:
+      74: 7680619413145401608
+    second: Male Left Hand|Male HeadAction
+  - first:
+      74: -1856057501033436657
+    second: Male Left Hand|Male Left HandAction
+  - first:
+      74: 6514210014460395494
+    second: Male Left Hand|Male Left LegAction
+  - first:
+      74: -5427917881604878089
+    second: Male Left Hand|Male Right HandAction
+  - first:
+      74: -7676871044349336006
+    second: Male Left Hand|Male Right LegAction
+  - first:
+      74: 7676726746938728521
+    second: Male Left Hand|Male TorsoAction
+  - first:
+      74: -7906184280053792553
+    second: Circle|Circle.001Action
+  - first:
+      74: 2653181187088022880
+    second: Circle|Circle.001Action.001
+  - first:
+      74: -1218766248890309208
+    second: Circle|Circle.001Action.002
+  - first:
+      74: 637689044378566527
+    second: Circle|Circle.001Action.003
+  - first:
+      74: -274295463855709518
+    second: Circle|Circle.001Action.004
+  - first:
+      74: 4951151311818284614
+    second: Circle|Circle.002Action
+  - first:
+      74: -1817239873306570641
+    second: Circle|Circle.002Action.001
+  - first:
+      74: 7047040911827913722
+    second: Circle|Circle.002Action.002
+  - first:
+      74: 1037131702422892919
+    second: Circle|Circle.002Action.003
+  - first:
+      74: -8458899529416490398
+    second: Circle|Circle.002Action.004
+  - first:
+      74: -7983068357059355063
+    second: Circle|Circle.003Action
+  - first:
+      74: -3293565175841828515
+    second: Circle|Circle.003Action.001
+  - first:
+      74: 1314357982126619260
+    second: Circle|Circle.003Action.002
+  - first:
+      74: -4936026191563329777
+    second: Circle|Circle.003Action.003
+  - first:
+      74: 8583780946984903523
+    second: Circle|Circle.003Action.004
+  - first:
+      74: 6997882522552206460
+    second: Circle|CircleAction
+  - first:
+      74: -359618272553315812
+    second: Circle|CircleAction.001
+  - first:
+      74: 4813185535723658306
+    second: Circle|CircleAction.002
+  - first:
+      74: -5090211744606779470
+    second: Circle|CircleAction.003
+  - first:
+      74: -5115965379248921779
+    second: Circle|CircleAction.004
+  - first:
+      74: 5635111184546355114
+    second: Circle|CircleAction.005
+  - first:
+      74: 1629684376964168673
+    second: Circle|Male HeadAction
+  - first:
+      74: 1477428123864450005
+    second: Circle|Male Left HandAction
+  - first:
+      74: 5953743305188786480
+    second: Circle|Male Left LegAction
+  - first:
+      74: -8377018186078720230
+    second: Circle|Male Right HandAction
+  - first:
+      74: 4583103828913338042
+    second: Circle|Male Right LegAction
+  - first:
+      74: -3763038860124835215
+    second: Circle|Male TorsoAction
+  - first:
+      74: 8971653179785726973
+    second: Circle.001|Circle.001Action
+  - first:
+      74: -9011658075762179022
+    second: Circle.001|Circle.001Action.001
+  - first:
+      74: -6315104253237919245
+    second: Circle.001|Circle.001Action.002
+  - first:
+      74: -3749812513322185798
+    second: Circle.001|Circle.001Action.003
+  - first:
+      74: -6074846496648630206
+    second: Circle.001|Circle.001Action.004
+  - first:
+      74: 527441545980225517
+    second: Circle.001|Circle.002Action
+  - first:
+      74: 2881472353406319702
+    second: Circle.001|Circle.002Action.001
+  - first:
+      74: -1423492419484841402
+    second: Circle.001|Circle.002Action.002
+  - first:
+      74: 2637708707692265014
+    second: Circle.001|Circle.002Action.003
+  - first:
+      74: -7235602302039557201
+    second: Circle.001|Circle.002Action.004
+  - first:
+      74: 9200425880147958644
+    second: Circle.001|Circle.003Action
+  - first:
+      74: -1620124778015824403
+    second: Circle.001|Circle.003Action.001
+  - first:
+      74: 8130015996900965537
+    second: Circle.001|Circle.003Action.002
+  - first:
+      74: 1716526593644482136
+    second: Circle.001|Circle.003Action.003
+  - first:
+      74: 134451232318659357
+    second: Circle.001|Circle.003Action.004
+  - first:
+      74: -8206343707815358202
+    second: Circle.001|CircleAction
+  - first:
+      74: 2542469185943518233
+    second: Circle.001|CircleAction.001
+  - first:
+      74: 3163296849815625749
+    second: Circle.001|CircleAction.002
+  - first:
+      74: 9014402330198525787
+    second: Circle.001|CircleAction.003
+  - first:
+      74: 2145861047313121466
+    second: Circle.001|CircleAction.004
+  - first:
+      74: 8819208865719682008
+    second: Circle.001|CircleAction.005
+  - first:
+      74: -5580393517216864660
+    second: Circle.001|Male HeadAction
+  - first:
+      74: 6635628400399223344
+    second: Circle.001|Male Left HandAction
+  - first:
+      74: -5908961114273925498
+    second: Circle.001|Male Left LegAction
+  - first:
+      74: 3561406066601431386
+    second: Circle.001|Male Right HandAction
+  - first:
+      74: -1966738406916836474
+    second: Circle.001|Male Right LegAction
+  - first:
+      74: 7369000227142111435
+    second: Circle.001|Male TorsoAction
+  - first:
+      74: -1994214043775166236
+    second: Circle.002|Circle.001Action
+  - first:
+      74: -7700669437256086560
+    second: Circle.002|Circle.001Action.001
+  - first:
+      74: -8711711137774240370
+    second: Circle.002|Circle.001Action.002
+  - first:
+      74: -3867683008325403660
+    second: Circle.002|Circle.001Action.003
+  - first:
+      74: 915315573365517547
+    second: Circle.002|Circle.001Action.004
+  - first:
+      74: -5618668722802028542
+    second: Circle.002|Circle.002Action
+  - first:
+      74: 5625407454060520889
+    second: Circle.002|Circle.002Action.001
+  - first:
+      74: 7779715077648896242
+    second: Circle.002|Circle.002Action.002
+  - first:
+      74: -8936772470206436370
+    second: Circle.002|Circle.002Action.003
+  - first:
+      74: -6140736909970015228
+    second: Circle.002|Circle.002Action.004
+  - first:
+      74: 50056134837194445
+    second: Circle.002|Circle.003Action
+  - first:
+      74: 8198297867572957635
+    second: Circle.002|Circle.003Action.001
+  - first:
+      74: 4085694061852199218
+    second: Circle.002|Circle.003Action.002
+  - first:
+      74: 3159239396865314551
+    second: Circle.002|Circle.003Action.003
+  - first:
+      74: 1613430196550211275
+    second: Circle.002|Circle.003Action.004
+  - first:
+      74: -5183278990363598592
+    second: Circle.002|CircleAction
+  - first:
+      74: -6671365728277815110
+    second: Circle.002|CircleAction.001
+  - first:
+      74: -2293743601679812117
+    second: Circle.002|CircleAction.002
+  - first:
+      74: 8372495104708934706
+    second: Circle.002|CircleAction.003
+  - first:
+      74: -8383802197862445345
+    second: Circle.002|CircleAction.004
+  - first:
+      74: -535973020343528004
+    second: Circle.002|CircleAction.005
+  - first:
+      74: 3510323145942342403
+    second: Circle.002|Male HeadAction
+  - first:
+      74: -1052651825918035098
+    second: Circle.002|Male Left HandAction
+  - first:
+      74: 7169234462695609024
+    second: Circle.002|Male Left LegAction
+  - first:
+      74: 7191145824575880681
+    second: Circle.002|Male Right HandAction
+  - first:
+      74: -637507941741255461
+    second: Circle.002|Male Right LegAction
+  - first:
+      74: 1385406957091276183
+    second: Circle.002|Male TorsoAction
+  - first:
+      74: 5656652353858649907
+    second: Circle.003|Circle.001Action
+  - first:
+      74: 5712278189764358524
+    second: Circle.003|Circle.001Action.001
+  - first:
+      74: -3631832243461616930
+    second: Circle.003|Circle.001Action.002
+  - first:
+      74: 983820264419848354
+    second: Circle.003|Circle.001Action.003
+  - first:
+      74: -8521147502452340206
+    second: Circle.003|Circle.001Action.004
+  - first:
+      74: 6380051304554379463
+    second: Circle.003|Circle.002Action
+  - first:
+      74: -1270623203960632742
+    second: Circle.003|Circle.002Action.001
+  - first:
+      74: -4162425348806756045
+    second: Circle.003|Circle.002Action.002
+  - first:
+      74: 8915326732872506263
+    second: Circle.003|Circle.002Action.003
+  - first:
+      74: 3665730035394943147
+    second: Circle.003|Circle.002Action.004
+  - first:
+      74: -4891365001064361813
+    second: Circle.003|Circle.003Action
+  - first:
+      74: -5017901540954003311
+    second: Circle.003|Circle.003Action.001
+  - first:
+      74: -1606433597171679614
+    second: Circle.003|Circle.003Action.002
+  - first:
+      74: 8694956703128414656
+    second: Circle.003|Circle.003Action.003
+  - first:
+      74: -9210302021929862059
+    second: Circle.003|Circle.003Action.004
+  - first:
+      74: -1634743624788511586
+    second: Circle.003|CircleAction
+  - first:
+      74: -6584103964988966320
+    second: Circle.003|CircleAction.001
+  - first:
+      74: 7882267733590069871
+    second: Circle.003|CircleAction.002
+  - first:
+      74: -7347075587438434326
+    second: Circle.003|CircleAction.003
+  - first:
+      74: -8424869587453926836
+    second: Circle.003|CircleAction.004
+  - first:
+      74: -928027404013856767
+    second: Circle.003|CircleAction.005
+  - first:
+      74: -8702822592001182069
+    second: Circle.003|Male HeadAction
+  - first:
+      74: 2287203298085392241
+    second: Circle.003|Male Left HandAction
+  - first:
+      74: -8371488858968463259
+    second: Circle.003|Male Left LegAction
+  - first:
+      74: -2710188956131372267
+    second: Circle.003|Male Right HandAction
+  - first:
+      74: 7047162138201063798
+    second: Circle.003|Male Right LegAction
+  - first:
+      74: -4942209239344958067
+    second: Circle.003|Male TorsoAction
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
