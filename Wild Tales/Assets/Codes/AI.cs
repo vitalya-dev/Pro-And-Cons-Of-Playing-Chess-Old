@@ -10,7 +10,7 @@ public class AI : MonoBehaviour {
 	}
 
 	public NavMeshPath calculate_path(Vector3 source, Vector3 target) {
-		Debug.Log(source + " " + target + " " + NavMesh.CalculatePath(source, target, NavMesh.AllAreas, path));
+		NavMesh.CalculatePath(source, target, NavMesh.AllAreas, path);
 		return path;
 	}
 

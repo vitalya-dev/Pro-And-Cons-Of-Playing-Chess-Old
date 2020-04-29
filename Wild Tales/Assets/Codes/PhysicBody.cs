@@ -2,8 +2,10 @@
 using UnityEngine;
 
 public class PhysicBody : MonoBehaviour {
+	public Vector3 margin = Vector3.one;
+
 	public Collider move_position(Vector3 position, BoxCollider walk_collider) {
-		Collider c = collider_there(position + walk_collider.center, Vector3.Scale(walk_collider.size / 2, new Vector3(0.9f, 0.9f, 0.9f)));
+		Collider c = collider_there(position + walk_collider.center, Vector3.Scale(walk_collider.size / 2, margin));
 		if (!c) transform.position = position;
 		return c;
 	}
