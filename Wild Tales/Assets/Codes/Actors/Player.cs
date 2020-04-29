@@ -8,12 +8,12 @@ public class Player : MonoBehaviour {
 	public float speed;
 
 	[HideInInspector]
-	public Vector3 movement;
+	public Vector3 movement = Vector3.zero;
 
 	public GameObject[] particles;
 
 	Vector3 backup_position;
-	Quaternion backup_rotation;
+	Quaternion backup_rotation;		
 
 	void Awake() {
 		LevelManager.restart_event.AddListener(restart);
