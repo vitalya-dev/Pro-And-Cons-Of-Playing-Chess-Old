@@ -21,7 +21,6 @@ public class GirlRunaway : BasicFSM<Girl> {
 			var d = Vector3.Scale(corners[1] - ob.transform.position, new Vector3(1, 0, 1));
 			if (d.magnitude > 0.1) {
 				pb.move_position(ob.transform.position + Vector3.ClampMagnitude(d.normalized * ob.speed * Time.deltaTime, d.magnitude), ob.GetComponent<BoxCollider>());
-				ob.transform.position += Vector3.ClampMagnitude(d.normalized * ob.speed * Time.deltaTime, d.magnitude);
 				ob.transform.rotation = Quaternion.LookRotation(d.normalized);
 			} else {
 				/********************* shifting corners *********************/
