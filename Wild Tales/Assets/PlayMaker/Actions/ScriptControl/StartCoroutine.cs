@@ -2,38 +2,35 @@
 
 #if UNITY_EDITOR
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 #endif
 
 using UnityEngine;
 
-namespace HutongGames.PlayMaker.Actions
-{
+namespace HutongGames.PlayMaker.Actions {
 	[ActionCategory(ActionCategory.ScriptControl)]
 	[Tooltip("Start a Coroutine in a Behaviour on a Game Object. See Unity StartCoroutine docs.")]
-	public class StartCoroutine : FsmStateAction
-	{
+	public class StartCoroutine : FsmStateAction {
 		[RequiredField]
-        [Tooltip("The game object that owns the Behaviour.")]
+		[Tooltip("The game object that owns the Behaviour.")]
 		public FsmOwnerDefault gameObject;
-		
-        [RequiredField]
+
+		[RequiredField]
 		[UIHint(UIHint.Behaviour)]
-        [Tooltip("The Behaviour that contains the method to start as a coroutine.")]
+		[Tooltip("The Behaviour that contains the method to start as a coroutine.")]
 		public FsmString behaviour;
-		
-        [RequiredField]
+
+		[RequiredField]
 		[UIHint(UIHint.Coroutine)]
-        [Tooltip("The name of the coroutine method.")]
+		[Tooltip("The name of the coroutine method.")]
 		public FunctionCall functionCall;
 
-        [Tooltip("Stop the coroutine when the state is exited.")]
-        public bool stopOnExit;
+		[Tooltip("Stop the coroutine when the state is exited.")]
+		public bool stopOnExit;
 
-		public override void Reset()
-		{
+		public override void Reset() {
 			gameObject = null;
 			behaviour = null;
 			functionCall = null;
@@ -44,36 +41,31 @@ namespace HutongGames.PlayMaker.Actions
 
 #if UNITY_EDITOR
 
-	    private Type cachedType;
-	    private List<string> methodNames;
+		private Type cachedType;
+		private List<string> methodNames;
 
 #endif
 
-		public override void OnEnter()
-		{
+		public override void OnEnter() {
 			DoStartCoroutine();
-			
+
 			Finish();
 		}
 
-		void DoStartCoroutine()
-		{
+		void DoStartCoroutine() {
 			var go = Fsm.GetOwnerDefaultTarget(gameObject);
-			if (go == null)
-			{
+			if (go == null) {
 				return;
 			}
 
 			component = go.GetComponent(ReflectionUtils.GetGlobalType(behaviour.Value)) as MonoBehaviour;
 
-			if (component == null)
-			{
+			if (component == null) {
 				LogWarning("StartCoroutine: " + go.name + " missing behaviour: " + behaviour.Value);
 				return;
 			}
 
-			switch (functionCall.ParameterType)
-			{
+			switch (functionCall.ParameterType) {
 				case "None":
 					component.StartCoroutine(functionCall.FunctionName);
 					return;
@@ -93,10 +85,10 @@ namespace HutongGames.PlayMaker.Actions
 				case "bool":
 					component.StartCoroutine(functionCall.FunctionName, functionCall.BoolParameter.Value);
 					return;
-                
-                case "Vector2":
-                    component.StartCoroutine(functionCall.FunctionName, functionCall.Vector2Parameter.Value);
-                    return;
+
+				case "Vector2":
+					component.StartCoroutine(functionCall.FunctionName, functionCall.Vector2Parameter.Value);
+					return;
 
 				case "Vector3":
 					component.StartCoroutine(functionCall.FunctionName, functionCall.Vector3Parameter.Value);
@@ -105,7 +97,7 @@ namespace HutongGames.PlayMaker.Actions
 				case "Rect":
 					component.StartCoroutine(functionCall.FunctionName, functionCall.RectParamater.Value);
 					return;
-				
+
 				case "GameObject":
 					component.StartCoroutine(functionCall.FunctionName, functionCall.GameObjectParameter.Value);
 					return;
@@ -128,51 +120,41 @@ namespace HutongGames.PlayMaker.Actions
 			}
 		}
 
-		public override void OnExit()
-		{
-			if (component == null)
-			{
+		public override void OnExit() {
+			if (component == null) {
 				return;
 			}
 
-			if (stopOnExit)
-			{
+			if (stopOnExit) {
 				component.StopCoroutine(functionCall.FunctionName);
 			}
 		}
 
 #if UNITY_EDITOR
 
+		public override string ErrorCheck() {
+			var go = Fsm.GetOwnerDefaultTarget(gameObject);
+			if (go == null || string.IsNullOrEmpty(behaviour.Value)) {
+				return string.Empty;
+			}
 
-	    public override string ErrorCheck()
-	    {
-	        var go = Fsm.GetOwnerDefaultTarget(gameObject);
-	        if (go == null || string.IsNullOrEmpty(behaviour.Value))
-	        {
-	            return string.Empty;
-	        }
+			var type = ReflectionUtils.GetGlobalType(behaviour.Value);
+			if (type == null) {
+				return "Missing Behaviour: " + behaviour.Value;
+			}
 
-	        var type = ReflectionUtils.GetGlobalType(behaviour.Value);
-            if (type == null)
-            {
-                return "Missing Behaviour: " + behaviour.Value;
-            }
+			if (cachedType != type) {
+				cachedType = type;
+				methodNames = type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).Select(m => m.Name).ToList();
+			}
 
-	        if (cachedType != type)
-	        {
-	            cachedType = type;
-                methodNames = type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).Select(m => m.Name).ToList();
-	        }
-
-	        if (!string.IsNullOrEmpty(functionCall.FunctionName))
-	        {
-	            if (!methodNames.Contains(functionCall.FunctionName))
-	            {
-	                return "Missing Method: " + functionCall.FunctionName;
-	            }
-	        }
-	        return string.Empty;
-	    }
+			if (!string.IsNullOrEmpty(functionCall.FunctionName)) {
+				if (!methodNames.Contains(functionCall.FunctionName)) {
+					return "Missing Method: " + functionCall.FunctionName;
+				}
+			}
+			return string.Empty;
+		}
 
 #endif
 
