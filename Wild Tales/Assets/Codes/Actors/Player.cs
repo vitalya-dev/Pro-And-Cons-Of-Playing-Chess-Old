@@ -15,15 +15,15 @@ public class Player : MonoBehaviour {
 	Quaternion backup_rotation;
 
 	PhysicBody pb;
-	Animation am;
+	Animator am;
 
 	void Awake() {
 		pb = GetComponent<PhysicBody>();
-		am = GetComponent<Animation>();
+		am = GetComponent<Animator>();
 		/* ================================================== */
 
-		LevelManager.restart_event.AddListener(restart);
-		LevelManager.control_point_event.AddListener(control_point);
+		// LevelManager.restart_event.AddListener(restart);
+		// LevelManager.control_point_event.AddListener(control_point);
 		/* ================================================== */
 		backup_position = transform.position;
 		backup_rotation = transform.rotation;
@@ -90,6 +90,9 @@ public class Player : MonoBehaviour {
 		/* ===================================================== */
 		GetComponent<Collider>().enabled = false;
 		while (true) {
+			if (transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>()) {
+				transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>().hit(transform.forward, 20);
+			}
 			yield return null;
 		}
 	}
@@ -98,9 +101,50 @@ public class Player : MonoBehaviour {
 		GetComponent<Collider>().enabled = true;
 	}
 
+	/* ============================================================================================ */
+	public IEnumerator jab_state() {
+		/* ===================================================== */
+		am.Play("Player Jab");
+		/* ===================================================== */
+		while (true) {
+			attack();
+			yield return null;
+		}
+	}
+
+	public IEnumerator right_state() {
+		/* ===================================================== */
+		am.Play("Player Right");
+		/* ===================================================== */
+		while (true) {
+			attack();
+			yield return null;
+		}
+	}
+
+	public IEnumerator hook_state() {
+		/* ===================================================== */
+		am.Play("Player Hook");
+		/* ===================================================== */
+		while (true) {
+			attack();
+			yield return null;
+		}
+	}
+
+	void attack() {
+		if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Jab") && transform.Find("Jab").GetComponent<Area>().overlap<Envi>()) {
+			transform.Find("Jab").GetComponent<Area>().overlap<Envi>().hit();
+		}
+		if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Hook") && transform.Find("Hook").GetComponent<Area>().overlap<Envi>()) {
+			transform.Find("Hook").GetComponent<Area>().overlap<Envi>().hit();
+		}
+	}
+	/* ============================================================================================ */
+
 	public IEnumerator dead_state() {
 		/* ===================================================== */
-		am.Play("Hit State");
+		am.Play("Player Dead");
 		/* ===================================================== */
 		foreach (var particle in particles) {
 			GameObject.Instantiate(particle, transform.position + Vector3.up, Quaternion.identity);
@@ -108,6 +152,19 @@ public class Player : MonoBehaviour {
 		gameObject.SetActive(false);
 		/* ===================================================== */
 		return null;
+	}
+
+	public IEnumerator knock_state() {
+		/* ===================================================== */
+		am.Play("Player Kick");
+		/* ===================================================== */
+		while (true) {
+			if (transform.Find("Leg Left").GetComponent<Area>().overlap<Door>()) {
+				transform.Find("Leg Left").GetComponent<Area>().overlap<Door>().knock();
+				yield return new WaitForSecondsRealtime(float.PositiveInfinity);
+			}
+			yield return null;
+		}
 	}
 
 }

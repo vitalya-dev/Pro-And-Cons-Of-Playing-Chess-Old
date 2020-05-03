@@ -1,0 +1,28 @@
+tree("Root")
+	sequence
+		mute
+			sequence door_knocked "Special Door" 
+				tree "Knock Knock Dialog"
+				pop "door_knocked" true
+		mute
+			sequence door_knocked
+				random
+					display_message "Не буду я сюда стучаться" "Basic" "Player" 1.0 -1
+					display_message "Зачем людей тревожить" "Basic" "Player" 1.0 -1
+					display_message "Че, делать что ли нехрен" "Basic" "Player" 1.0 -1
+				Wait 1.0
+				pop "door_knocked" true
+
+tree("Knock Knock Dialog")
+	sequence
+		display_message "Тук Тук" "Basic" "Player" 1.0 -1
+		Wait 1.0
+		display_message "Кто Там?" "Basic" "Special Door" 1.0 -1
+		Wait 1.0
+		display_choices_2 "Откройте бога ради. Я ранен. Нужна помощь", "Открывай сука. Сейчас мы с тобой поиграем в старую игру сунь-высунь." "Basic" "Player" 100
+		race
+			sequence WaitKeyDown "Alpha1"
+				say "Баба Открывает"
+			sequence WaitKeyDown "Alpha2"
+				say "Баба Убегает"
+		destroy_message 100

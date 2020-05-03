@@ -10,8 +10,8 @@ public class Envi : MonoBehaviour {
     bool is_active;
 
     void Awake() {
-        LevelManager.restart_event.AddListener(restart);
-        LevelManager.control_point_event.AddListener(control_point);
+        // LevelManager.restart_event.AddListener(restart);
+        // LevelManager.control_point_event.AddListener(control_point);
         /* ================================================== */
         is_active = gameObject.activeSelf;
     }
@@ -22,12 +22,6 @@ public class Envi : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void knock(GameObject player) {
-        if (GetComponent<PlayMakerFSM>()) {
-            GetComponent<PlayMakerFSM>().FsmVariables.GetVariable("player").RawValue = player;
-            GetComponent<PlayMakerFSM>().SendEvent("KNOCK");
-        }
-    }
 
     public void restart() {
         gameObject.SetActive(is_active);
