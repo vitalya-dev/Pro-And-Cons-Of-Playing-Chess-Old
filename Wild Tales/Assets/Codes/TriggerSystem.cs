@@ -38,19 +38,28 @@ public class TriggerSystem : MonoBehaviour {
 		message_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
 		message_object.transform.position = Vector3.Scale(GameObject.Find(position).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
 		message_object.name = "Message_" + message_id;
+		justify_message(message_object);
 		GameObject.Destroy(message_object, duration);
 		Task.current.Succeed();
 	}
 
 	[Task]
 	void display_choices_2(string choice_1, string choice_2, string type, string position, int message_id) {
-		GameObject message_object = Instantiate(Resources.Load(type + " Choices_2", typeof(GameObject))) as GameObject;
+		GameObject message_object = Instantiate(Resources.Load(type + " Message", typeof(GameObject))) as GameObject;
+		message_object.GetComponent<TMPro.TextMeshPro>().text = "<b>1</b>. " + choice_1 + "\n";
+		message_object.GetComponent<TMPro.TextMeshPro>().text += "<b>2</b>. " + choice_2 + "\n";
 		message_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
 		message_object.transform.position = Vector3.Scale(GameObject.Find(position).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
-		message_object.transform.Find("1").GetComponent<TMPro.TextMeshPro>().text = "1. " + choice_1;
-		message_object.transform.Find("2").GetComponent<TMPro.TextMeshPro>().text = "2. " + choice_2;
 		message_object.name = "Message_" + message_id;
+		justify_message(message_object);
 		Task.current.Succeed();
+	}
+
+	void justify_message(GameObject message_object) {
+		float w = message_object.GetComponent<RectTransform>().sizeDelta.x;
+		float p_w = message_object.GetComponent<TMPro.TextMeshPro>().GetPreferredValues().x;
+		float h = message_object.GetComponent<RectTransform>().sizeDelta.y;
+		message_object.GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Min(p_w, w), h);
 	}
 
 	[Task]
