@@ -960,7 +960,7 @@ Animator:
   m_GameObject: {fileID: 639654397}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 496cd8bf792c01f469dd2d1bdc4f65b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 61dece314de837146a4d0fbcad3f798e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -985,7 +985,7 @@ MonoBehaviour:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
     name: FSM
-    startState: IDLE
+    startState: IDLE 1
     states:
     - name: WALK
       description: 
@@ -3651,7 +3651,6 @@ GameObject:
   - component: {fileID: 903767431}
   - component: {fileID: 903767435}
   - component: {fileID: 903767430}
-  - component: {fileID: 903767436}
   - component: {fileID: 903767434}
   m_Layer: 0
   m_Name: Special Door
@@ -3964,19 +3963,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &903767436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903767429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d9250e35d6d4a14e94d74454fc3fc99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 0}
 --- !u!1 &1000926513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4831,7 +4817,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16364
+  m_Name: pb_Mesh16360
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4994,7 +4980,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16338
+  m_Name: pb_Mesh16334
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

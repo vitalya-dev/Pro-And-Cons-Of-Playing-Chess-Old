@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator idle_state() {
 		/* ===================================================== */
-		am.Play("Player Idle");
+		am.Play("Idle");
 		/* ===================================================== */
 		while (true) {
 			Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator walk_state() {
 		/* ===================================================== */
-		am.Play("Player Walk");
+		am.Play("Walk");
 		/* ===================================================== */
 		while (true) {
 			Vector3 offset_x = Vector3.Scale(axis, new Vector3(1, 0, 0)) * speed * Time.deltaTime;
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator kick_state() {
 		/* ===================================================== */
-		am.Play("Player Kick");
+		am.Play("Kick");
 		/* ===================================================== */
 		GetComponent<Collider>().enabled = false;
 		while (true) {
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour {
 	/* ============================================================================================ */
 	public IEnumerator jab_state() {
 		/* ===================================================== */
-		am.Play("Player Jab");
+		am.Play("Jab");
 		/* ===================================================== */
 		while (true) {
 			attack();
@@ -114,7 +114,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator right_state() {
 		/* ===================================================== */
-		am.Play("Player Right");
+		am.Play("Right");
 		/* ===================================================== */
 		while (true) {
 			attack();
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator hook_state() {
 		/* ===================================================== */
-		am.Play("Player Hook");
+		am.Play("Hook");
 		/* ===================================================== */
 		while (true) {
 			attack();
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator dead_state() {
 		/* ===================================================== */
-		am.Play("Player Dead");
+		am.Play("Dead");
 		/* ===================================================== */
 		foreach (var particle in particles) {
 			GameObject.Instantiate(particle, transform.position + Vector3.up, Quaternion.identity);
@@ -156,7 +156,7 @@ public class Player : MonoBehaviour {
 
 	public IEnumerator knock_state() {
 		/* ===================================================== */
-		am.Play("Player Kick");
+		am.Play("Kick");
 		/* ===================================================== */
 		while (true) {
 			if (transform.Find("Leg Left").GetComponent<Area>().overlap<Door>()) {
