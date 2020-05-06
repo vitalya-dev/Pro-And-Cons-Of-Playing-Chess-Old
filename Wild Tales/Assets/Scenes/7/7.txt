@@ -14,16 +14,19 @@ tree("Knock Knock Dialog")
 		sequence                         
 			display_message_for "Player" "Тук Тук" "Basic" 1.0 -1
 			Wait 1.0
-			display_message_for "Special Door" "Кто Там?" "Basic"  1.0 -1
+			actor_move "Girl" "Special Door"
+			actor_move_wait "Girl"
+			display_message_for "Girl"  "Кто Там?" "Basic"  1.0 -1
 			Wait 1.0
 			display_choices_2_for "Player" "Откройте бога ради. Я ранен. Нужна помощь", "Открывай сука. Сейчас мы с тобой поиграем в старую игру сунь-высунь." "Basic"  100
 			race
 				sequence WaitKeyDown "Alpha1"
-					debug "Баба Открывает"
+					debug "Девочка Открывает"
 				sequence WaitKeyDown "Alpha2"
-					debug "Баба Убегает"
-			destroy_message 100
+					debug "Девочка Убегает"
+			destroy_display 100
 			pop "door_knocked" true
+
 
 // Trigger:
 tree("General Door Knocked")

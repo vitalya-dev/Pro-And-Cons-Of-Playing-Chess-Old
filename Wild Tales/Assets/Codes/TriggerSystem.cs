@@ -32,67 +32,68 @@ public class TriggerSystem : MonoBehaviour {
 	}
 
 	[Task]
-	void display_message(string message, string type, string position, float duration, int message_id) {
-		GameObject message_object = Instantiate(Resources.Load(type + " Message", typeof(GameObject))) as GameObject;
-		message_object.GetComponent<TMPro.TextMeshPro>().text = message;
-		message_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
-		message_object.transform.position = Vector3.Scale(GameObject.Find(position).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
-		message_object.name = "Message_" + message_id;
-		justify_message(message_object);
-		GameObject.Destroy(message_object, duration);
+	void display_message(string message, string type, string position, float duration, int id) {
+		GameObject display_object = Instantiate(Resources.Load(type + " Text", typeof(GameObject))) as GameObject;
+		display_object.GetComponent<TMPro.TextMeshPro>().text = message;
+		display_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
+		display_object.transform.position = Vector3.Scale(GameObject.Find(position).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
+		display_object.name = "Display_" + id;
+		justify_text(display_object);
+		GameObject.Destroy(display_object, duration);
 		Task.current.Succeed();
 	}
 
 	[Task]
-	void display_message_for(string who, string message, string type, float duration, int message_id) {
-		GameObject message_object = Instantiate(Resources.Load(type + " Message", typeof(GameObject))) as GameObject;
-		message_object.GetComponent<TMPro.TextMeshPro>().text = message;
-		message_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
-		message_object.transform.position = Vector3.Scale(GameObject.Find(who).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
-		message_object.AddComponent<Follow>();
-		message_object.GetComponent<Follow>().target = GameObject.Find(who).transform;
-		message_object.name = "Message_" + message_id;
-		justify_message(message_object);
-		GameObject.Destroy(message_object, duration);
+	void display_message_for(string who, string message, string type, float duration, int id) {
+		GameObject display_object = Instantiate(Resources.Load(type + " Text", typeof(GameObject))) as GameObject;
+		display_object.GetComponent<TMPro.TextMeshPro>().text = message;
+		display_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
+		display_object.transform.position = Vector3.Scale(GameObject.Find(who).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
+		display_object.AddComponent<Follow>();
+		display_object.GetComponent<Follow>().target = GameObject.Find(who).transform;
+		display_object.name = "Display_" + id;
+		justify_text(display_object);
+		GameObject.Destroy(display_object, duration);
 		Task.current.Succeed();
 	}
 
 	[Task]
-	void display_choices_2(string choice_1, string choice_2, string type, string position, int message_id) {
-		GameObject message_object = Instantiate(Resources.Load(type + " Message", typeof(GameObject))) as GameObject;
-		message_object.GetComponent<TMPro.TextMeshPro>().text = "<b>1</b>. " + choice_1 + "\n";
-		message_object.GetComponent<TMPro.TextMeshPro>().text += "<b>2</b>. " + choice_2 + "\n";
-		message_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
-		message_object.transform.position = Vector3.Scale(GameObject.Find(position).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
-		message_object.name = "Message_" + message_id;
-		justify_message(message_object);
+	void display_choices_2(string choice_1, string choice_2, string type, string position, int id) {
+		GameObject display_object = Instantiate(Resources.Load(type + " Text", typeof(GameObject))) as GameObject;
+		display_object.GetComponent<TMPro.TextMeshPro>().text = "<b>1</b>. " + choice_1 + "\n";
+		display_object.GetComponent<TMPro.TextMeshPro>().text += "<b>2</b>. " + choice_2 + "\n";
+		display_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
+		display_object.transform.position = Vector3.Scale(GameObject.Find(position).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
+		display_object.name = "Display_" + id;
+		justify_text(display_object);
 		Task.current.Succeed();
 	}
 
 	[Task]
-	void display_choices_2_for(string who, string choice_1, string choice_2, string type, int message_id) {
-		GameObject message_object = Instantiate(Resources.Load(type + " Message", typeof(GameObject))) as GameObject;
-		message_object.GetComponent<TMPro.TextMeshPro>().text = "<b>1</b>. " + choice_1 + "\n";
-		message_object.GetComponent<TMPro.TextMeshPro>().text += "<b>2</b>. " + choice_2 + "\n";
-		message_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
-		message_object.transform.position = Vector3.Scale(GameObject.Find(who).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
-		message_object.AddComponent<Follow>();
-		message_object.GetComponent<Follow>().target = GameObject.Find(who).transform;
-		message_object.name = "Message_" + message_id;
-		justify_message(message_object);
+	void display_choices_2_for(string who, string choice_1, string choice_2, string type, int id) {
+		GameObject display_object = Instantiate(Resources.Load(type + " Text", typeof(GameObject))) as GameObject;
+		display_object.GetComponent<TMPro.TextMeshPro>().text = "<b>1</b>. " + choice_1 + "\n";
+		display_object.GetComponent<TMPro.TextMeshPro>().text += "<b>2</b>. " + choice_2 + "\n";
+		display_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
+		display_object.transform.position = Vector3.Scale(GameObject.Find(who).transform.position, new Vector3(1, 0, 1)) + Vector3.up * (Camera.main.transform.position.y - 1);
+		display_object.AddComponent<Follow>();
+		display_object.GetComponent<Follow>().target = GameObject.Find(who).transform;
+		display_object.name = "Display_" + id;
+		justify_text(display_object);
 		Task.current.Succeed();
 	}
 
-	void justify_message(GameObject message_object) {
-		float w = message_object.GetComponent<RectTransform>().sizeDelta.x;
-		float p_w = message_object.GetComponent<TMPro.TextMeshPro>().GetPreferredValues().x;
-		float h = message_object.GetComponent<RectTransform>().sizeDelta.y;
-		message_object.GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Min(p_w, w), h);
+	// Helper method. Text will have the right width.
+	void justify_text(GameObject display_object) {
+		float w = display_object.GetComponent<RectTransform>().sizeDelta.x;
+		float p_w = display_object.GetComponent<TMPro.TextMeshPro>().GetPreferredValues().x;
+		float h = display_object.GetComponent<RectTransform>().sizeDelta.y;
+		display_object.GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Min(p_w, w), h);
 	}
 
 	[Task]
-	void destroy_message(int message_id) {
-		GameObject.Destroy(GameObject.Find("Message_" + message_id));
+	void destroy_display(int id) {
+		GameObject.Destroy(GameObject.Find("Display_" + id));
 		Task.current.Succeed();
 	}
 
@@ -111,5 +112,17 @@ public class TriggerSystem : MonoBehaviour {
 				break;
 		}
 		Task.current.Succeed();
+	}
+
+	[Task]
+	void actor_move(string actor, string position) {
+		GameObject.Find(actor).GetComponent<Actor>().move(GameObject.Find(position).transform.position);
+		Task.current.Succeed();
+	}
+
+	[Task]
+	void actor_move_wait(string actor) {
+		if (!GameObject.Find(actor).GetComponent<Actor>().moving)
+			Task.current.Succeed();
 	}
 }

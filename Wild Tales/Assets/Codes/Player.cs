@@ -133,11 +133,11 @@ public class Player : MonoBehaviour {
 	}
 
 	void attack() {
-		if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Jab") && transform.Find("Jab").GetComponent<Area>().overlap<Envi>()) {
-			transform.Find("Jab").GetComponent<Area>().overlap<Envi>().hit();
+		if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Jab") && transform.Find("Jab").GetComponent<Area>().overlap<Door>()) {
+			transform.Find("Jab").GetComponent<Area>().overlap<Door>().hit();
 		}
-		if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Hook") && transform.Find("Hook").GetComponent<Area>().overlap<Envi>()) {
-			transform.Find("Hook").GetComponent<Area>().overlap<Envi>().hit();
+		if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Hook") && transform.Find("Hook").GetComponent<Area>().overlap<Door>()) {
+			transform.Find("Hook").GetComponent<Area>().overlap<Door>().hit();
 		}
 	}
 	/* ============================================================================================ */
