@@ -20,7 +20,7 @@ public class AI : MonoBehaviour {
 	public bool move_by_path(float speed) {
 		PhysicBody pb = GetComponent<PhysicBody>();
 		if (corners.Length > 1) {
-			var d = corners[1] - transform.position;
+			var d = Vector3.Scale(corners[1] - transform.position, new Vector3(1, 0, 1));
 			if (d.magnitude > 0.1) {
 				Collider collider_ahead = pb.move_position(transform.position + Vector3.ClampMagnitude(d.normalized * speed * Time.deltaTime, d.magnitude), GetComponent<BoxCollider>());
 				if (collider_ahead)

@@ -5,7 +5,7 @@ using Panda;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerSystem : MonoBehaviour {
+public class Level : MonoBehaviour {
 	[HideInInspector]
 	public Stack<Door> door_knocked_stack = new Stack<Door>();
 
@@ -14,6 +14,14 @@ public class TriggerSystem : MonoBehaviour {
 
 	[HideInInspector]
 	public static UnityEvent control_point_event = new UnityEvent();
+
+	void Awake() {
+		GameObject gui = new GameObject("GUI");
+		/* ============================================== */
+		GameObject crosshair = Instantiate(Resources.Load("Crosshair", typeof(GameObject))) as GameObject;
+		crosshair.transform.position = Vector3.up * (Camera.main.transform.position.y - 1);
+		crosshair.transform.parent = gui.transform;
+	}
 
 	[Task]
 	void door_knocked() {
