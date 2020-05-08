@@ -12,7 +12,7 @@ public class Door : MonoBehaviour {
 	}
 
 	public void knock() {
-		FindObjectOfType<Level>().door_knocked_stack.Push(this);
+		EventsActions.door_knocked_stack.Push(this);
 	}
 
 	public void hit() {

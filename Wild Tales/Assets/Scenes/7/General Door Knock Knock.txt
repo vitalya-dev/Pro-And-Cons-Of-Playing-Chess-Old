@@ -1,12 +1,7 @@
-tree("Root") // Trigger hierarchy
-	sequence
-		mute
-			tree "General Door Knocked" 
-				
 // Trigger:
-tree("General Door Knocked")
+tree("Root")
 // Event-Condition:      
-	sequence door_knocked
+	sequence door_knocked "General Door"
 // Action:         
 		sequence
 			random
