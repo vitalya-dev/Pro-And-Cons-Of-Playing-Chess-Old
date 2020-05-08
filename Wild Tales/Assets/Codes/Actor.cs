@@ -9,15 +9,20 @@ public class Actor : MonoBehaviour {
 	public bool moving;
 
 	public void move(Vector3 position) {
+		
 		StartCoroutine(__move(position));
 	}
 
 	IEnumerator __move(Vector3 position) {
+		GetComponent<Animator>().Play("Walk");
 		moving = true;
+		/* ============================================ */
 		GetComponent<AI>().calculate_path(position);
 		while (GetComponent<AI>().move_by_path(speed)) {
 			yield return null;
 		}
+		/* ============================================ */
 		moving = false;
+		GetComponent<Animator>().Play("Idle");
 	}
 }
