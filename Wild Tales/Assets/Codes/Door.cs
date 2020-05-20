@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour {
-	public GameObject particle;
+    public string particle = "Yellow";
 
-	bool is_active;
+    bool is_active;
 
-	void Awake() {
-		is_active = gameObject.activeSelf;
-	}
+    void Awake() {
+        is_active = gameObject.activeSelf;
+    }
 
-	public void knock() {
-		EventsActions.door_knocked_stack.Push(this);
-	}
+    public void knock() {
+        EventsActions.door_knocked_stack.Push(this);
+    }
 
-	public void hit() {
-		GameObject.Instantiate(particle, transform.position, Quaternion.identity);
-		gameObject.SetActive(false);
-	}
+    public void hit() {
+        GameObject p =
+            Instantiate(Resources.Load("Particles/" + particle, typeof(GameObject))) as GameObject;
+        p.transform.position = transform.position;
+        /* ================================= */
+        gameObject.SetActive(false);
+    }
 
-	public void restart() {
-		gameObject.SetActive(is_active);
-	}
+    public void restart() {
+        gameObject.SetActive(is_active);
+    }
 
-	public void control_point() {
-		is_active = gameObject.activeSelf;
-	}
+    public void control_point() {
+        is_active = gameObject.activeSelf;
+    }
 }

@@ -57,8 +57,8 @@ public class Player : MonoBehaviour {
         while (true) {
             Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
             transform.rotation = Quaternion.LookRotation(
-                Vector3.Scale(crosshair.transform.position - transform.position, new Vector3(1, 0, 1))
-            );
+                                                         Vector3.Scale(crosshair.transform.position - transform.position, new Vector3(1, 0, 1))
+                                                         );
             yield return null;
         }
     }
@@ -75,8 +75,8 @@ public class Player : MonoBehaviour {
             /* ===================================================== */
             Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
             transform.rotation = Quaternion.LookRotation(
-                Vector3.Scale(crosshair.transform.position - transform.position, new Vector3(1, 0, 1))
-            );
+                                                         Vector3.Scale(crosshair.transform.position - transform.position, new Vector3(1, 0, 1))
+                                                         );
             yield return null;
         }
     }
@@ -86,10 +86,13 @@ public class Player : MonoBehaviour {
         am.Play("Kick");
         /* ===================================================== */
         GetComponent<Collider>().enabled = false;
+        Area leg_left_area = transform.Find("Leg Left").GetComponent<Area>();
         while (true) {
-            if (transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>()) {
-                transform.Find("Leg Left").GetComponent<Area>().overlap<Projectile>().hit(transform.forward, 20);
-            }
+            Debug.Log("We Must Kick");
+            if (leg_left_area.overlap<Projectile>())
+                leg_left_area.overlap<Projectile>().hit(transform.forward, 20);
+            if (leg_left_area.overlap<Door>())
+                leg_left_area.overlap<Door>().hit();
             yield return null;
         }
     }
