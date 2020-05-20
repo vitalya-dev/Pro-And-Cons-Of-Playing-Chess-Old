@@ -22,9 +22,7 @@ public class AI : MonoBehaviour {
 		if (corners.Length > 1) {
 			var d = Vector3.Scale(corners[1] - transform.position, new Vector3(1, 0, 1));
 			if (d.magnitude > 0.1) {
-				Collider collider_ahead = pb.move_position(transform.position + Vector3.ClampMagnitude(d.normalized * speed * Time.deltaTime, d.magnitude), GetComponent<BoxCollider>());
-				if (collider_ahead)
-					Array.Resize(ref corners, 1);
+				pb.move_position(transform.position + Vector3.ClampMagnitude(d.normalized * speed * Time.deltaTime, d.magnitude), GetComponent<BoxCollider>());
 				transform.rotation = Quaternion.LookRotation(d.normalized);
 			} else {
 				/********************* shifting corners *********************/

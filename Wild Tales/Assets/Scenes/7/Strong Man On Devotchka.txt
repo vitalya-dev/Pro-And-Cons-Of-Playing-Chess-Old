@@ -5,7 +5,7 @@ tree("Root")
 		sequence                         
 			display_message_for "Player" "Тук Тук" "Basic" 1.0 -1
 			Wait 1.0
-			actor_move "Girl" "Devotchka Door"
+			actor_move "Girl" "Girl 1 Region"
 			actor_move_wait "Girl"
 			display_message_for "Girl"  "Кто Там?" "Basic"  1.0 -1
 			Wait 1.0
@@ -24,7 +24,7 @@ tree("Girl Run Away")
 // Event-Condition:               
 // Action: 
 		sequence   
-			actor_move "Girl" "Girl Run 1 Region"
+			actor_move "Girl" "Girl 2 Region"
 			actor_move_wait "Girl"
-			actor_move "Girl" "Girl Run 2 Region"
+			actor_move "Girl" "Girl 3 Region"
 			actor_move_wait "Girl"
