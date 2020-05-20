@@ -23,6 +23,11 @@ public class Door : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
+    public void open(Vector3 dir) {
+        transform.rotation = Quaternion.FromToRotation(transform.forward, transform.right);
+    }
+
+
     public void restart() {
         gameObject.SetActive(is_active);
     }

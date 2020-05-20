@@ -55,10 +55,11 @@ public class Player : MonoBehaviour {
         am.Play("Idle");
         /* ===================================================== */
         while (true) {
-            Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
-            transform.rotation = Quaternion.LookRotation(
-                                                         Vector3.Scale(crosshair.transform.position - transform.position, new Vector3(1, 0, 1))
-                                                         );
+            /* ===================================================== */
+            Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
+            Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
+            transform.rotation = Quaternion.LookRotation(look);
+            /* ===================================================== */
             yield return null;
         }
     }
@@ -73,10 +74,10 @@ public class Player : MonoBehaviour {
             pb.move_position(transform.position + offset_x, GetComponent<BoxCollider>());
             pb.move_position(transform.position + offset_z, GetComponent<BoxCollider>());
             /* ===================================================== */
-            Crosshair crosshair = GameObject.FindObjectOfType<Crosshair>();
-            transform.rotation = Quaternion.LookRotation(
-                                                         Vector3.Scale(crosshair.transform.position - transform.position, new Vector3(1, 0, 1))
-                                                         );
+            Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
+            Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
+            transform.rotation = Quaternion.LookRotation(look);
+            /* ===================================================== */
             yield return null;
         }
     }
@@ -88,11 +89,10 @@ public class Player : MonoBehaviour {
         GetComponent<Collider>().enabled = false;
         Area leg_left_area = transform.Find("Leg Left").GetComponent<Area>();
         while (true) {
-            Debug.Log("We Must Kick");
             if (leg_left_area.overlap<Projectile>())
                 leg_left_area.overlap<Projectile>().hit(transform.forward, 20);
             if (leg_left_area.overlap<Door>())
-                leg_left_area.overlap<Door>().hit();
+                leg_left_area.overlap<Door>().open(transform.forward);
             yield return null;
         }
     }
