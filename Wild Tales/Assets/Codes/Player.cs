@@ -71,8 +71,8 @@ public class Player : MonoBehaviour {
         while (true) {
             Vector3 offset_x = Vector3.Scale(axis, new Vector3(1, 0, 0)) * speed * Time.deltaTime;
             Vector3 offset_z = Vector3.Scale(axis, new Vector3(0, 0, 1)) * speed * Time.deltaTime;
-            pb.move_position(transform.position + offset_x, GetComponent<BoxCollider>());
-            pb.move_position(transform.position + offset_z, GetComponent<BoxCollider>());
+            pb.move_position(transform.position + offset_x);
+            pb.move_position(transform.position + offset_z);
             /* ===================================================== */
             Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
             Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
@@ -86,19 +86,15 @@ public class Player : MonoBehaviour {
         /* ===================================================== */
         am.Play("Kick");
         /* ===================================================== */
-        GetComponent<Collider>().enabled = false;
+        Area body_area = GetComponent<Area>();
         Area leg_left_area = transform.Find("Leg Left").GetComponent<Area>();
+        /* ===================================================== */
+        if (leg_left_area.overlap<Door>())
+            leg_left_area.overlap<Door>().open(transform.forward);
+        /* ===================================================== */
         while (true) {
-            if (leg_left_area.overlap<Projectile>())
-                leg_left_area.overlap<Projectile>().hit(transform.forward, 20);
-            if (leg_left_area.overlap<Door>())
-                leg_left_area.overlap<Door>().open(transform.forward);
             yield return null;
         }
-    }
-
-    public void kick_state_cleanup() {
-        GetComponent<Collider>().enabled = true;
     }
 
     /* ============================================================================================ */

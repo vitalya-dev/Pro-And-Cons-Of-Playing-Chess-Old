@@ -13,19 +13,4 @@ public class Level : MonoBehaviour {
         crosshair.transform.position = Vector3.up * (Camera.main.transform.position.y - 1);
         crosshair.transform.parent = gui.transform;
     }
-
-    void Update() {
-        GameObject triggers = GameObject.Find("Triggers");
-        for (int i = 0; i < triggers.transform.childCount; i++) {
-            tick(triggers.transform.GetChild(i).gameObject);
-        }
-    }
-
-    void tick(GameObject trigger_action) {
-        if (trigger_action.GetComponent<PandaBehaviour>())
-            trigger_action.GetComponent<PandaBehaviour>().Tick();
-        for (int i = 0; i < trigger_action.transform.childCount; i++) {
-            tick(trigger_action.transform.GetChild(i).gameObject);
-        }
-    }
 }
