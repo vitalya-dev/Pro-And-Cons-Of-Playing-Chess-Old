@@ -6,6 +6,8 @@ public class Door : MonoBehaviour {
     public string particle = "Yellow";
 
     bool is_active;
+    
+    public Vector3 opend = Vector3.right;
 
     void Awake() {
         is_active = gameObject.activeSelf;
@@ -23,10 +25,9 @@ public class Door : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    int opened = 1;
     public void open(Vector3 dir) {
-        transform.rotation *= Quaternion.FromToRotation(Vector3.forward, Vector3.right * opened);
-        opened *= -1;
+        transform.rotation *= Quaternion.FromToRotation(Vector3.forward, opend);
+        opend *= -1;
     }
 
 
