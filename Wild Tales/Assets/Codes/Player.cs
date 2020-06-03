@@ -38,18 +38,6 @@ public class Player : MonoBehaviour {
             GetComponent<PlayMakerFSM>().SendEvent("FIRE3");
     }
 
-    public void restart() {
-        transform.position = backup_position;
-        transform.rotation = backup_rotation;
-        gameObject.SetActive(true);
-    }
-
-    public void control_point() {
-        backup_position = transform.position;
-        backup_rotation = transform.rotation;
-	//backgrou
-    }
-
     public IEnumerator idle_state() {
         /* ===================================================== */
         am.Play("Idle");
@@ -129,12 +117,7 @@ public class Player : MonoBehaviour {
     }
 
     void attack() {
-        if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Jab") && transform.Find("Jab").GetComponent<Area>().overlap<Door>()) {
-            transform.Find("Jab").GetComponent<Area>().overlap<Door>().hit();
-        }
-        if (am.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.2f && transform.Find("Hook") && transform.Find("Hook").GetComponent<Area>().overlap<Door>()) {
-            transform.Find("Hook").GetComponent<Area>().overlap<Door>().hit();
-        }
+        
     }
     /* ============================================================================================ */
 
@@ -155,12 +138,7 @@ public class Player : MonoBehaviour {
         am.Play("Kick");
         /* ===================================================== */
         while (true) {
-            if (transform.Find("Leg Left").GetComponent<Area>().overlap<Door>()) {
-                transform.Find("Leg Left").GetComponent<Area>().overlap<Door>().knock();
-                yield return new WaitForSecondsRealtime(float.PositiveInfinity);
-            }
             yield return null;
         }
     }
-
 }
