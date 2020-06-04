@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
             /* ===================================================== */
             Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
             Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
-            transform.rotation = Quaternion.LookRotation(look);
+            //transform.rotation = Quaternion.LookRotation(look);
             /* ===================================================== */
             yield return null;
         }
