@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
   void Update() {
     axis.x = Input.GetAxisRaw("Horizontal");
     axis.z = Input.GetAxisRaw("Vertical");
+    
     GetComponent<PlayMakerFSM>().FsmVariables.GetFsmFloat("axis").RawValue = axis.magnitude;
     /* ===================================================== */
     if (Input.GetButtonDown("Fire1"))
@@ -44,9 +45,21 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     while (true) {
       /* ===================================================== */
-      Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
-      Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
+      Vector3 c_p =
+        GameObject.FindObjectOfType<Crosshair>().transform.position;
+      Vector3 look =
+        Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
       transform.rotation = Quaternion.LookRotation(look);
+      /* ===================================================== */
+      yield return null;
+    }
+  }
+
+  public IEnumerator sleep_state() {
+    /* ===================================================== */
+    am.Play("Sleep");
+    /* ===================================================== */
+    while (true) {
       /* ===================================================== */
       yield return null;
     }
