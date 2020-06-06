@@ -59,11 +59,29 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     am.Play("Sleep");
     /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = false;
+    /* ===================================================== */
+    transform.Translate(new Vector3(0, -1, 0));
+    yield return null;
+    /* ===================================================== */
+    transform.rotation = Quaternion.LookRotation(Vector3.up, -1 * transform.forward);
+    /* ===================================================== */
     while (true) {
-      /* ===================================================== */
       yield return null;
     }
   }
+  
+  public IEnumerator wakeup_state() {
+    /* ===================================================== */
+    am.Play("Wakeup");
+    /* ===================================================== */
+    transform.rotation = Quaternion.LookRotation(transform.right, transform.up);
+    /* ===================================================== */
+    while (true) {
+      yield return null;
+    }
+  }
+
 
   public IEnumerator walk_state() {
     /* ===================================================== */
