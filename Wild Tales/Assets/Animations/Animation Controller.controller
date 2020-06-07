@@ -52,7 +52,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-1203540867994692482
+--- !u!1102 &-2260643175985436169
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -60,6 +60,32 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wakeup
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 941e2903c0edc4c48a661d14f51eb37d, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-1203540867994692482
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Situp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -198,13 +224,16 @@ AnimatorStateMachine:
     m_Position: {x: 940, y: -110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4171464657323497326}
-    m_Position: {x: 1170, y: -110, z: 0}
+    m_Position: {x: 800, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1203540867994692482}
-    m_Position: {x: 1205, y: -45, z: 0}
+    m_Position: {x: 1220, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7151633309315531496}
-    m_Position: {x: 1240, y: 20, z: 0}
+    m_Position: {x: 1430, y: 0, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -2260643175985436169}
+    m_Position: {x: 1010, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

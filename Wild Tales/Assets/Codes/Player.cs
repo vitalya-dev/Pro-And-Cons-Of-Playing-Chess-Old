@@ -39,6 +39,13 @@ public class Player : MonoBehaviour {
       GetComponent<PlayMakerFSM>().SendEvent("FIRE3");
   }
 
+  public IEnumerator wait_state() {
+    while (true) {
+      yield return null;
+    }
+  }
+
+
   public IEnumerator idle_state() {
     /* ===================================================== */
     am.Play("Idle");
@@ -58,10 +65,12 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = false;
     /* ===================================================== */
-    transform.Translate(new Vector3(0, -1, 0));
+    transform.position += new Vector3(0, 10, 0);
     yield return null;
     /* ===================================================== */
-    transform.rotation = Quaternion.LookRotation(Vector3.up, -1 * transform.forward);
+    transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward);
+    /* ===================================================== */
+    GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = true;
     /* ===================================================== */
     while (true) {
       yield return null;
@@ -72,10 +81,26 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     am.Play("Wakeup");
     /* ===================================================== */
-    transform.Translate(new Vector3(0, 0.5f, 0));
+    transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.forward);
+    /* ===================================================== */
+    while (true) {
+      yield return null;
+    }
+  }
+
+
+  public IEnumerator situp_state() {
+    /* ===================================================== */
+    am.Play("Situp");
+    /* ===================================================== */
+    transform.position += new Vector3(0, -10, 0.5f);
     yield return null;
     /* ===================================================== */
-    transform.rotation = Quaternion.LookRotation(transform.right, transform.up);
+    transform.rotation = Quaternion.LookRotation(-1 * Vector3.right, Vector3.forward);
+    /* ===================================================== */
+    GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = false;
+    Camera.main.orthographicSize = 6.5f;
+    yield return null;
     /* ===================================================== */
     while (true) {
       yield return null;
@@ -88,7 +113,8 @@ public class Player : MonoBehaviour {
     transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
     yield return null;
     /* ===================================================== */
-    transform.Translate(new Vector3(-1, 1, 0));
+    transform.position += new Vector3(2, 0, 0);
+    yield return null;
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = true;
     /* ===================================================== */
