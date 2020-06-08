@@ -119,6 +119,7 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = true;
     /* ===================================================== */
+    GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
     GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Stop();
     /* ===================================================== */
     while (true) {
