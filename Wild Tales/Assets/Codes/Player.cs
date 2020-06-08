@@ -82,6 +82,7 @@ public class Player : MonoBehaviour {
     am.Play("Wakeup");
     /* ===================================================== */
     transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.forward);
+    GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Play();
     /* ===================================================== */
     while (true) {
       yield return null;
@@ -117,6 +118,8 @@ public class Player : MonoBehaviour {
     yield return null;
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = true;
+    /* ===================================================== */
+    GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Stop();
     /* ===================================================== */
     while (true) {
       yield return null;
