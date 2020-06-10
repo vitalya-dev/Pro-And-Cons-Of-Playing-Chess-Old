@@ -146,20 +146,21 @@ public class Player : MonoBehaviour {
     }
   }
 
-  public IEnumerator kick_state() {
+  public IEnumerator use_state() {
     /* ===================================================== */
-    am.Play("Kick");
+    am.Play("Use");
     /* ===================================================== */
     Area body_area = GetComponent<Area>();
-    Area leg_left_area = transform.Find("Leg Left").GetComponent<Area>();
-    /* ===================================================== */
-    if (leg_left_area.overlap<Door>())
-      leg_left_area.overlap<Door>().open(transform.forward);
+    if (body_area.overlap<Door>()) {
+      am.Play("Kick");
+      body_area.overlap<Door>().open(transform.forward);
+    }
     /* ===================================================== */
     while (true) {
       yield return null;
     }
   }
+
 
   /* ============================================================================================ */
   public IEnumerator jab_state() {

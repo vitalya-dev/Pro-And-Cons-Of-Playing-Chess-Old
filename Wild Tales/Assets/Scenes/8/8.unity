@@ -5487,7 +5487,7 @@ MonoBehaviour:
         - realTime
         paramDataPos: 00000000000000000000000000000000000000000000000001000000
         paramByteDataSize: 00000000000000000000000001000000000000000000000001000000
-    - name: KICK BLUE
+    - name: USE BLUE
       description: 
       colorIndex: 1
       position:
@@ -5532,7 +5532,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: kick_state
+        - FunctionName: use_state
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -5719,7 +5719,7 @@ MonoBehaviour:
           name: FIRE3
           isSystemEvent: 0
           isGlobal: 0
-        toState: KICK BLUE
+        toState: USE BLUE
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -7614,7 +7614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639654397}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.74, y: 2.02, z: 3.21}
+  m_LocalPosition: {x: -2.49, y: 2.02, z: 3.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 366707201}
@@ -12925,8 +12925,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1364577725}
   - component: {fileID: 1364577728}
-  - component: {fileID: 1364577727}
-  - component: {fileID: 1364577726}
   m_Layer: 8
   m_Name: Leg Left
   m_TagString: Untagged
@@ -12948,31 +12946,6 @@ Transform:
   m_Father: {fileID: 639654406}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1364577726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364577724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5387fba7d23c97b4ab5f50d94dfeafd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &1364577727
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364577724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5625, y: 0.8125002, z: 0.20000005}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1364577728
 SpriteRenderer:
   m_ObjectHideFlags: 0
