@@ -28,7 +28,6 @@ public class Player : MonoBehaviour {
   void Update() {
     axis.x = Input.GetAxisRaw("Horizontal");
     axis.z = Input.GetAxisRaw("Vertical");
-    
     GetComponent<PlayMakerFSM>().FsmVariables.GetFsmFloat("axis").RawValue = axis.magnitude;
     /* ===================================================== */
     if (Input.GetButtonDown("Fire1"))
@@ -152,11 +151,11 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     Area body_area = GetComponent<Area>();
     /* ===================================================== */
-    if (body_area.overlap<Door>()) {
+    if (seen<Door>() && touch<Door>()) {
       am.Play("Kick");
-      body_area.overlap<Door>().open(transform.forward);
+      touch<Door>().open(transform.forward);
     }
-    if (body_area.overlap<Bath>()) {
+    else if (seen<Bath>() && touch<Bath>()) {
       Debug.Log("Time To Take A Bath");
     }
     /* ===================================================== */
@@ -215,11 +214,34 @@ public class Player : MonoBehaviour {
   }
 
   public IEnumerator knock_state() {
-    /* ===================================================== */
     am.Play("Kick");
     /* ===================================================== */
     while (true) {
       yield return null;
     }
+  }
+
+  T seen<T>() where T : MonoBehaviour {
+    RaycastHit hit;
+    if (Physics.Raycast(transform.position, transform.forward, out hit, 4) && hit.collider.GetComponent<T>())
+      return hit.collider.GetComponent<T>();
+
+  }
+    
+
+  T touch<T>() where T : MonoBehaviour {
+    Collider[] colliders;
+    /* ============================================ */
+    if (GetComponent<BoxCollider>())
+      colliders = Physics.OverlapBox(transform.position + GetComponent<BoxCollider>().center,
+                                     GetComponent<BoxCollider>().size / 2,
+                                     transform.rotation);
+    else colliders = new Collider[0];
+    /* ============================================ */
+    foreach (var collider in colliders)
+      if (collider.gameObject != gameObject && collider.GetComponent<T>() != null)
+        return collider.GetComponent<T>();
+    /* ============================================ */
+    return null;
   }
 }

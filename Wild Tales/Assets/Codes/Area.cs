@@ -10,8 +10,7 @@ public class Area : MonoBehaviour {
     if (GetComponent<BoxCollider>())
       colliders = Physics.OverlapBox(transform.position + GetComponent<BoxCollider>().center,
                                      GetComponent<BoxCollider>().size / 2,
-                                     transform.rotation
-                                     );
+                                     transform.rotation);
     else if (GetComponent<SphereCollider>())
       colliders = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
     else
