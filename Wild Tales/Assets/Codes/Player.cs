@@ -151,11 +151,10 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     Area body_area = GetComponent<Area>();
     /* ===================================================== */
-    if (seen<Door>() && touch<Door>()) {
+    if (face_to_and_touch_to<Door>()) {
       am.Play("Kick");
-      touch<Door>().open(transform.forward);
-    }
-    else if (seen<Bath>() && touch<Bath>()) {
+      face_to_and_touch_to<Door>().open(transform.forward);
+    } else if (face_to_and_touch_to<Bath>()) {
       Debug.Log("Time To Take A Bath");
     }
     /* ===================================================== */
@@ -223,24 +222,23 @@ public class Player : MonoBehaviour {
 
   T seen<T>() where T : MonoBehaviour {
     RaycastHit hit;
-    if (Physics.Raycast(transform.position, transform.forward, out hit, 4) && hit.collider.GetComponent<T>())
+    if (Physics.Raycast(transform.position, transform.forward, out hit, 2) && hit.collider.GetComponent<T>())
       return hit.collider.GetComponent<T>();
-
+    return null;
   }
     
-
-  T touch<T>() where T : MonoBehaviour {
-    Collider[] colliders;
-    /* ============================================ */
-    if (GetComponent<BoxCollider>())
-      colliders = Physics.OverlapBox(transform.position + GetComponent<BoxCollider>().center,
-                                     GetComponent<BoxCollider>().size / 2,
-                                     transform.rotation);
-    else colliders = new Collider[0];
+  
+  T face_to_and_touch_to<T>() where T : MonoBehaviour {
+    Collider[] colliders = Physics.OverlapBox(
+      transform.position + GetComponent<BoxCollider>().center,
+      Vector3.Scale(GetComponent<BoxCollider>().size / 2, new Vector3(1f, 1f, 1f))
+    );
     /* ============================================ */
     foreach (var collider in colliders)
-      if (collider.gameObject != gameObject && collider.GetComponent<T>() != null)
-        return collider.GetComponent<T>();
+      if (collider.gameObject != gameObject && collider.GetComponent<T>() != null) {
+        if ((Vector3.Angle(transform.forward, collider.bounds.center - transform.position)) < 60)
+          return collider.GetComponent<T>();
+      }
     /* ============================================ */
     return null;
   }
