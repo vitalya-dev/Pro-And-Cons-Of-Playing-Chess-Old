@@ -147,6 +147,8 @@ public class Player : MonoBehaviour {
       GetComponent<PlayMakerFSM>().SendEvent("DOOR");
     } else if (face_to_and_touch_to<Bath>()) {
       GetComponent<PlayMakerFSM>().SendEvent("BATH");
+    } else if (face_to_and_touch_to<Cupboard>()) {
+      GetComponent<PlayMakerFSM>().SendEvent("CUPBOARD");
     }
     /* ===================================================== */
     while (true) {
@@ -154,6 +156,14 @@ public class Player : MonoBehaviour {
     }
   }
   
+  public IEnumerator use_door_cupboard() {
+    am.Play("Idle");
+    /* ===================================================== */
+    while (true) {
+      yield return null;
+    }
+  }
+
   public IEnumerator use_door_state() {
     am.Play("Kick");
     /* ===================================================== */
