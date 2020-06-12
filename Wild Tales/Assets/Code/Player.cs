@@ -11,8 +11,6 @@ public class Player : MonoBehaviour {
 
   public GameObject[] particles;
 
-  Vector3 backup_position;
-  Quaternion backup_rotation;
 
   PhysicBody pb;
   Animator am;
@@ -20,9 +18,6 @@ public class Player : MonoBehaviour {
   void Awake() {
     pb = GetComponent<PhysicBody>();
     am = GetComponent<Animator>();
-    /* ================================================== */
-    backup_position = transform.position;
-    backup_rotation = transform.rotation;
   }
 
   void Update() {
@@ -154,9 +149,32 @@ public class Player : MonoBehaviour {
     if (face_to_and_touch_to<Door>()) {
       am.Play("Kick");
       face_to_and_touch_to<Door>().open(transform.forward);
+      GetComponent<PlayMakerFSM>().SendEvent("DONE");
     } else if (face_to_and_touch_to<Bath>()) {
-      Debug.Log("Time To Take A Bath");
-    }
+      GetComponent<PhysicBody>().enabled = false;
+      /* ===================================================== */
+      Bath bath = face_to_and_touch_to<Bath>();
+      bath.fill_it();
+      /* ===================================================== */
+      backup_transform();
+      /* ===================================================== */
+      transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.right);
+      yield return null;
+      /* ===================================================== */
+      transform.position = bath.transform.position;
+      transform.position += new Vector3(0, -0.47f, 0);
+      /* ===================================================== */
+      yield return new WaitForSeconds(2);
+      /* ===================================================== */
+      restore_transform();
+      /* ===================================================== */
+      GetComponent<PhysicBody>().enabled = true;
+      /* ===================================================== */
+      bath.drain_it();
+      /* ===================================================== */
+      GetComponent<PlayMakerFSM>().SendEvent("DONE");
+    } else
+      GetComponent<PlayMakerFSM>().SendEvent("DONE");
     /* ===================================================== */
     while (true) {
       yield return null;
@@ -242,4 +260,21 @@ public class Player : MonoBehaviour {
     /* ============================================ */
     return null;
   }
+
+
+  /* ============================================ */
+  Vector3 backup_position;
+  Quaternion  backup_rotation;
+
+  void backup_transform() {
+    backup_position = transform.position;
+    backup_rotation = transform.rotation;
+  }
+
+  void restore_transform() {
+    transform.position = backup_position;
+    transform.rotation = backup_rotation;
+  }
+  /* ============================================ */
+
 }
