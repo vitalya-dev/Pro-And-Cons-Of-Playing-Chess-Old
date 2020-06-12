@@ -160,7 +160,6 @@ public class Player : MonoBehaviour {
     am.Play("Idle");
     /* ===================================================== */
     while (true) {
-      //transform.rotation *= Quaternion.FromToRotation(Vector3.forward, Vector3.right);
       transform.rotation *= Quaternion.Euler(0, 45, 0);
       yield return null;
     }
