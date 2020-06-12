@@ -141,40 +141,59 @@ public class Player : MonoBehaviour {
   }
 
   public IEnumerator use_state() {
-    /* ===================================================== */
     am.Play("Use");
     /* ===================================================== */
-    Area body_area = GetComponent<Area>();
-    /* ===================================================== */
     if (face_to_and_touch_to<Door>()) {
-      am.Play("Kick");
-      face_to_and_touch_to<Door>().open(transform.forward);
-      GetComponent<PlayMakerFSM>().SendEvent("DONE");
+      GetComponent<PlayMakerFSM>().SendEvent("DOOR");
     } else if (face_to_and_touch_to<Bath>()) {
-      GetComponent<PhysicBody>().enabled = false;
-      /* ===================================================== */
-      Bath bath = face_to_and_touch_to<Bath>();
-      bath.fill_it();
-      /* ===================================================== */
-      backup_transform();
-      /* ===================================================== */
-      transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.right);
+      GetComponent<PlayMakerFSM>().SendEvent("BATH");
+    }
+    /* ===================================================== */
+    while (true) {
       yield return null;
-      /* ===================================================== */
-      transform.position = bath.transform.position;
-      transform.position += new Vector3(0, -0.47f, 0);
-      /* ===================================================== */
-      yield return new WaitForSeconds(2);
-      /* ===================================================== */
-      restore_transform();
-      /* ===================================================== */
-      GetComponent<PhysicBody>().enabled = true;
-      /* ===================================================== */
-      bath.drain_it();
-      /* ===================================================== */
-      GetComponent<PlayMakerFSM>().SendEvent("DONE");
-    } else
-      GetComponent<PlayMakerFSM>().SendEvent("DONE");
+    }
+  }
+  
+  public IEnumerator use_door_state() {
+    am.Play("Kick");
+    /* ===================================================== */
+    face_to_and_touch_to<Door>().open();
+    /* ===================================================== */
+    while (true) {
+      yield return null;
+    }
+  }
+
+  public IEnumerator use_bath_state_1() {
+    am.Play("Idle");
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = false;
+    /* ===================================================== */
+    Bath bath = face_to_and_touch_to<Bath>();
+    bath.fill_it();
+    /* ===================================================== */
+    backup_transform();
+    /* ===================================================== */
+    transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.right);
+    /* ===================================================== */
+    transform.position = bath.transform.position;
+    transform.position += new Vector3(0, -0.47f, 0);
+    /* ===================================================== */
+    while (true) {
+      yield return null;
+    }
+  }
+
+  public IEnumerator use_bath_state_2() {
+    am.Play("Idle");
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = true;
+    /* ===================================================== */
+    restore_transform();
+    /* ===================================================== */
+    yield return null;
+    /* ===================================================== */
+    face_to_and_touch_to<Bath>().drain_it();
     /* ===================================================== */
     while (true) {
       yield return null;
@@ -248,9 +267,9 @@ public class Player : MonoBehaviour {
   
   T face_to_and_touch_to<T>() where T : MonoBehaviour {
     Collider[] colliders = Physics.OverlapBox(
-      transform.position + GetComponent<BoxCollider>().center,
-      Vector3.Scale(GetComponent<BoxCollider>().size / 2, new Vector3(1f, 1f, 1f))
-    );
+                                              transform.position + GetComponent<BoxCollider>().center,
+                                              Vector3.Scale(GetComponent<BoxCollider>().size / 2, new Vector3(1f, 1f, 1f))
+                                              );
     /* ============================================ */
     foreach (var collider in colliders)
       if (collider.gameObject != gameObject && collider.GetComponent<T>() != null) {
