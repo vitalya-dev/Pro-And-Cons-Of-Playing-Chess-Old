@@ -9,7 +9,7 @@ public class Level : MonoBehaviour {
         GameObject gui = new GameObject("GUI");
         /* ============================================== */
         GameObject crosshair =
-            Instantiate(Resources.Load("Crosshair", typeof(GameObject))) as GameObject;
+            Instantiate(Resources.Load("Etc/Crosshair", typeof(GameObject))) as GameObject;
         crosshair.transform.position = Vector3.up * (Camera.main.transform.position.y - 1);
         crosshair.transform.parent = gui.transform;
     }
