@@ -159,6 +159,24 @@ public class Player : MonoBehaviour {
   public IEnumerator use_cupboard_state() {
     am.Play("Idle");
     /* ===================================================== */
+    Cupboard cupboard = face_to_and_touch_to<Cupboard>();
+    /* ===================================================== */
+    Sprite old_player_shoulder = transform.Find("Shoulder Right").GetComponent<SpriteRenderer>().sprite;
+    Sprite old_player_leg = transform.Find("Leg Right").GetComponent<SpriteRenderer>().sprite;
+    Sprite old_player_body = transform.Find("Body 1").GetComponent<SpriteRenderer>().sprite;
+    /* ===================================================== */
+    transform.Find("Shoulder Right").GetComponent<SpriteRenderer>().sprite = cupboard.shoulder_sprite;
+    transform.Find("Shoulder Left").GetComponent<SpriteRenderer>().sprite = cupboard.shoulder_sprite;
+    transform.Find("Leg Right").GetComponent<SpriteRenderer>().sprite = cupboard.leg_sprite;
+    transform.Find("Leg Left").GetComponent<SpriteRenderer>().sprite = cupboard.leg_sprite;
+    transform.Find("Body 1").GetComponent<SpriteRenderer>().sprite = cupboard.body_sprite;
+    transform.Find("Body 2").GetComponent<SpriteRenderer>().sprite = cupboard.body_sprite;
+    transform.Find("Body 3").GetComponent<SpriteRenderer>().sprite = cupboard.body_sprite;
+    /* ===================================================== */
+    cupboard.shoulder_sprite = old_player_shoulder;
+    cupboard.leg_sprite = old_player_leg;
+    cupboard.body_sprite = old_player_body;
+    /* ===================================================== */
     while (true) {
       transform.rotation *= Quaternion.Euler(0, 45, 0);
       yield return null;
@@ -188,7 +206,7 @@ public class Player : MonoBehaviour {
     transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.right);
     /* ===================================================== */
     transform.position = bath.transform.position;
-    transform.position += new Vector3(0, -0.47f, 0);
+    transform.position += new Vector3(0, -0.475f, 0);
     /* ===================================================== */
     while (true) {
       yield return null;
