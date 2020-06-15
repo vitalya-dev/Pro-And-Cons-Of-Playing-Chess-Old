@@ -6,11 +6,10 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
+  private float time;
+
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
-
-  public GameObject[] particles;
-
 
   PhysicBody pb;
   Animator am;
@@ -21,6 +20,8 @@ public class Player : MonoBehaviour {
   }
 
   void Update() {
+    GetComponent<PlayMakerFSM>().FsmVariables.GetFsmFloat("time").RawValue = time;
+    /* ===================================================== */
     axis.x = Input.GetAxisRaw("Horizontal");
     axis.z = Input.GetAxisRaw("Vertical");
     GetComponent<PlayMakerFSM>().FsmVariables.GetFsmFloat("axis").RawValue = axis.magnitude;
@@ -177,6 +178,8 @@ public class Player : MonoBehaviour {
     cupboard.leg_sprite = old_player_leg;
     cupboard.body_sprite = old_player_body;
     /* ===================================================== */
+    time += 1;
+    /* ===================================================== */
     while (true) {
       transform.rotation *= Quaternion.Euler(0, 45, 0);
       yield return null;
@@ -207,6 +210,8 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     transform.position = bath.transform.position;
     transform.position += new Vector3(0, -0.475f, 0);
+    /* ===================================================== */
+    time += 1;
     /* ===================================================== */
     while (true) {
       yield return null;
@@ -269,11 +274,6 @@ public class Player : MonoBehaviour {
   public IEnumerator dead_state() {
     /* ===================================================== */
     am.Play("Dead");
-    /* ===================================================== */
-    foreach (var particle in particles) {
-      GameObject.Instantiate(particle, transform.position + Vector3.up, Quaternion.identity);
-    }
-    gameObject.SetActive(false);
     /* ===================================================== */
     return null;
   }
