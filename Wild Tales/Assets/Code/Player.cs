@@ -146,6 +146,8 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     if (face_to_and_touch_to<Door>()) {
       GetComponent<PlayMakerFSM>().SendEvent("DOOR");
+    } else if (face_to_and_touch_to<Exit>()) {
+      GetComponent<PlayMakerFSM>().SendEvent("EXIT");
     } else if (face_to_and_touch_to<Bath>()) {
       GetComponent<PlayMakerFSM>().SendEvent("BATH");
     } else if (face_to_and_touch_to<Cupboard>()) {
@@ -195,6 +197,17 @@ public class Player : MonoBehaviour {
       yield return null;
     }
   }
+
+  public IEnumerator use_exit_state() {
+    am.Play("Kick");
+    /* ===================================================== */
+    face_to_and_touch_to<Exit>().open();
+    /* ===================================================== */
+    while (true) {
+      yield return null;
+    }
+  }
+
 
   public IEnumerator use_bath_state_1() {
     am.Play("Idle");
