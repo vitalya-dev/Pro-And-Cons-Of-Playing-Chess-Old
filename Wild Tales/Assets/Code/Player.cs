@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time;
+  private float time = 2;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -33,6 +33,21 @@ public class Player : MonoBehaviour {
     if (Input.GetButtonDown("Fire3"))
       GetComponent<PlayMakerFSM>().SendEvent("FIRE3");
   }
+
+  public void say(string text) {
+    GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
+    text_object.GetComponent<TMPro.TextMeshPro>().text = text;
+    text_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
+    /* ===================================================== */
+    text_object.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+    text_object.transform.position += Vector3.up * (Camera.main.transform.position.y - 1); 
+    /* ===================================================== */w
+    text_object.name = text;
+    /* ===================================================== */
+    // GameObject.Destroy(text_object, duration);
+    Debug.Log(text);
+  }
+
 
   public IEnumerator wait_state() {
     while (true) {
