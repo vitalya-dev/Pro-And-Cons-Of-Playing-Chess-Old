@@ -36,15 +36,18 @@ public class Player : MonoBehaviour {
 
   public void say(string text) {
     GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
-    text_object.GetComponent<TMPro.TextMeshPro>().text = text;
+    /* ===================================================== */
+    string[] lines = text.Split(char.Parse("#"));
+    text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(lines[0].Length * 0.5f, lines.Length);
+    /* ===================================================== */
+    text_object.GetComponent<TMPro.TextMeshPro>().text = text.Replace("#", "\n");
     text_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
     /* ===================================================== */
     text_object.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
     text_object.transform.position += Vector3.up * (Camera.main.transform.position.y - 1); 
-    /* ===================================================== */w
+    /* ===================================================== */
     text_object.name = text;
     /* ===================================================== */
-    // GameObject.Destroy(text_object, duration);
     Debug.Log(text);
   }
 

@@ -81,12 +81,12 @@ public class TriggerSystem : MonoBehaviour {
     Task.current.Succeed();
   }
 
-	void justify_text(GameObject display_object) {
-		float w = display_object.GetComponent<RectTransform>().sizeDelta.x;
-		float p_w = display_object.GetComponent<TMPro.TextMeshPro>().GetPreferredValues().x;
-		float h = display_object.GetComponent<RectTransform>().sizeDelta.y;
-		display_object.GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Min(p_w, w), h);
-	}
+  void justify_text(GameObject display_object) {
+    float w = display_object.GetComponent<RectTransform>().sizeDelta.x;
+    float p_w = display_object.GetComponent<TMPro.TextMeshPro>().GetPreferredValues().x;
+    float h = display_object.GetComponent<RectTransform>().sizeDelta.y;
+    display_object.GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Min(p_w, w), h);
+  }
 
 
 }
