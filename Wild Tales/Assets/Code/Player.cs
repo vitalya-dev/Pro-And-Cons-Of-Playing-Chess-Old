@@ -35,6 +35,12 @@ public class Player : MonoBehaviour {
   }
 
   public void say(string text) {
+    if (text == "#NOTHING") {
+      foreach (var t_o in GameObject.FindObjectsOfType<TMPro.TextMeshPro>())
+        if (t_o.name.StartsWith(GetInstanceID() + "_")) Destroy(t_o.gameObject);
+      return;
+    }
+    /* ===================================================== */
     GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
     /* ===================================================== */
     string[] lines = text.Split(char.Parse("#"));
@@ -46,7 +52,7 @@ public class Player : MonoBehaviour {
     text_object.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
     text_object.transform.position += Vector3.up * (Camera.main.transform.position.y - 1); 
     /* ===================================================== */
-    text_object.name = text;
+    text_object.name = GetInstanceID() + "_" + text;
     /* ===================================================== */
     Debug.Log(text);
   }
