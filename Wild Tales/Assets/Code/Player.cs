@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 2;
+  private float time = 0;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -55,6 +55,10 @@ public class Player : MonoBehaviour {
     text_object.name = GetInstanceID() + "_" + text;
     /* ===================================================== */
     Debug.Log(text);
+  }
+
+  public void time_inc() {
+    time += 1;
   }
 
 
@@ -204,8 +208,6 @@ public class Player : MonoBehaviour {
     cupboard.leg_sprite = old_player_leg;
     cupboard.body_sprite = old_player_body;
     /* ===================================================== */
-    time += 1;
-    /* ===================================================== */
     while (true) {
       transform.rotation *= Quaternion.Euler(0, 45, 0);
       yield return null;
@@ -232,7 +234,6 @@ public class Player : MonoBehaviour {
     }
   }
 
-
   public IEnumerator use_bath_state_1() {
     am.Play("Idle");
     /* ===================================================== */
@@ -247,8 +248,6 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     transform.position = bath.transform.position;
     transform.position += new Vector3(0, -0.475f, 0);
-    /* ===================================================== */
-    time += 1;
     /* ===================================================== */
     while (true) {
       yield return null;
