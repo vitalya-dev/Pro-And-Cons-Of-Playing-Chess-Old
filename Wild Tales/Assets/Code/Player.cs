@@ -43,8 +43,7 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
     /* ===================================================== */
-    string[] lines = text.Split(char.Parse("#"));
-    text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(lines[0].Length * 0.5f, lines.Length * 1.5f);
+    text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(12, 4);
     /* ===================================================== */
     text_object.GetComponent<TMPro.TextMeshPro>().text = text.Replace("#", "\n");
     text_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
