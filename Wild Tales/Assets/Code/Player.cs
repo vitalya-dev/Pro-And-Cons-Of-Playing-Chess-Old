@@ -43,17 +43,21 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
     /* ===================================================== */
-    text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(12, 4);
+    text_object.GetComponent<TMPro.TextMeshPro>().text = text;
     /* ===================================================== */
-    text_object.GetComponent<TMPro.TextMeshPro>().text = text.Replace("#", "\n");
     text_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
+    /* ===================================================== */
+    float width = 12;
+    float height = 0;
+    /* ===================================================== */
+    text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+    height = text_object.GetComponent<TMPro.TextMeshPro>().GetPreferredValues().y;
+    text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
     /* ===================================================== */
     text_object.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
     text_object.transform.position += Vector3.up * (Camera.main.transform.position.y - 1); 
     /* ===================================================== */
     text_object.name = GetInstanceID() + "_" + text;
-    /* ===================================================== */
-    Debug.Log(text);
   }
 
   public void time_inc() {
