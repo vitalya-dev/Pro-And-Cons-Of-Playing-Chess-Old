@@ -188,6 +188,8 @@ public class Player : MonoBehaviour {
       GetComponent<PlayMakerFSM>().SendEvent("BATH");
     } else if (face_to_and_touch_to<Cupboard>()) {
       GetComponent<PlayMakerFSM>().SendEvent("CUPBOARD");
+    } else if (face_to_and_touch_to<Phone>()) {
+      GetComponent<PlayMakerFSM>().SendEvent("PHONE");
     }
     /* ===================================================== */
     while (true) {
