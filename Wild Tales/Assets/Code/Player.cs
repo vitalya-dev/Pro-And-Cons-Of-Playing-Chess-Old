@@ -38,6 +38,9 @@ public class Player : MonoBehaviour {
     if (text == "#NOTHING") {
       foreach (var t_o in GameObject.FindObjectsOfType<TMPro.TextMeshPro>())
         if (t_o.name.StartsWith(GetInstanceID() + "_")) Destroy(t_o.gameObject);
+      /* ===================================================== */
+      GameObject.Find("Mist").GetComponent<SpriteRenderer>().enabled = false;
+      /* ===================================================== */
       return;
     }
     /* ===================================================== */
@@ -47,7 +50,7 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     text_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
     /* ===================================================== */
-    float width = 12;
+    float width = Mathf.Min(16, text.Length);
     float height = 0;
     /* ===================================================== */
     text_object.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
@@ -58,6 +61,8 @@ public class Player : MonoBehaviour {
     text_object.transform.position += Vector3.up * (Camera.main.transform.position.y - 1); 
     /* ===================================================== */
     text_object.name = GetInstanceID() + "_" + text;
+    /* ===================================================== */
+    GameObject.Find("Mist").GetComponent<SpriteRenderer>().enabled = true;
   }
 
   public void time_inc() {
