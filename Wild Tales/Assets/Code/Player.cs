@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 8;
+  private float time = 1;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -197,9 +197,7 @@ public class Player : MonoBehaviour {
     }
   }
   
-  public IEnumerator use_cupboard_state() {
-    am.Play("Idle");
-    /* ===================================================== */
+  public void use_cupboard() {
     Cupboard cupboard = face_to_and_touch_to<Cupboard>();
     /* ===================================================== */
     Sprite old_player_shoulder = transform.Find("Shoulder Right").GetComponent<SpriteRenderer>().sprite;
@@ -217,22 +215,22 @@ public class Player : MonoBehaviour {
     cupboard.shoulder_sprite = old_player_shoulder;
     cupboard.leg_sprite = old_player_leg;
     cupboard.body_sprite = old_player_body;
-    /* ===================================================== */
-    while (true) {
-      transform.rotation *= Quaternion.Euler(0, 45, 0);
-      yield return null;
-    }
   }
 
-  public IEnumerator use_door_state() {
+  public void open_door() {
     am.Play("Kick");
-    /* ===================================================== */
     face_to_and_touch_to<Door>().open();
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
   }
+
+  public void rotate_by(float angle) {
+    Debug.Log("rotate by");
+    transform.rotation *= Quaternion.Euler(0, angle, 0);
+  }
+
+  void rotate(string angle) {
+    
+  }
+
 
   public IEnumerator use_exit_state() {
     am.Play("Kick");
