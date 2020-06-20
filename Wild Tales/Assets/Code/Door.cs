@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour {
-    public Vector3 opend = Vector3.right;
+  public Vector3 opend = Vector3.right;
 
-    public void open() {
-        transform.rotation *= Quaternion.FromToRotation(Vector3.forward, opend);
-        opend *= -1;
-    }
+  public virtual void open() {
+    transform.rotation *= Quaternion.FromToRotation(Vector3.forward, opend);
+    opend *= -1;
+  }
 }
