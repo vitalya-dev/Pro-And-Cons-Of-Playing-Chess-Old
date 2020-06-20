@@ -227,8 +227,14 @@ public class Player : MonoBehaviour {
     transform.rotation *= Quaternion.Euler(0, angle, 0);
   }
 
-  void rotate(string angle) {
-    
+  void rotate(string angles) {
+    string[] angles_3 = angles.Split(',');
+    /* ===================================================== */
+    float x = float.Parse(angles_3[0]);
+    float y = float.Parse(angles_3[1]);
+    float z = float.Parse(angles_3[2]);
+    /* ===================================================== */
+    transform.rotation *= Quaternion.Euler(x, y, z);
   }
 
 
