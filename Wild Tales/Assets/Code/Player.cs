@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 1;
+  private float time = 0;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
       GetComponent<PlayMakerFSM>().SendEvent("FIRE3");
   }
 
-  public void say(string text) {
+  void say(string text) {
     if (text == "#NOTHING") {
       foreach (var t_o in GameObject.FindObjectsOfType<TMPro.TextMeshPro>())
         if (t_o.name.StartsWith(GetInstanceID() + "_")) Destroy(t_o.gameObject);
@@ -197,7 +197,7 @@ public class Player : MonoBehaviour {
     }
   }
   
-  public void use_cupboard() {
+  void use_cupboard() {
     Cupboard cupboard = face_to_and_touch_to<Cupboard>();
     /* ===================================================== */
     Sprite old_player_shoulder = transform.Find("Shoulder Right").GetComponent<SpriteRenderer>().sprite;
@@ -217,14 +217,9 @@ public class Player : MonoBehaviour {
     cupboard.body_sprite = old_player_body;
   }
 
-  public void open_door() {
+  void open_door() {
     am.Play("Kick");
     face_to_and_touch_to<Door>().open();
-  }
-
-  public void rotate_by(float angle) {
-    Debug.Log("rotate by");
-    transform.rotation *= Quaternion.Euler(0, angle, 0);
   }
 
   void rotate(string angles) {
