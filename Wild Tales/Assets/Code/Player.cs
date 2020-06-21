@@ -228,6 +228,15 @@ public class Player : MonoBehaviour {
     face_to_and_touch_to<Door>().open();
   }
 
+  void pickup_phone() {
+    am.Play("Idle");
+    face_to_and_touch_to<Phone>().pickup();
+  }
+
+  void hangup_phone() {
+    am.Play("Idle");
+    face_to_and_touch_to<Phone>().hangup();
+  }
 
   void rotate(string angles) {
     string[] angles_3 = angles.Split(',');
