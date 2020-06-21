@@ -27,11 +27,11 @@ public class Player : MonoBehaviour {
     GetComponent<PlayMakerFSM>().FsmVariables.GetFsmFloat("axis").RawValue = axis.magnitude;
     /* ===================================================== */
     if (Input.GetButtonDown("Fire1"))
-      GetComponent<PlayMakerFSM>().SendEvent("FIRE1");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE1");
     if (Input.GetButtonDown("Fire2"))
-      GetComponent<PlayMakerFSM>().SendEvent("FIRE2");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE2");
     if (Input.GetButtonDown("Fire3"))
-      GetComponent<PlayMakerFSM>().SendEvent("FIRE3");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE3");
   }
 
   void say(string text) {
@@ -181,22 +181,22 @@ public class Player : MonoBehaviour {
     am.Play("Use");
     /* ===================================================== */
     if (face_to_and_touch_to<Door>()) {
-      GetComponent<PlayMakerFSM>().SendEvent("DOOR");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("DOOR");
     } else if (face_to_and_touch_to<Exit>()) {
-      GetComponent<PlayMakerFSM>().SendEvent("EXIT");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("EXIT");
     } else if (face_to_and_touch_to<Bath>()) {
-      GetComponent<PlayMakerFSM>().SendEvent("BATH");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("BATH");
     } else if (face_to_and_touch_to<Cupboard>()) {
-      GetComponent<PlayMakerFSM>().SendEvent("CUPBOARD");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("CUPBOARD");
     } else if (face_to_and_touch_to<Phone>()) {
-      GetComponent<PlayMakerFSM>().SendEvent("PHONE");
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("PHONE");
     }
     /* ===================================================== */
     while (true) {
       yield return null;
     }
   }
-  
+
   void use_cupboard() {
     Cupboard cupboard = face_to_and_touch_to<Cupboard>();
     /* ===================================================== */
@@ -221,6 +221,7 @@ public class Player : MonoBehaviour {
     am.Play("Kick");
     face_to_and_touch_to<Door>().open();
   }
+
 
   void rotate(string angles) {
     string[] angles_3 = angles.Split(',');

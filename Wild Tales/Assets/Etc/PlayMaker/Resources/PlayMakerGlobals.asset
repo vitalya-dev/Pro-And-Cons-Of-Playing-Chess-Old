@@ -13,7 +13,25 @@ MonoBehaviour:
   m_Name: PlayMakerGlobals
   m_EditorClassIdentifier: 
   variables:
-    floatVariables: []
+    floatVariables:
+    - useVariable: 1
+      name: 
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 0
+    - useVariable: 1
+      name: axis
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 0
+    - useVariable: 1
+      name: time
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 0
     intVariables: []
     boolVariables: []
     stringVariables: []
@@ -30,7 +48,7 @@ MonoBehaviour:
     enumVariables: []
     categories:
     - 
-    variableCategoryIDs: 
+    variableCategoryIDs: 000000000000000000000000
   events:
   - FIRST BUILDING CLEANUP
   - FIRST BUILDING CLEAN
