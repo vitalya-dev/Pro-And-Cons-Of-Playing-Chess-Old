@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
     am.Play("Idle");
   }
 
+
   void say(string text) {
     am.Play("Idle");
     /* ===================================================== */
@@ -237,6 +238,16 @@ public class Player : MonoBehaviour {
     am.Play("Idle");
     face_to_and_touch_to<Phone>().hangup();
   }
+
+  void change_graphic(string graphic) {
+    string[] graphic_2 = graphic.Split(',');
+    /* ===================================================== */
+    GameObject body = transform.Find(graphic_2[0]).gameObject;
+    Sprite sprite = Resources.Load<Sprite>("Graphics/Layers/" + graphic_2[1]);
+    /* ===================================================== */
+    body.GetComponent<SpriteRenderer>().sprite = sprite;
+  }
+
 
   void rotate(string angles) {
     string[] angles_3 = angles.Split(',');
