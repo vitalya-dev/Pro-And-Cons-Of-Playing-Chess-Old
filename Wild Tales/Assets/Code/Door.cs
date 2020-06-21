@@ -8,5 +8,7 @@ public class Door : MonoBehaviour {
   public virtual void open() {
     transform.rotation *= Quaternion.FromToRotation(Vector3.forward, opend);
     opend *= -1;
+    /* ===================================================== */
+    GameObject.Find("Door Open").GetComponent<AudioSource>().Play();
   }
 }

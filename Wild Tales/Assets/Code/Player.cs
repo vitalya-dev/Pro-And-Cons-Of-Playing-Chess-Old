@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 0;
+  private float time = 3;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -34,7 +34,13 @@ public class Player : MonoBehaviour {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE3");
   }
 
+  void wait() {
+    am.Play("Idle");
+  }
+
   void say(string text) {
+    am.Play("Idle");
+    /* ===================================================== */
     if (text == "#NOTHING") {
       foreach (var t_o in GameObject.FindObjectsOfType<TMPro.TextMeshPro>())
         if (t_o.name.StartsWith(GetInstanceID() + "_")) Destroy(t_o.gameObject);
@@ -180,10 +186,10 @@ public class Player : MonoBehaviour {
   public IEnumerator use_state() {
     am.Play("Use");
     /* ===================================================== */
-    if (face_to_and_touch_to<Door>()) {
-      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("DOOR");
-    } else if (face_to_and_touch_to<Exit>()) {
+    if (face_to_and_touch_to<Exit>()) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("EXIT");
+    } else if (face_to_and_touch_to<Door>()) {
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("DOOR");
     } else if (face_to_and_touch_to<Bath>()) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("BATH");
     } else if (face_to_and_touch_to<Cupboard>()) {
@@ -341,10 +347,9 @@ public class Player : MonoBehaviour {
     
   
   T face_to_and_touch_to<T>() where T : MonoBehaviour {
-    Collider[] colliders = Physics.OverlapBox(
-                                              transform.position + GetComponent<BoxCollider>().center,
-                                              Vector3.Scale(GetComponent<BoxCollider>().size / 2, new Vector3(1f, 1f, 1f))
-                                              );
+    BoxCollider bc = GetComponent<BoxCollider>();
+    /* ============================================ */
+    Collider[] colliders = Physics.OverlapBox(transform.position + bc.center, bc.size / 2);
     /* ============================================ */
     foreach (var collider in colliders)
       if (collider.gameObject != gameObject && collider.GetComponent<T>() != null) {
