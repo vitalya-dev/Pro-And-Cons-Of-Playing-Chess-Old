@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 3;
+  private float time = 0;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -270,13 +270,13 @@ public class Player : MonoBehaviour {
     }
   }
 
-  public IEnumerator use_bath_state_1() {
+  void take_bath_start() {
     am.Play("Idle");
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = false;
     /* ===================================================== */
     Bath bath = face_to_and_touch_to<Bath>();
-    bath.fill_it();
+    bath.fill();
     /* ===================================================== */
     backup_transform();
     /* ===================================================== */
@@ -284,26 +284,16 @@ public class Player : MonoBehaviour {
     /* ===================================================== */
     transform.position = bath.transform.position;
     transform.position += new Vector3(0, -0.475f, 0);
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
   }
 
-  public IEnumerator use_bath_state_2() {
+  void take_bath_finished() {
     am.Play("Idle");
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = true;
     /* ===================================================== */
     restore_transform();
     /* ===================================================== */
-    yield return null;
-    /* ===================================================== */
-    face_to_and_touch_to<Bath>().drain_it();
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
+    face_to_and_touch_to<Bath>().drain();
   }
 
 

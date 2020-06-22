@@ -13811,8 +13811,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 65.046875
-        y: 239.9375
+        x: 54.078125
+        y: 236.91406
         width: 100
         height: 16
       isBreakpoint: 0
@@ -13858,14 +13858,14 @@ MonoBehaviour:
         paramName: []
         paramDataPos: 
         paramByteDataSize: 
-    - name: USE BATH 1
+    - name: TAKE BATH START
       description: 
-      colorIndex: 1
+      colorIndex: 6
       position:
         serializedVersion: 2
-        x: 700.4531
+        x: 876.4531
         y: 110.15625
-        width: 100.4
+        width: 142.8
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -13875,19 +13875,19 @@ MonoBehaviour:
           name: FIRE3
           isSystemEvent: 0
           isGlobal: 0
-        toState: USE BATH 2
+        toState: TAKE BATH FINISHED
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.StartCoroutine
+        - HutongGames.PlayMaker.Actions.SendMessage
         customNames:
         - 
         actionEnabled: 01
         actionIsOpen: 01
         actionStartIndex: 00000000
-        actionHashCodes: 2d05a800
+        actionHashCodes: 855b5c00
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -13901,7 +13901,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: use_bath_state_1
+        - FunctionName: take_bath_start
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -14028,13 +14028,7 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: Player
+        fsmStringParams: []
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
@@ -14048,27 +14042,28 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams: []
-        byteData: 01
+        byteData: 000000000100000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 14000000120000001500000001000000
+        paramDataType: 1400000007000000070000001500000001000000
         paramName:
         - gameObject
-        - behaviour
+        - delivery
+        - options
         - functionCall
-        - stopOnExit
-        paramDataPos: 00000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000001000000
-    - name: USE BATH 2
+        - everyFrame
+        paramDataPos: 0000000000000000040000000000000008000000
+        paramByteDataSize: 0000000004000000040000000000000001000000
+    - name: TAKE BATH FINISHED
       description: 
-      colorIndex: 1
+      colorIndex: 6
       position:
         serializedVersion: 2
-        x: 535.5703
-        y: 112.1875
-        width: 101.2
+        x: 666.46094
+        y: 110.21875
+        width: 157.2
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -14084,15 +14079,15 @@ MonoBehaviour:
         colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.StartCoroutine
+        - HutongGames.PlayMaker.Actions.SendMessage
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
         actionEnabled: 0101
         actionIsOpen: 0101
-        actionStartIndex: 0000000004000000
-        actionHashCodes: 2d05a80048c01101
+        actionStartIndex: 0000000005000000
+        actionHashCodes: 855b5c0048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -14106,7 +14101,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: use_bath_state_2
+        - FunctionName: take_bath_finished
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -14233,13 +14228,7 @@ MonoBehaviour:
         fsmEventTargetParams: []
         fsmPropertyParams: []
         layoutOptionParams: []
-        fsmStringParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: Player
+        fsmStringParams: []
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
@@ -14250,7 +14239,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0.1
+          value: 0.2
         fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
@@ -14260,30 +14249,31 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - 
-        byteData: 0100
+        byteData: 00000000010000000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 140000001200000015000000010000000f0000001700000001000000
+        paramDataType: 14000000070000000700000015000000010000000f0000001700000001000000
         paramName:
         - gameObject
-        - behaviour
+        - delivery
+        - options
         - functionCall
-        - stopOnExit
+        - everyFrame
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000000000000000000001000000
-        paramByteDataSize: 00000000000000000000000001000000000000000000000001000000
-    - name: '*GO TO IDLE:'
+        paramDataPos: 0000000000000000040000000000000008000000000000000000000009000000
+        paramByteDataSize: 0000000004000000040000000000000001000000000000000000000001000000
+    - name: GO TO IDLE:#@$%@%
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 198.94531
-        y: 131.90625
-        width: 107.6
+        x: 286.45312
+        y: 136.28125
+        width: 161.2
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -14386,7 +14376,7 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 934.9531
+        x: 1110.9531
         y: 158.34375
         width: 117.2
         height: 48
@@ -14398,7 +14388,7 @@ MonoBehaviour:
           name: CORRECT
           isSystemEvent: 0
           isGlobal: 0
-        toState: USE BATH 1
+        toState: TAKE BATH START
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14406,7 +14396,7 @@ MonoBehaviour:
           name: NON CORRECT
           isSystemEvent: 0
           isGlobal: 0
-        toState: 'GO TO IDLE:'
+        toState: GO TO IDLE:#&&@%^
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14484,8 +14474,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 385.79688
-        y: 114.453125
+        x: 499.04688
+        y: 120.328125
         width: 100
         height: 32
       isBreakpoint: 0
@@ -14496,7 +14486,7 @@ MonoBehaviour:
           name: FINISHED
           isSystemEvent: 1
           isGlobal: 0
-        toState: '*GO TO IDLE:'
+        toState: GO TO IDLE:#@$%@%
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14682,7 +14672,7 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 1154.4922
+        x: 1330.4922
         y: 144.0625
         width: 100
         height: 32
@@ -14749,14 +14739,14 @@ MonoBehaviour:
         - realTime
         paramDataPos: 000000000000000000000000
         paramByteDataSize: 000000000000000001000000
-    - name: 'GO TO IDLE:'
+    - name: GO TO IDLE:#&&@%^
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 773.4219
-        y: 231.875
-        width: 100.4
+        x: 863.9375
+        y: 234.79688
+        width: 153.2
         height: 32
       isBreakpoint: 0
       isSequence: 0

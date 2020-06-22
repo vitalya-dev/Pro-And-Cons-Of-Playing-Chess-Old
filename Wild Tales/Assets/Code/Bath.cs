@@ -4,11 +4,11 @@ using UnityEngine;
 
 [SelectionBase]
 public class Bath : MonoBehaviour {
-  public void fill_it() {
+  public void fill() {
     transform.Find("Bubble").GetComponent<SpriteRenderer>().enabled = true;
   }
 
-  public void drain_it() {
+  public void drain() {
     transform.Find("Bubble").GetComponent<SpriteRenderer>().enabled = false;
   }
 
