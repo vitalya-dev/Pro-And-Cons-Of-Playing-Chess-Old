@@ -270,30 +270,32 @@ public class Player : MonoBehaviour {
     }
   }
 
+  void fill_bath() {
+    face_to_and_touch_to<Bath>().fill();
+  }
+
+  void drain_bath() {
+    face_to_and_touch_to<Bath>().drain();
+  }
+
   void take_bath_start() {
     am.Play("Idle");
     /* ===================================================== */
-    GetComponent<PhysicBody>().enabled = false;
-    /* ===================================================== */
-    Bath bath = face_to_and_touch_to<Bath>();
-    bath.fill();
-    /* ===================================================== */
     backup_transform();
     /* ===================================================== */
+    transform.position = face_to_and_touch_to<Bath>().transform.position;
     transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.right);
-    /* ===================================================== */
-    transform.position = bath.transform.position;
     transform.position += new Vector3(0, -0.475f, 0);
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = false;
   }
 
   void take_bath_finished() {
     am.Play("Idle");
     /* ===================================================== */
-    GetComponent<PhysicBody>().enabled = true;
-    /* ===================================================== */
     restore_transform();
     /* ===================================================== */
-    face_to_and_touch_to<Bath>().drain();
+    GetComponent<PhysicBody>().enabled = true;
   }
 
 
