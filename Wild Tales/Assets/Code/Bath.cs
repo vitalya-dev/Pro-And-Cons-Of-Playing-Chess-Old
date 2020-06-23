@@ -11,7 +11,7 @@ public class Bath : MonoBehaviour {
   }
 
   public void drain() {
-    GameObject.Find("Water Flush").GetComponent<AudioSource>().Play();
+    GameObject.Find("Water Bubble").GetComponent<AudioSource>().Play();
     /* ===================================================== */
     transform.Find("Bubble").GetComponent<SpriteRenderer>().enabled = false;
   }
