@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 1;
+  private float time = 4;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -122,7 +122,10 @@ public class Player : MonoBehaviour {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("CUPBOARD");
     } else if (face_to_and_touch_to<Phone>()) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("PHONE");
+    } else if (face_to_and_touch_to<Chess>()) {
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("CHESS");
     }
+
   }
 
   void get_dressed() {

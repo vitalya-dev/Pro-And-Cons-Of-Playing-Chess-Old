@@ -56,3 +56,8 @@ MonoBehaviour:
   - CAMERA DOWN
   - START ABUSING
   - STOP ABUSING
+  - 'CHESS:'
+  - 'BATH:'
+  - 'CUPBOARD:'
+  - 'PHONE:'
+  - 'EXIT:'
