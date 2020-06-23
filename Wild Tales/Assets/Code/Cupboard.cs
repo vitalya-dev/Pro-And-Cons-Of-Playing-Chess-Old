@@ -14,5 +14,8 @@ public class Cupboard : MonoBehaviour {
     body_sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_29_copy");
   }
 
+  public void open() {
+    GameObject.Find("Cupboard Open").GetComponent<AudioSource>().Play();
+  }
 
 }

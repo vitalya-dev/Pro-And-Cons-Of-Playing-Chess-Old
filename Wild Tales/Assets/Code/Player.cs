@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
 
-  private float time = 0;
+  private float time = 1;
 
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -204,7 +204,7 @@ public class Player : MonoBehaviour {
     }
   }
 
-  void use_cupboard() {
+  void get_dressed() {
     Cupboard cupboard = face_to_and_touch_to<Cupboard>();
     /* ===================================================== */
     Sprite old_player_shoulder = transform.Find("Shoulder Right").GetComponent<SpriteRenderer>().sprite;
@@ -237,6 +237,11 @@ public class Player : MonoBehaviour {
   void hangup_phone() {
     am.Play("Idle");
     face_to_and_touch_to<Phone>().hangup();
+  }
+
+  void open_cupboard() {
+    am.Play("Idle");
+    face_to_and_touch_to<Cupboard>().open();
   }
 
   void change_graphic(string graphic) {
