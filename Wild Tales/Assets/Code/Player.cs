@@ -77,13 +77,6 @@ public class Player : MonoBehaviour {
   }
 
 
-  public IEnumerator wait_state() {
-    while (true) {
-      yield return null;
-    }
-  }
-
-
   public IEnumerator idle_state() {
     /* ===================================================== */
     am.Play("Idle");
@@ -97,74 +90,6 @@ public class Player : MonoBehaviour {
       yield return null;
     }
   }
-
-  public IEnumerator sleep_state() {
-    am.Play("Sleep");
-    /* ===================================================== */
-    GetComponent<PhysicBody>().enabled = false;
-    /* ===================================================== */
-    transform.position += new Vector3(0, 10, 0);
-    yield return null;
-    /* ===================================================== */
-    transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward);
-    /* ===================================================== */
-    GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = true;
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
-  }
-
-  public IEnumerator wakeup_state() {
-    /* ===================================================== */
-    am.Play("Wakeup");
-    /* ===================================================== */
-    transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.forward);
-    GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Play();
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
-  }
-
-
-  public IEnumerator situp_state() {
-    /* ===================================================== */
-    am.Play("Situp");
-    /* ===================================================== */
-    transform.position += new Vector3(0, -10, 0.5f);
-    yield return null;
-    /* ===================================================== */
-    transform.rotation = Quaternion.LookRotation(-1 * Vector3.right, Vector3.forward);
-    /* ===================================================== */
-    GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = false;
-    Camera.main.orthographicSize = 6.5f;
-    yield return null;
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
-  }
-
-  public IEnumerator getup_state() {
-    am.Play("Getup");
-    /* ===================================================== */
-    transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
-    yield return null;
-    /* ===================================================== */
-    transform.position += new Vector3(2, 0, 0);
-    yield return null;
-    /* ===================================================== */
-    GetComponent<PhysicBody>().enabled = true;
-    /* ===================================================== */
-    GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
-    GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Stop();
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
-  }
-
 
   public IEnumerator walk_state() {
     /* ===================================================== */
@@ -184,8 +109,8 @@ public class Player : MonoBehaviour {
     }
   }
 
-  public IEnumerator use_state() {
-    am.Play("Use");
+  void interact() {
+    am.Play("Interact");
     /* ===================================================== */
     if (face_to_and_touch_to<Exit>()) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("EXIT");
@@ -197,10 +122,6 @@ public class Player : MonoBehaviour {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("CUPBOARD");
     } else if (face_to_and_touch_to<Phone>()) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("PHONE");
-    }
-    /* ===================================================== */
-    while (true) {
-      yield return null;
     }
   }
 
@@ -265,16 +186,6 @@ public class Player : MonoBehaviour {
   }
 
 
-  public IEnumerator use_exit_state() {
-    am.Play("Kick");
-    /* ===================================================== */
-    face_to_and_touch_to<Exit>().open();
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
-  }
-
   void fill_bath() {
     face_to_and_touch_to<Bath>().fill();
   }
@@ -303,57 +214,6 @@ public class Player : MonoBehaviour {
     GetComponent<PhysicBody>().enabled = true;
   }
 
-
-  /* ============================================================================================ */
-  public IEnumerator jab_state() {
-    /* ===================================================== */
-    am.Play("Jab");
-    /* ===================================================== */
-    while (true) {
-      attack();
-      yield return null;
-    }
-  }
-
-  public IEnumerator right_state() {
-    /* ===================================================== */
-    am.Play("Right");
-    /* ===================================================== */
-    while (true) {
-      attack();
-      yield return null;
-    }
-  }
-
-  public IEnumerator hook_state() {
-    /* ===================================================== */
-    am.Play("Hook");
-    /* ===================================================== */
-    while (true) {
-      attack();
-      yield return null;
-    }
-  }
-
-  void attack() {
-        
-  }
-  /* ============================================================================================ */
-
-  public IEnumerator dead_state() {
-    /* ===================================================== */
-    am.Play("Dead");
-    /* ===================================================== */
-    return null;
-  }
-
-  public IEnumerator knock_state() {
-    am.Play("Kick");
-    /* ===================================================== */
-    while (true) {
-      yield return null;
-    }
-  }
 
   T seen<T>() where T : MonoBehaviour {
     RaycastHit hit;
