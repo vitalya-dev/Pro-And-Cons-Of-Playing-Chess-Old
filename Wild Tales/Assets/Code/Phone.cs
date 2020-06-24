@@ -30,7 +30,7 @@ public class Phone : MonoBehaviour {
     /* ===================================================== */
     GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
     /* ===================================================== */
-    text_object.GetComponent<TMPro.TextMeshPro>().text = "♪";
+    text_object.GetComponent<TMPro.TextMeshPro>().text = "<sprite index=0>";
     /* ===================================================== */
     text_object.transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
     /* ===================================================== */

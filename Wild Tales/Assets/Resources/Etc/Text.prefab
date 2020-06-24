@@ -133,7 +133,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 52fe590962eaa7a409ab964529e3e7e7, type: 2}
   m_tintAllSprites: 0
   m_overrideHtmlColors: 0
   m_faceColor:
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 8132918803741849963}
   - component: {fileID: 8132918803741849962}
   m_Layer: 0
-  m_Name: TMP SubMesh [LiberationSans SDF Material]
+  m_Name: TMP SubMesh [TextMeshPro/Sprite]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 4303028791070440068, guid: 52fe590962eaa7a409ab964529e3e7e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,12 +298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07994bfe8b0e4adb97d706de5dea48d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_spriteAsset: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 4478c37dd1b7108469f1918f5c420488, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 52fe590962eaa7a409ab964529e3e7e7, type: 2}
   m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
-  m_isDefaultMaterial: 0
-  m_padding: 1.25
+  m_sharedMaterial: {fileID: 4303028791070440068, guid: 52fe590962eaa7a409ab964529e3e7e7,
+    type: 2}
+  m_isDefaultMaterial: 1
+  m_padding: 0
   m_renderer: {fileID: 8132918803741849960}
   m_meshFilter: {fileID: 8132918803741849963}
   m_TextComponent: {fileID: 8132918803572023183}
