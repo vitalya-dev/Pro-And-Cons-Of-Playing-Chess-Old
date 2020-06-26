@@ -50,4 +50,9 @@ public class Phone : MonoBehaviour {
     /* ===================================================== */
     Invoke("ring", 3.5f);
   }
+
+  void gas() {
+    GameObject.Find("Gas Spray").GetComponent<AudioSource>().Play();
+    transform.Find("Gas").GetComponent<SpriteRenderer>().enabled = true;
+  }
 }
