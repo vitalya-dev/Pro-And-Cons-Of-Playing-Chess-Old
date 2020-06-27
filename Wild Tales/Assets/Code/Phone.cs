@@ -52,7 +52,12 @@ public class Phone : MonoBehaviour {
   }
 
   void gas() {
-    GameObject.Find("Gas Spray").GetComponent<AudioSource>().Play();
-    transform.Find("Gas").GetComponent<SpriteRenderer>().enabled = true;
+    Debug.Log("Gas");
+    if (GameObject.Find("Gas").GetComponent<SpriteRenderer>().enabled) {
+      GameObject.Find("Gas").GetComponent<SpriteRenderer>().enabled = false;
+    } else {
+      GameObject.Find("Gas Spray").GetComponent<AudioSource>().Play();
+      GameObject.Find("Gas").GetComponent<SpriteRenderer>().enabled = true;
+    }
   }
 }
