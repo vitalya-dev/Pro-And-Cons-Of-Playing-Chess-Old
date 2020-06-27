@@ -199,6 +199,7 @@ public class Player : MonoBehaviour {
 
   void pass_out() {
     GameObject.Find("Black").GetComponent<SpriteRenderer>().enabled = true;
+    GameObject.Find("Man In Me").GetComponent<AudioSource>().Play();
   }
 
 
