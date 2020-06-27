@@ -197,6 +197,11 @@ public class Player : MonoBehaviour {
     face_to_and_touch_to<Bath>().drain();
   }
 
+  void pass_out() {
+    GameObject.Find("Black").GetComponent<SpriteRenderer>().enabled = true;
+  }
+
+
   void take_bath_start() {
     am.Play("Idle");
     /* ===================================================== */
