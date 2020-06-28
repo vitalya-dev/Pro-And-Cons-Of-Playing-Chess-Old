@@ -223,6 +223,24 @@ public class Player : MonoBehaviour {
     GetComponent<PhysicBody>().enabled = true;
   }
 
+  void sleep() {
+    am.Play("Sleep");
+    /* ===================================================== */
+    GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = true;
+    /* ===================================================== */
+    backup_transform();
+    /* ===================================================== */
+    transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward);
+    /* ===================================================== */
+    transform.position = GameObject.FindObjectOfType<Bed>().transform.position;
+    transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+    transform.position += Vector3.up * (Camera.main.transform.position.y - 2); 
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = false;
+    /* ===================================================== */
+    Camera.main.orthographicSize = 1.5f;
+  }
+
 
   T seen<T>() where T : MonoBehaviour {
     RaycastHit hit;
