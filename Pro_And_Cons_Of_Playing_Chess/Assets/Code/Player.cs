@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
   /* ===================================================== */
-  private float time = 5;
+  private float time = 0;
   /* ===================================================== */
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
