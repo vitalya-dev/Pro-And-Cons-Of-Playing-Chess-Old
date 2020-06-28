@@ -1,16 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
 public class Player : MonoBehaviour {
   public float speed;
-
+  /* ===================================================== */
   private float time = 5;
-
+  /* ===================================================== */
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
-
+  /* ===================================================== */
   PhysicBody pb;
   Animator am;
 
@@ -223,7 +224,7 @@ public class Player : MonoBehaviour {
     GetComponent<PhysicBody>().enabled = true;
   }
 
-  void sleep() {
+  void sleep_1() {
     am.Play("Sleep");
     /* ===================================================== */
     GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = true;
@@ -239,7 +240,37 @@ public class Player : MonoBehaviour {
     GetComponent<PhysicBody>().enabled = false;
     /* ===================================================== */
     Camera.main.orthographicSize = 1.5f;
+    Camera.main.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+    Camera.main.transform.position += new Vector3(0, 20, 0);
   }
+
+  void sleep_2() {
+    am.Play("Sleep");
+    /* ===================================================== */
+    transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.forward);
+    /* ===================================================== */
+    GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Play();
+  }
+
+  void sleep_3() {
+    am.Play("Sleep");
+    /* ===================================================== */
+    GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = false;
+    /* ===================================================== */
+    Camera.main.orthographicSize = 6.5f;
+  }
+
+  void sleep_4() {
+    am.Play("Sleep");
+    /* ===================================================== */
+    restore_transform();
+    /* ===================================================== */
+    GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
+    GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Stop();
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = true;
+  }
+
 
 
   T seen<T>() where T : MonoBehaviour {
