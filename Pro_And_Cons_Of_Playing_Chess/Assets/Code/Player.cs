@@ -204,7 +204,7 @@ public class Player : MonoBehaviour {
   }
 
 
-  void take_bath_start() {
+  void take_bath_1() {
     am.Play("Idle");
     /* ===================================================== */
     backup_transform();
@@ -216,7 +216,7 @@ public class Player : MonoBehaviour {
     GetComponent<PhysicBody>().enabled = false;
   }
 
-  void take_bath_finished() {
+  void take_bath_2() {
     am.Play("Idle");
     /* ===================================================== */
     restore_transform();

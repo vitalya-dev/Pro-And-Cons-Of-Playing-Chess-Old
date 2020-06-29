@@ -778,7 +778,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67444
+  m_Name: pb_Mesh17112
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7337,6 +7337,9 @@ MonoBehaviour:
     - name: 'PHONE:'
       isSystemEvent: 0
       isGlobal: 1
+    - name: 'SLEEP:'
+      isSystemEvent: 0
+      isGlobal: 1
     globalTransitions:
     - fsmEvent:
         name: 'AAA:'
@@ -13684,7 +13687,7 @@ MonoBehaviour:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
     name: SLEEP
-    startState: SLEEP_1
+    startState: SLEEP 1
     states:
     - name: OFF
       description: 
@@ -13692,7 +13695,7 @@ MonoBehaviour:
       position:
         serializedVersion: 2
         x: 61.4375
-        y: 121.64844
+        y: 105.64844
         width: 100
         height: 16
       isBreakpoint: 0
@@ -13738,13 +13741,13 @@ MonoBehaviour:
         paramName: []
         paramDataPos: 
         paramByteDataSize: 
-    - name: SLEEP_1
+    - name: SLEEP 1
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 1137.4141
-        y: 107.09375
+        x: 1177.4766
+        y: 118.203125
         width: 100
         height: 32
       isBreakpoint: 0
@@ -13755,7 +13758,7 @@ MonoBehaviour:
           name: FINISHED
           isSystemEvent: 1
           isGlobal: 0
-        toState: SLEEP_2
+        toState: SLEEP 2
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -13948,13 +13951,13 @@ MonoBehaviour:
         - realTime
         paramDataPos: 0000000000000000040000000000000008000000000000000000000009000000
         paramByteDataSize: 0000000004000000040000000000000001000000000000000000000001000000
-    - name: SLEEP_2
+    - name: SLEEP 2
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 970.64844
-        y: 147.95312
+        x: 999.1875
+        y: 121.921875
         width: 100
         height: 32
       isBreakpoint: 0
@@ -14158,13 +14161,13 @@ MonoBehaviour:
         - realTime
         paramDataPos: 0000000000000000040000000000000008000000000000000000000009000000
         paramByteDataSize: 0000000004000000040000000000000001000000000000000000000001000000
-    - name: SLEEP_4
+    - name: SLEEP4
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 411.85156
-        y: 229.04688
+        x: 488.96094
+        y: 174.44531
         width: 100
         height: 32
       isBreakpoint: 0
@@ -14373,8 +14376,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 808.7969
-        y: 150.00781
+        x: 847.33594
+        y: 131.11719
         width: 102
         height: 32
       isBreakpoint: 0
@@ -14385,7 +14388,7 @@ MonoBehaviour:
           name: FIRE3
           isSystemEvent: 0
           isGlobal: 0
-        toState: SLEEP_3
+        toState: SLEEP 3
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14428,13 +14431,13 @@ MonoBehaviour:
         paramName: []
         paramDataPos: 
         paramByteDataSize: 
-    - name: SLEEP_3
+    - name: SLEEP 3
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 622.6172
-        y: 236.25
+        x: 686.8672
+        y: 145.92969
         width: 100
         height: 32
       isBreakpoint: 0
@@ -14445,7 +14448,7 @@ MonoBehaviour:
           name: FIRE3
           isSystemEvent: 0
           isGlobal: 0
-        toState: SLEEP_4
+        toState: SLEEP4
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14631,8 +14634,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 251.00781
-        y: 115.67969
+        x: 283.82812
+        y: 179.64844
         width: 100.4
         height: 32
       isBreakpoint: 0
@@ -14741,7 +14744,21 @@ MonoBehaviour:
     - name: FIRE3
       isSystemEvent: 0
       isGlobal: 0
-    globalTransitions: []
+    - name: 'SLEEP:'
+      isSystemEvent: 0
+      isGlobal: 1
+    - name: 'PHONE:'
+      isSystemEvent: 0
+      isGlobal: 1
+    globalTransitions:
+    - fsmEvent:
+        name: 'SLEEP:'
+        isSystemEvent: 0
+        isGlobal: 1
+      toState: SLEEP 1
+      linkStyle: 0
+      linkConstraint: 0
+      colorIndex: 0
     variables:
       floatVariables: []
       intVariables: []
@@ -14875,14 +14892,14 @@ MonoBehaviour:
         paramName: []
         paramDataPos: 
         paramByteDataSize: 
-    - name: TAKE BATH START
+    - name: TAKE BATH 1
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
         x: 1379.2188
         y: 110.80469
-        width: 142.8
+        width: 108.4
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -14892,7 +14909,7 @@ MonoBehaviour:
           name: FIRE3
           isSystemEvent: 0
           isGlobal: 0
-        toState: TAKE BATH FINISHED
+        toState: TAKE BATH 2
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14918,7 +14935,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: take_bath_start
+        - FunctionName: take_bath_1
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -15073,14 +15090,14 @@ MonoBehaviour:
         - everyFrame
         paramDataPos: 0000000000000000040000000000000008000000
         paramByteDataSize: 0000000004000000040000000000000001000000
-    - name: TAKE BATH FINISHED
+    - name: TAKE BATH 2
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
         x: 1100.2734
         y: 156.35938
-        width: 157.2
+        width: 109.2
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -15118,7 +15135,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: take_bath_finished
+        - FunctionName: take_bath_2
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -15878,7 +15895,7 @@ MonoBehaviour:
           name: FINISHED
           isSystemEvent: 1
           isGlobal: 0
-        toState: TAKE BATH START
+        toState: TAKE BATH 1
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
