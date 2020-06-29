@@ -214,6 +214,8 @@ public class Player : MonoBehaviour {
     transform.position += new Vector3(0, -0.475f, 0);
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = false;
+    /* ===================================================== */
+    GameObject.Find("Whistling").GetComponent<AudioSource>().Play();
   }
 
   void take_bath_2() {
@@ -222,6 +224,8 @@ public class Player : MonoBehaviour {
     restore_transform();
     /* ===================================================== */
     GetComponent<PhysicBody>().enabled = true;
+    /* ===================================================== */
+    GameObject.Find("Whistling").GetComponent<AudioSource>().Stop();
   }
 
   void sleep_1() {
