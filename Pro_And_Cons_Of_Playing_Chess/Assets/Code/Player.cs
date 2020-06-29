@@ -154,6 +154,25 @@ public class Player : MonoBehaviour {
     face_to_and_touch_to<Door>().open();
   }
 
+  void sit_at_chair_1() {
+    am.Play("Idle");
+    /* ===================================================== */
+    backup_transform();
+    /* ===================================================== */
+    transform.position = GameObject.FindObjectOfType<Chair>().transform.position;
+    transform.rotation = Quaternion.LookRotation(Vector3.right);    
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = false;
+  }
+
+  void sit_at_chair_2() {
+    am.Play("Idle");
+    /* ===================================================== */
+    restore_transform();
+    /* ===================================================== */
+    GetComponent<PhysicBody>().enabled = true;
+  }
+
   void pickup_phone() {
     am.Play("Idle");
     face_to_and_touch_to<Phone>().pickup();
