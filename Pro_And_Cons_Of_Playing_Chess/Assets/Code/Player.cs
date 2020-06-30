@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float speed;
   /* ===================================================== */
-  private float time = 0;
+  private float time;
   /* ===================================================== */
   [HideInInspector]
   public Vector3 axis = Vector3.zero;
@@ -18,6 +18,11 @@ public class Player : MonoBehaviour {
   void Awake() {
     pb = GetComponent<PhysicBody>();
     am = GetComponent<Animator>();
+  }
+
+  void Start() {
+    time = 0;
+    foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
   }
 
   void Update() {
