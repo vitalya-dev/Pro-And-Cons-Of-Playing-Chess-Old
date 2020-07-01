@@ -20,8 +20,9 @@ public class Player : MonoBehaviour {
     am = GetComponent<Animator>();
   }
 
+
   void Start() {
-    time = 3;
+    time = 4;
     foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("AAA:");
   }
 
@@ -56,6 +57,8 @@ public class Player : MonoBehaviour {
       /* ===================================================== */
       return;
     }
+    /* ===================================================== */
+    foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("TALK");
     /* ===================================================== */
     GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
     /* ===================================================== */
