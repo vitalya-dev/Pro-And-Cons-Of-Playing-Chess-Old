@@ -22,8 +22,8 @@ public class Player : MonoBehaviour {
 
 
   void Start() {
-    time = 4;
-    foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("AAA:");
+    time = 0;
+    foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
   }
 
   void Update() {
