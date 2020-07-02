@@ -24,8 +24,8 @@ namespace scene_1 {
 
 
     void Start() {
-      time = 0;
-      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
+      time = 4;
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("AAA:");
     }
 
     void Update() {
@@ -302,6 +302,18 @@ namespace scene_1 {
       GetComponent<PhysicBody>().enabled = true;
     }
 
+
+    void disable_all_fsm_except(string machine_name) {
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) {
+        if (fsm.FsmName != machine_name) fsm.enabled = false;
+      }
+    }
+
+    void enable_all_fsm_except(string machine_name) {
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) {
+        if (fsm.FsmName != machine_name) fsm.enabled = true;
+      }
+    }
 
 
     T seen<T>() where T : MonoBehaviour {
