@@ -60,8 +60,6 @@ namespace scene_1 {
         return;
       }
       /* ===================================================== */
-      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("TALK");
-      /* ===================================================== */
       GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
       /* ===================================================== */
       text_object.GetComponent<TMPro.TextMeshPro>().text = text;
