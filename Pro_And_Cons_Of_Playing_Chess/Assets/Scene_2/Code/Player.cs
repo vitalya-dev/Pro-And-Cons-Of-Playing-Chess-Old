@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace scene_1 {
+
+namespace scene_2 {
   [SelectionBase]
   public class Player : MonoBehaviour {
     public float speed;
@@ -24,8 +24,8 @@ namespace scene_1 {
 
 
     void Start() {
-      time = 4;
-      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("AAA:");
+      time = 0;
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
     }
 
     void Update() {
@@ -215,7 +215,8 @@ namespace scene_1 {
     }
 
     void pass_out() {
-      SceneManager.LoadScene("Scene_2");
+      GameObject.Find("Black").GetComponent<SpriteRenderer>().enabled = true;
+      GameObject.Find("Man In Me").GetComponent<AudioSource>().Play();
     }
 
 
