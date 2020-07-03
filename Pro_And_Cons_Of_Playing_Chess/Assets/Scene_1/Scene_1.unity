@@ -23416,7 +23416,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 654822895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4ee43b062d9cd346aa228b819801937, type: 3}
+  m_Script: {fileID: 11500000, guid: ca97268594e65764cb0eb22434e8c6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   opend: {x: 1, y: 0, z: 0}
@@ -25064,7 +25064,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19124
+  m_Name: pb_Mesh18366
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26539,7 +26539,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17354
+  m_Name: pb_Mesh18572
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28228,7 +28228,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150130777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed937ba49a892a9448d6ae787f000d47, type: 3}
+  m_Script: {fileID: 11500000, guid: db78f0491d3e1654b8f2e9029d342e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shoulder_sprite: {fileID: 0}
