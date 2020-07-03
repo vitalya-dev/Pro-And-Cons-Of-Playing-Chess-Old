@@ -86,36 +86,25 @@ namespace scene_1 {
     }
 
 
-    public IEnumerator idle_state() {
-      /* ===================================================== */
+    void idle() {
       am.Play("Idle");
       /* ===================================================== */
-      while (true) {
-        /* ===================================================== */
-        Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
-        Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
-        transform.rotation = Quaternion.LookRotation(look);
-        /* ===================================================== */
-        yield return null;
-      }
+      Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
+      Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
+      transform.rotation = Quaternion.LookRotation(look);
     }
 
-    public IEnumerator walk_state() {
-      /* ===================================================== */
+    void walk() {
       am.Play("Walk");
       /* ===================================================== */
-      while (true) {
-        Vector3 offset_x = Vector3.Scale(axis, new Vector3(1, 0, 0)) * speed * Time.deltaTime;
-        Vector3 offset_z = Vector3.Scale(axis, new Vector3(0, 0, 1)) * speed * Time.deltaTime;
-        pb.move_position(transform.position + offset_x);
-        pb.move_position(transform.position + offset_z);
-        /* ===================================================== */
-        Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
-        Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
-        transform.rotation = Quaternion.LookRotation(look);
-        /* ===================================================== */
-        yield return null;
-      }
+      Vector3 offset_x = Vector3.Scale(axis, new Vector3(1, 0, 0)) * speed * Time.deltaTime;
+      Vector3 offset_z = Vector3.Scale(axis, new Vector3(0, 0, 1)) * speed * Time.deltaTime;
+      pb.move_position(transform.position + offset_x);
+      pb.move_position(transform.position + offset_z);
+      /* ===================================================== */
+      Vector3 c_p = GameObject.FindObjectOfType<Crosshair>().transform.position;
+      Vector3 look = Vector3.Scale(c_p - transform.position, new Vector3(1, 0, 1));
+      transform.rotation = Quaternion.LookRotation(look);
     }
 
     void interact() {
