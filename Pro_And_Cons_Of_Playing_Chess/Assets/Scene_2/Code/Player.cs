@@ -24,6 +24,7 @@ namespace scene_2 {
 
 
     void Start() {
+      GetComponent<MeshRenderer>().enabled = false;
       time = 0;
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
     }
@@ -253,44 +254,57 @@ namespace scene_2 {
       /* ===================================================== */
       transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward);
       /* ===================================================== */
-      transform.position = GameObject.FindObjectOfType<Bed>().transform.position;
+      transform.position = GameObject.FindObjectOfType<Couch>().transform.position + Vector3.forward * 3;
       transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
       transform.position += Vector3.up * (Camera.main.transform.position.y - 2); 
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = false;
       /* ===================================================== */
       Camera.main.orthographicSize = 1.5f;
-      Camera.main.transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+      Camera.main.transform.position = GameObject.FindObjectOfType<Couch>().transform.position;
+      Camera.main.transform.position = Vector3.Scale(Camera.main.transform.position, new Vector3(1, 0, 1));
       Camera.main.transform.position += new Vector3(0, 20, 0);
+      /* ===================================================== */
+      Camera.main.GetComponent<Follow>().enabled = false;
+      /* ===================================================== */
+      GameObject.Find("Man In Me").GetComponent<AudioSource>().Play();
     }
 
     void sleep_2() {
       am.Play("Sleep");
       /* ===================================================== */
-      transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.forward);
-      /* ===================================================== */
-      GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Play();
+      transform.position += Vector3.forward * -0.5f * Time.deltaTime;
     }
 
     void sleep_3() {
-      am.Play("Sleep");
+      transform.position = GameObject.FindObjectOfType<Couch>().transform.position + Vector3.left * 5;
+      transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+      transform.position += Vector3.up * (Camera.main.transform.position.y - 2); 
       /* ===================================================== */
-      GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = false;
-      /* ===================================================== */
-      Camera.main.orthographicSize = 6.5f;
+      transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.right);
     }
+
 
     void sleep_4() {
       am.Play("Sleep");
       /* ===================================================== */
-      restore_transform();
-      /* ===================================================== */
-      GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
-      GameObject.Find("Peace Of Mind").GetComponent<AudioSource>().Stop();
-      /* ===================================================== */
-      GetComponent<PhysicBody>().enabled = true;
+      transform.position += Vector3.right * 0.5f * Time.deltaTime;
     }
 
+
+    void sleep_5() {
+      transform.position = GameObject.FindObjectOfType<Couch>().transform.position + Vector3.forward * 3;
+      transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+      transform.position += Vector3.up * (Camera.main.transform.position.y - 2); 
+      /* ===================================================== */
+      transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.down);
+    }
+
+    void sleep_6() {
+      am.Play("Sleep");
+      /* ===================================================== */
+      transform.position += Vector3.forward * -0.5f * Time.deltaTime;
+    }
 
     void disable_all_fsm_except(string machine_name) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) {
