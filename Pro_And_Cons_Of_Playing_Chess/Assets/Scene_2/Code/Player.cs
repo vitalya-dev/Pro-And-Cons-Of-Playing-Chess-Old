@@ -42,6 +42,8 @@ namespace scene_2 {
         foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE2");
       if (Input.GetButtonDown("Fire3"))
         foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE3");
+      /* ===================================================== */
+      GameObject.Find("Cord").GetComponent<LineRenderer>().SetPosition(0, transform.position);
     }
 
     void wait() {
@@ -360,7 +362,7 @@ namespace scene_2 {
           if ((Vector3.Angle(transform.forward, collider.bounds.center - transform.position)) < 60)
             return collider.GetComponent<T>();
         }
-      /* ============================================ */
+      /* ============================================ */
       return null;
     }
 
