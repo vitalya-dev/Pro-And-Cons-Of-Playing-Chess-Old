@@ -306,6 +306,29 @@ namespace scene_2 {
       transform.position += Vector3.forward * -0.5f * Time.deltaTime;
     }
 
+    void sleep_7() {
+      am.Play("Sleep");
+      /* ===================================================== */
+      GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = false;
+      /* ===================================================== */
+      GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
+      GameObject.Find("Man In Me").GetComponent<AudioSource>().Stop();
+      /* ===================================================== */
+      restore_transform();
+      /* ===================================================== */
+      Camera.main.orthographicSize = 6.5f;
+    }
+
+    void sleep_8() {
+      am.Play("Sleep");
+      /* ===================================================== */
+      transform.position += 3 * Vector3.forward;
+      /* ===================================================== */
+      GetComponent<PhysicBody>().enabled = true;
+      /* ===================================================== */
+      Camera.main.GetComponent<Follow>().enabled = true;
+    }
+
     void disable_all_fsm_except(string machine_name) {
       foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) {
         if (fsm.FsmName != machine_name) fsm.enabled = false;
