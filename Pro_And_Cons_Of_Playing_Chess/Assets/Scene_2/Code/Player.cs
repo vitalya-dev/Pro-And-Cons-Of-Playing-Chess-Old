@@ -43,7 +43,6 @@ namespace scene_2 {
       if (Input.GetButtonDown("Fire3"))
         foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("FIRE3");
       /* ===================================================== */
-      GameObject.Find("Cord").GetComponent<LineRenderer>().SetPosition(0, transform.position);
     }
 
     void wait() {
