@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace scene_2 {
   public class Cord : MonoBehaviour {
-    NavMeshPath path;
-
-    void Start() {
-      path = new NavMeshPath();
-    }
 
     void Update() {
-      Vector3 a = GetComponent<LineRenderer>().GetPosition(0);
-      Vector3 b = GameObject.Find("Player").transform.position +  -1 * GameObject.Find("Player").transform.right;
-      if (NavMesh.CalculatePath(a, b, NavMesh.AllAreas, path)) {
-        GetComponent<LineRenderer>().positionCount = path.corners.Length;
-        GetComponent<LineRenderer>().SetPositions(path.corners);
+      LineRenderer lr = GetComponent<LineRenderer>();
+      /* ===================================================== */
+      Vector3 b = GameObject.Find("Player").transform.position;
+      /* ===================================================== */
+      lr.SetPosition(lr.positionCount - 1, b);
+      /* ===================================================== */
+      for (int i = lr.positionCount - 2; i > 0; i--) {
+        Vector3 d = (lr.GetPosition(i + 1) - lr.GetPosition(i));
+        d = Vector3.Scale(d, new Vector3(1, 0, 1));
+        if (d.magnitude > 0.5f) {
+          Vector3 new_pos = lr.GetPosition(i) + d * 5 * Time.deltaTime;
+          foreach (var collider in Physics.OverlapBox(new_pos, new Vector3(0.1f, 0, 0.1f)))
+            Debug.Log(collider.name);
+          lr.SetPosition(i, new_pos);
+        }
       }
     }
   }
