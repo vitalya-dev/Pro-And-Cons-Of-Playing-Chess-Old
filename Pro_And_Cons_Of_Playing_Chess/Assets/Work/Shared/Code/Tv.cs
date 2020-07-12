@@ -9,12 +9,14 @@ namespace shared {
       GameObject.Find("Tv Noise").GetComponent<AudioSource>().Play();
       /* ===================================================== */
       transform.Find("Screen").GetComponent<SpriteRenderer>().enabled = true;
+      transform.Find("Light").GetComponent<Light>().enabled = true;
     }
 
     public void turn_off() {
       //GameObject.Find("Water Flowing").GetComponent<AudioSource>().Play();
       /* ===================================================== */
       transform.Find("Screen").GetComponent<SpriteRenderer>().enabled = false;
+      transform.Find("Light").GetComponent<Light>().enabled = false;
     }
   }
 }
