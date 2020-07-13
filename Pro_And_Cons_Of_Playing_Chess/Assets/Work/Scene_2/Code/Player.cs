@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace scene_2 {
   [SelectionBase]
   public class Player : MonoBehaviour {
@@ -261,12 +260,8 @@ namespace scene_2 {
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = false;
       /* ===================================================== */
-      Camera.main.orthographicSize = 1.5f;
-      Camera.main.transform.position = GameObject.FindObjectOfType<Couch>().transform.position;
-      Camera.main.transform.position = Vector3.Scale(Camera.main.transform.position, new Vector3(1, 0, 1));
-      Camera.main.transform.position += new Vector3(0, 20, 0);
-      /* ===================================================== */
-      Camera.main.GetComponent<Follow>().enabled = false;
+      GameObject.FindObjectOfType<shared.SceneCamera>().zoom("1,5");
+      GameObject.FindObjectOfType<shared.SceneCamera>().point_on("Couch");
       /* ===================================================== */
       GameObject.Find("Man In Me").GetComponent<AudioSource>().Play();
     }
@@ -317,7 +312,7 @@ namespace scene_2 {
       /* ===================================================== */
       restore_transform();
       /* ===================================================== */
-      Camera.main.orthographicSize = 6.5f;
+      GameObject.FindObjectOfType<shared.SceneCamera>().zoom("6,5");
     }
 
     void sleep_8() {
