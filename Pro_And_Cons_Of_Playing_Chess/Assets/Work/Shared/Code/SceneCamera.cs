@@ -14,6 +14,11 @@ namespace shared {
       c.transform.position = Vector3.Scale(GameObject.Find(target).transform.position, new Vector3(1, 0, 1));
       c.transform.position += new Vector3(0, 20, 0);
     }
+    
+    public void point_on(GameObject target) {
+      point_on(target.name);
+    }
+
   }
 }
 
