@@ -61,7 +61,7 @@ namespace scene_2 {
         return;
       }
       /* ===================================================== */
-      GameObject text_object = Instantiate(Resources.Load("Etc/Text", typeof(GameObject))) as GameObject;
+      GameObject text_object = Instantiate(Resources.Load("Etc/GameText", typeof(GameObject))) as GameObject;
       /* ===================================================== */
       text_object.GetComponent<TMPro.TextMeshPro>().text = text;
       /* ===================================================== */
