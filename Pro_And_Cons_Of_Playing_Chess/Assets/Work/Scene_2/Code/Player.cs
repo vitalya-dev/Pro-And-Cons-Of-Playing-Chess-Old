@@ -246,8 +246,6 @@ namespace scene_2 {
     }
 
     void sleep_1() {
-      am.Play("Sleep");
-      /* ===================================================== */
       GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = true;
       /* ===================================================== */
       backup_transform();
@@ -267,8 +265,6 @@ namespace scene_2 {
     }
 
     void sleep_2() {
-      am.Play("Sleep");
-      /* ===================================================== */
       transform.position += Vector3.forward * -0.5f * Time.deltaTime;
     }
 
@@ -282,8 +278,6 @@ namespace scene_2 {
 
 
     void sleep_4() {
-      am.Play("Sleep");
-      /* ===================================================== */
       transform.position += Vector3.right * 0.5f * Time.deltaTime;
     }
 
@@ -297,14 +291,10 @@ namespace scene_2 {
     }
 
     void sleep_6() {
-      am.Play("Sleep");
-      /* ===================================================== */
       transform.position += Vector3.forward * -0.5f * Time.deltaTime;
     }
 
     void sleep_7() {
-      am.Play("Sleep");
-      /* ===================================================== */
       GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = false;
       /* ===================================================== */
       GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
@@ -316,8 +306,6 @@ namespace scene_2 {
     }
 
     void sleep_8() {
-      am.Play("Sleep");
-      /* ===================================================== */
       transform.position += 3 * Vector3.forward;
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = true;
