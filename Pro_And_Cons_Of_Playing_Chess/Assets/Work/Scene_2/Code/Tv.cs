@@ -12,8 +12,12 @@ namespace scene_2 {
     }
 
     public void start_the_message_2() {
+      GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
+      text_object.transform.SetParent(GameObject.Find("Canvas").transform);
+      text_object.GetComponent<RectTransform>().offsetMin = new Vector2(10, 0);
+      text_object.GetComponent<RectTransform>().offsetMax = new Vector2(10, 0);
+      /* ===================================================== */
       GameObject.Find("Tchaikovsky. 1812 Overture").GetComponent<AudioSource>().Play();
     }
-
   }
 }

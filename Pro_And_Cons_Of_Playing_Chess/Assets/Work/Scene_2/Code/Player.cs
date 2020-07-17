@@ -25,7 +25,7 @@ namespace scene_2 {
     void Start() {
       GetComponent<MeshRenderer>().enabled = false;
       time = 0;
-      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
+      //foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("SLEEP:");
     }
 
     void Update() {

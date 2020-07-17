@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 3933303072811123915}
   - component: {fileID: 3933303072811123912}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: UIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3933303072811123915
 CanvasRenderer:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.49
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 383
+  m_firstOverflowCharacterIndex: 284
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
