@@ -56,7 +56,7 @@ namespace scene_2 {
         foreach (var t_o in GameObject.FindObjectsOfType<TMPro.TextMeshPro>())
           if (t_o.name.StartsWith(GetInstanceID() + "_")) Destroy(t_o.gameObject);
         /* ===================================================== */
-        GameObject.Find("Mist").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find("Pink Mist").GetComponent<SpriteRenderer>().enabled = false;
         /* ===================================================== */
         return;
       }
@@ -79,7 +79,7 @@ namespace scene_2 {
       /* ===================================================== */
       text_object.name = GetInstanceID() + "_" + text;
       /* ===================================================== */
-      GameObject.Find("Mist").GetComponent<SpriteRenderer>().enabled = true;
+      GameObject.Find("Pink Mist").GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void time_inc() {
@@ -344,7 +344,8 @@ namespace scene_2 {
           if ((Vector3.Angle(transform.forward, collider.bounds.center - transform.position)) < 60)
             return collider.GetComponent<T>();
         }
-      /* ============================================ */
+      /* ============================================ */
+
       return null;
     }
 

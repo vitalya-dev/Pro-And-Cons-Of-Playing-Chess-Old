@@ -32652,7 +32652,7 @@ GameObject:
   - component: {fileID: 1686604348}
   - component: {fileID: 1686604349}
   m_Layer: 8
-  m_Name: Mist
+  m_Name: Pink Mist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
