@@ -309,8 +309,6 @@ namespace scene_2 {
       transform.position += 3 * Vector3.forward;
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = true;
-      /* ===================================================== */
-      Camera.main.GetComponent<Follow>().enabled = true;
     }
 
     void disable_all_fsm_except(string machine_name) {
