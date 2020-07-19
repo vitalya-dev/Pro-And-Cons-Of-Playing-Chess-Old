@@ -5750,7 +5750,7 @@ MonoBehaviour:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
     name: SLEEP
-    startState: MESSAGE 2
+    startState: OFF
     states:
     - name: OFF
       description: 
