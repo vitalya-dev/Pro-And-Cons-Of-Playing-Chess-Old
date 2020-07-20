@@ -31,7 +31,7 @@ namespace shared {
 
 
     public void follow(string target) {
-      follow_target = GameObject.Find(target).transform;
+      follow_target = target == "" ? null : GameObject.Find(target).transform;
     }
 
     public void follow(GameObject target) {
