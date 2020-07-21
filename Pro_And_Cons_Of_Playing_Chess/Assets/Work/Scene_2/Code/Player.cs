@@ -174,6 +174,27 @@ namespace scene_2 {
       GetComponent<PhysicBody>().enabled = true;
     }
 
+    void sit_at_couch_1() {
+      am.Play("Idle");
+      /* ===================================================== */
+      backup_transform();
+      /* ===================================================== */
+      transform.position = GameObject.FindObjectOfType<Couch>().transform.position;
+      transform.rotation = Quaternion.LookRotation(Vector3.right);    
+      /* ===================================================== */
+      GetComponent<PhysicBody>().enabled = false;
+    }
+
+    void sit_at_couch_2() {
+      am.Play("Idle");
+      /* ===================================================== */
+      restore_transform();
+      /* ===================================================== */
+      GetComponent<PhysicBody>().enabled = true;
+    }
+
+
+
     void pickup_phone() {
       am.Play("Idle");
       face_to_and_touch_to<Phone>().pickup();
