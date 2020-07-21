@@ -5,7 +5,7 @@ using UnityEngine;
 namespace shared {
   [SelectionBase]
   public class SceneCamera : MonoBehaviour {
-    Transform follow_target;
+    public Transform follow_target;
     Vector3 camera_velocity;
 
     void Update() {
