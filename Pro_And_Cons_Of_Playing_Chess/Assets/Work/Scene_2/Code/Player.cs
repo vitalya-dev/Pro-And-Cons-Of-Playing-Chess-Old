@@ -124,6 +124,8 @@ namespace scene_2 {
         foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("PHONE");
       } else if (face_to_and_touch_to<Chess>()) {
         foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("CHESS");
+      } else if (face_to_and_touch_to<Tv>()) {
+        foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("TV");
       }
 
     }

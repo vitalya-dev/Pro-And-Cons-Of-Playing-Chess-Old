@@ -11,6 +11,7 @@ namespace scene_2 {
     public void message_1() {
       GameObject.FindObjectOfType<shared.SceneCamera>().zoom("1,5");
       GameObject.FindObjectOfType<shared.SceneCamera>().point_on(gameObject);
+      GameObject.FindObjectOfType<shared.SceneCamera>().follow("");
     }
 
     public void message_2() {
