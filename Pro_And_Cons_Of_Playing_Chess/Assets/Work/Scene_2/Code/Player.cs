@@ -156,8 +156,6 @@ namespace scene_2 {
     void sit_at_chair_1() {
       am.Play("Idle");
       /* ===================================================== */
-      backup_transform();
-      /* ===================================================== */
       transform.position = GameObject.FindObjectOfType<Chair>().transform.position;
       transform.rotation = Quaternion.LookRotation(Vector3.right);    
       /* ===================================================== */
@@ -167,7 +165,8 @@ namespace scene_2 {
     void sit_at_chair_2() {
       am.Play("Idle");
       /* ===================================================== */
-      restore_transform();
+      transform.position += 2 * Vector3.left;
+      transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1)) + new Vector3(0, 2.02f, 0);
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = true;
     }
