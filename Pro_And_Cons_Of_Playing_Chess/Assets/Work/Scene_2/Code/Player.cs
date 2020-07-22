@@ -25,8 +25,6 @@ namespace scene_2 {
     void Start() {
       GetComponent<MeshRenderer>().enabled = false;
       time = 0;
-      /* ===================================================== */
-      backup_transform();
     }
 
     void Update() {
@@ -188,11 +186,11 @@ namespace scene_2 {
     void sit_at_couch_2() {
       am.Play("Idle");
       /* ===================================================== */
-      restore_transform();
+      transform.position += 3 * Vector3.forward;
+      transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1)) + new Vector3(0, 2.02f, 0);
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = true;
     }
-
 
 
     void pickup_phone() {
@@ -272,7 +270,7 @@ namespace scene_2 {
     void sleep_1() {
       GameObject.Find("Starry Night").GetComponent<SpriteRenderer>().enabled = true;
       /* ===================================================== */
-      backup_transform();
+      GameObject.FindObjectOfType<shared.SceneCamera>().follow("");
       /* ===================================================== */
       transform.rotation = Quaternion.LookRotation(Vector3.up, Vector3.forward);
       /* ===================================================== */
@@ -324,15 +322,10 @@ namespace scene_2 {
       GameObject.Find("Stop The Music").GetComponent<AudioSource>().Play();
       GameObject.Find("Man In Me").GetComponent<AudioSource>().Stop();
       /* ===================================================== */
-      restore_transform();
+      transform.position = GameObject.FindObjectOfType<Couch>().transform.position;
+      transform.rotation = Quaternion.LookRotation(Vector3.right);
       /* ===================================================== */
       GameObject.FindObjectOfType<shared.SceneCamera>().zoom("6,5");
-    }
-
-    void sleep_8() {
-      transform.position += 3 * Vector3.forward;
-      /* ===================================================== */
-      GetComponent<PhysicBody>().enabled = true;
     }
 
     void disable_all_fsm_except(string machine_name) {
@@ -386,6 +379,5 @@ namespace scene_2 {
       transform.rotation = backup_rotation;
     }
     /* ============================================ */
-
   }
 }
