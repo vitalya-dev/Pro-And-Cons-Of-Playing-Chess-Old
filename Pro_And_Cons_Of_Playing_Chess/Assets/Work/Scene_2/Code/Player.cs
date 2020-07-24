@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace scene_2 {
   [SelectionBase]
@@ -160,6 +161,22 @@ namespace scene_2 {
       transform.rotation = Quaternion.LookRotation(Vector3.right);    
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = false;
+    }
+
+    void play_chess_1() {
+      GameObject image_object= Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+      /* ===================================================== */
+      image_object.name = "Chess Board";
+      image_object.transform.SetParent(GameObject.Find("Canvas").transform);
+      /* ===================================================== */
+      image_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_26_copy");
+      /* ===================================================== */
+      image_object.GetComponent<RectTransform>().sizeDelta = new Vector2(462, 462);
+      image_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+    }
+
+    void play_chess_2() {
+      Destroy(GameObject.Find("Chess Board"));
     }
 
     void sit_at_chair_2() {

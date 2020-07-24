@@ -14305,8 +14305,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 56.5
-        y: 345.54688
+        x: 64.4375
+        y: 152.03125
         width: 100
         height: 16
       isBreakpoint: 0
@@ -14357,8 +14357,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 1724.1562
-        y: 228.3125
+        x: 1612.1562
+        y: 180.3125
         width: 100
         height: 32
       isBreakpoint: 0
@@ -14369,7 +14369,7 @@ MonoBehaviour:
           name: FINISHED
           isSystemEvent: 1
           isGlobal: 0
-        toState: SIT AT CHAIR 1
+        toState: PLAY_CHESS_1
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14429,8 +14429,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 571.6719
-        y: 106.09375
+        x: 359.0625
+        y: 128.52344
         width: 161.2
         height: 32
       isBreakpoint: 0
@@ -14529,14 +14529,14 @@ MonoBehaviour:
         - everyFrame
         paramDataPos: 00000000000000000000000000000000
         paramByteDataSize: 00000000000000000000000001000000
-    - name: SIT AT CHAIR 1
+    - name: PLAY_CHESS_1
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 1182.1953
-        y: 154.875
-        width: 119.6
+        x: 908.15625
+        y: 114.39844
+        width: 122
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -14546,7 +14546,7 @@ MonoBehaviour:
           name: FIRE3
           isSystemEvent: 0
           isGlobal: 0
-        toState: SIT AT CHAIR 2
+        toState: PLAY_CHESS_2
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -14572,7 +14572,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: sit_at_chair_1
+        - FunctionName: play_chess_1
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -14713,7 +14713,7 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams: []
-        byteData: 000000000100000000
+        byteData: 000000000000000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
@@ -14727,14 +14727,14 @@ MonoBehaviour:
         - everyFrame
         paramDataPos: 0000000000000000040000000000000008000000
         paramByteDataSize: 0000000004000000040000000000000001000000
-    - name: SIT AT CHAIR 2
+    - name: PLAY_CHESS_2
       description: 
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 819.4922
-        y: 158.07031
-        width: 120.4
+        x: 688.78906
+        y: 124.5625
+        width: 122.8
         height: 32
       isBreakpoint: 0
       isSequence: 0
@@ -14751,14 +14751,12 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.SendMessage
-        - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
-        - 
-        actionEnabled: 0101
-        actionIsOpen: 0101
-        actionStartIndex: 0000000005000000
-        actionHashCodes: 855b5c0048c01101
+        actionEnabled: 01
+        actionIsOpen: 01
+        actionStartIndex: 00000000
+        actionHashCodes: 855b5c00
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -14772,7 +14770,7 @@ MonoBehaviour:
             value: {fileID: 0}
         animationCurveParams: []
         functionCallParams:
-        - FunctionName: sit_at_chair_2
+        - FunctionName: play_chess_2
           parameterType: None
           BoolParameter:
             useVariable: 0
@@ -14904,13 +14902,7 @@ MonoBehaviour:
         fsmVarParams: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams:
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0.1
+        fsmFloatParams: []
         fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
@@ -14918,25 +14910,21 @@ MonoBehaviour:
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
-        stringParams:
-        - 
-        byteData: 00000000010000000000
+        stringParams: []
+        byteData: 000000000000000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 14000000070000000700000015000000010000000f0000001700000001000000
+        paramDataType: 1400000007000000070000001500000001000000
         paramName:
         - gameObject
         - delivery
         - options
         - functionCall
         - everyFrame
-        - time
-        - finishEvent
-        - realTime
-        paramDataPos: 0000000000000000040000000000000008000000000000000000000009000000
-        paramByteDataSize: 0000000004000000040000000000000001000000000000000000000001000000
+        paramDataPos: 0000000000000000040000000000000008000000
+        paramByteDataSize: 0000000004000000040000000000000001000000
     events:
     - name: FINISHED
       isSystemEvent: 1
@@ -18594,79 +18582,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &813209768
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 813209769}
-  - component: {fileID: 813209771}
-  - component: {fileID: 813209770}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &813209769
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813209768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1213478255}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 462, y: 462}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &813209770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813209768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e0e572ac0e5db0b4d99983f017d704cb, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &813209771
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813209768}
-  m_CullTransparentMesh: 0
 --- !u!1 &818390100
 GameObject:
   m_ObjectHideFlags: 0
@@ -22489,8 +22404,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 813209769}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22842,7 +22756,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.5
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -26906,7 +26820,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17390
+  m_Name: pb_Mesh17532
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
