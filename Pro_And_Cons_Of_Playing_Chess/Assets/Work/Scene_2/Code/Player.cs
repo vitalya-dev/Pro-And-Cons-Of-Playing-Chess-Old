@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace scene_2 {
   [SelectionBase]
@@ -169,6 +170,8 @@ namespace scene_2 {
       image_object.name = "Chess Board";
       image_object.transform.SetParent(GameObject.Find("Canvas").transform);
       /* ===================================================== */
+      image_object.AddComponent<BoxCollider>();
+      /* ===================================================== */
       image_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_26_copy");
       /* ===================================================== */
       image_object.GetComponent<RectTransform>().sizeDelta = new Vector2(462, 462);
@@ -178,6 +181,22 @@ namespace scene_2 {
     }
 
     void play_chess_2() {
+      GraphicRaycaster gr = GameObject.Find("Canvas").GetComponent<GraphicRaycaster>();
+      /* ===================================================== */
+      PointerEventData ped = new PointerEventData(null);
+      ped.position = Input.mousePosition;
+      /* ===================================================== */
+      List<RaycastResult> results = new List<RaycastResult>();
+      /* ===================================================== */
+      gr.Raycast(ped, results);
+      /* ===================================================== */
+      foreach (var result in results)
+        Debug.Log(Input.mousePosition);
+      /* ===================================================== */
+    }
+
+
+    void play_chess_3() {
       Destroy(GameObject.Find("Chess Board"));
     }
 

@@ -6,7 +6,13 @@ namespace shared {
   [SelectionBase]
   public class SceneCamera : MonoBehaviour {
     public Transform follow_target;
+    /* ===================================================== */
     Vector3 camera_velocity;
+    /* ===================================================== */
+    public Camera cam {
+      get { return GetComponent<Camera>(); }
+    }
+
 
     void Update() {
       if (follow_target) {
@@ -16,13 +22,12 @@ namespace shared {
     }
 
     public void zoom(string z) {
-      GetComponent<Camera>().orthographicSize = float.Parse(z);
+      cam.orthographicSize = float.Parse(z);
     }
 
     public void point_on(string target) {
-      Camera c = GetComponent<Camera>();
-      c.transform.position = Vector3.Scale(GameObject.Find(target).transform.position, new Vector3(1, 0, 1));
-      c.transform.position += new Vector3(0, 20, 0);
+      cam.transform.position = Vector3.Scale(GameObject.Find(target).transform.position, new Vector3(1, 0, 1));
+      cam.transform.position += new Vector3(0, 20, 0);
     }
     
     public void point_on(GameObject target) {
