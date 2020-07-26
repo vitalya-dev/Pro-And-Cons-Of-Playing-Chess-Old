@@ -173,6 +173,8 @@ namespace scene_2 {
       /* ===================================================== */
       image_object.GetComponent<RectTransform>().sizeDelta = new Vector2(462, 462);
       image_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      /* ===================================================== */
+      GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
 
     void play_chess_2() {

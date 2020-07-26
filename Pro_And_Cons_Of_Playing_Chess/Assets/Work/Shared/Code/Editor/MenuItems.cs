@@ -113,4 +113,13 @@ public class MenuItems {
       }
     }
   }
+
+  [MenuItem("Tools/Toggle Maximized")]
+  static void toggle_maximized() {
+    UnityEditor.EditorWindow.focusedWindow.maximized = true;
+    UnityEditor.EditorWindow.focusedWindow.Repaint();
+     UnityEditor.EditorWindow.focusedWindow.ShowModalUtility();
+      //UnityEditor.EditorWindow.focusedWindow.minSize = new Vector2(1600, 900) - new Vector2(100, 100);
+  }
 }
+
