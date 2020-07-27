@@ -175,24 +175,21 @@ namespace scene_2 {
       image_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_26_copy");
       /* ===================================================== */
       image_object.GetComponent<RectTransform>().sizeDelta = new Vector2(462, 462);
-      image_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      image_object.GetComponent<RectTransform>().localPosition = Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0.5f));
+      image_object.GetComponent<RectTransform>().localPosition -= (Vector3)image_object.GetComponent<RectTransform>().sizeDelta * 0.5f;
+      image_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+      image_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+      image_object.GetComponent<RectTransform>().pivot = Vector2.zero;
       /* ===================================================== */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
 
     void play_chess_2() {
-      GraphicRaycaster gr = GameObject.Find("Canvas").GetComponent<GraphicRaycaster>();
-      /* ===================================================== */
-      PointerEventData ped = new PointerEventData(null);
-      ped.position = Input.mousePosition;
-      /* ===================================================== */
-      List<RaycastResult> results = new List<RaycastResult>();
-      /* ===================================================== */
-      gr.Raycast(ped, results);
-      /* ===================================================== */
-      foreach (var result in results)
-        Debug.Log(Input.mousePosition);
-      /* ===================================================== */
+      Vector2 pos = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position - new Vector3(7, 7, 0);
+      pos = pos / new Vector2(56, 56);
+      pos = new Vector2((int)pos.x, (int)pos.y);
+      if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8)
+        Debug.Log(pos);
     }
 
 
