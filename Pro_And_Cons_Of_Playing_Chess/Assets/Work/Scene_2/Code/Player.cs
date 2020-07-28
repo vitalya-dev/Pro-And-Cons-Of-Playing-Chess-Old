@@ -184,6 +184,20 @@ namespace scene_2 {
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
 
+
+    /* ===================================================== */
+
+    int[,] board = new int [,] {
+      {0, 0, 0, 0, 0, 0, 0, 0}, 
+      {0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0}, 
+      {0, 0, 0, 0, 0, 0, 0, 0}, 
+      {0, 0, 0, 0, 0, 0, 0, 0}, 
+      {0, 0, 0, 0, 0, 0, 0, 0}, 
+      {0, 0, 0, 0, 0, 0, 1, 0}, 
+      {0, 0, 0, 0, 0, 0, 0, 0}, 
+    };
+
     void play_chess_2() {
       Vector2 pos = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position - new Vector3(7, 7, 0);
       pos = pos / new Vector2(56, 56);
@@ -205,6 +219,10 @@ namespace scene_2 {
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = true;
     }
+
+    /* ===================================================== */
+
+
 
     void sit_at_couch_1() {
       am.Play("Idle");
