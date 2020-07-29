@@ -178,7 +178,8 @@ namespace scene_2 {
       {1, 0, 0, 0, 0, 0, 0, 0}, 
     };
 
-    Vector2 clicked = new Vector2(-1, -1);
+    Vector2 clicked_1 = new Vector2(-1, -1);
+    Vector2 clicked_2 = new Vector2(-1, -1);
 
 
     void play_chess_1() {
@@ -239,8 +240,17 @@ namespace scene_2 {
       /* ===================================================== */
       if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
         if (Input.GetMouseButtonDown(0)) {
-          clicked = new Vector2(pos.x, 7 - pos.y);
-          Debug.Log(clicked);
+          //clicked = new Vector2(pos.x, 7 - pos.y);
+          if (clicked_1 == new Vector2(-1, -1))
+            clicked_1 = new Vector2(pos.x, 7 - pos.y);
+          else if (clicked_2 == new Vector2(-1, -1)) {
+             clicked_2 = new Vector2(pos.x, 7 - pos.y);
+             /* ===================================================== */
+             Debug.Log("Make a move from " + clicked_1 + "to " + clicked_2);
+             /* ===================================================== */
+             clicked_1 = new Vector2(-1, -1);
+             clicked_2 = new Vector2(-1, -1);
+          }
         }
       }
     }
@@ -250,6 +260,9 @@ namespace scene_2 {
       Destroy(GameObject.Find("Chess Board"));
     }
 
+
+    /* ===================================================== */
+
     void sit_at_chair_2() {
       am.Play("Idle");
       /* ===================================================== */
@@ -258,10 +271,6 @@ namespace scene_2 {
       /* ===================================================== */
       GetComponent<PhysicBody>().enabled = true;
     }
-
-    /* ===================================================== */
-
-
 
     void sit_at_couch_1() {
       am.Play("Idle");
