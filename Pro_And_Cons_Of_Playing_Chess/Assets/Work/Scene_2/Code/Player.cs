@@ -164,27 +164,7 @@ namespace scene_2 {
       GetComponent<PhysicBody>().enabled = false;
     }
 
-    void play_chess_1() {
-      GameObject image_object= Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
-      /* ===================================================== */
-      image_object.name = "Chess Board";
-      image_object.transform.SetParent(GameObject.Find("Canvas").transform);
-      /* ===================================================== */
-      image_object.AddComponent<BoxCollider>();
-      /* ===================================================== */
-      image_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_26_copy");
-      /* ===================================================== */
-      image_object.GetComponent<RectTransform>().sizeDelta = new Vector2(462, 462);
-      image_object.GetComponent<RectTransform>().localPosition = Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0.5f));
-      image_object.GetComponent<RectTransform>().localPosition -= (Vector3)image_object.GetComponent<RectTransform>().sizeDelta * 0.5f;
-      image_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-      image_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
-      image_object.GetComponent<RectTransform>().pivot = Vector2.zero;
-      /* ===================================================== */
-      GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
-    }
-
-
+    
     /* ===================================================== */
 
     int[,] board = new int [,] {
@@ -195,8 +175,57 @@ namespace scene_2 {
       {0, 0, 0, 0, 0, 0, 0, 0}, 
       {0, 0, 0, 0, 0, 0, 0, 0}, 
       {0, 0, 0, 0, 0, 0, 1, 0}, 
-      {0, 0, 0, 0, 0, 0, 0, 0}, 
+      {1, 0, 0, 0, 0, 0, 0, 0}, 
     };
+
+
+    void play_chess_1() {
+      GameObject board_object= Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+      /* ===================================================== */
+      board_object.name = "Chess Board";
+      board_object.transform.SetParent(GameObject.Find("Canvas").transform);
+      /* ===================================================== */
+      board_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_26_copy");
+      /* ===================================================== */
+      Vector2 s0 = new Vector2(board_object.GetComponent<Image>().preferredWidth, board_object.GetComponent<Image>().preferredHeight);
+      board_object.GetComponent<RectTransform>().sizeDelta = s0 * 7;
+      /* ===================================================== */
+      board_object.GetComponent<RectTransform>().localPosition = Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0.5f));
+      board_object.GetComponent<RectTransform>().localPosition -= (Vector3)board_object.GetComponent<RectTransform>().sizeDelta * 0.5f;
+      board_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+      board_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+      board_object.GetComponent<RectTransform>().pivot = Vector2.zero;
+      /* ===================================================== */
+      for (int i = 7; i >= 0; i--)
+        for (int j = 0; j < 8; j++) {
+          if (board[i,j] == 1) {
+            GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+            /* ===================================================== */
+            piece_object.name = "Chess Piece";
+            piece_object.transform.SetParent(GameObject.Find("Chess Board").transform);
+            /* ===================================================== */
+            piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
+            /* ===================================================== */
+            Vector2 s1 = new Vector2(piece_object.GetComponent<Image>().preferredWidth, piece_object.GetComponent<Image>().preferredHeight);
+            piece_object.GetComponent<RectTransform>().sizeDelta = s1 * 7;
+            /* ===================================================== */
+            piece_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            piece_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+            piece_object.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+            /* ===================================================== */
+            piece_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(j * 56 + 56 / 2, 0, 0);
+            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - i) * 56 + 56 / 2, 0);
+            /* ===================================================== */
+          }
+        }
+      /* ===================================================== */
+      GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
+    }
+
+
+
 
     void play_chess_2() {
       Vector2 pos = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position - new Vector3(7, 7, 0);
