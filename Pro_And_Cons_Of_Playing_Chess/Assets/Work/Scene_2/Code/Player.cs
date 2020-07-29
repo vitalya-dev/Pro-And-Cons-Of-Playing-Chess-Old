@@ -178,6 +178,8 @@ namespace scene_2 {
       {1, 0, 0, 0, 0, 0, 0, 0}, 
     };
 
+    Vector2 clicked = new Vector2(-1, -1);
+
 
     void play_chess_1() {
       GameObject board_object= Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
@@ -196,7 +198,7 @@ namespace scene_2 {
       board_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
       board_object.GetComponent<RectTransform>().pivot = Vector2.zero;
       /* ===================================================== */
-      for (int i = 7; i >= 0; i--)
+      for (int i = 7; i >= 0; i--) {
         for (int j = 0; j < 8; j++) {
           if (board[i,j] == 1) {
             GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
@@ -220,19 +222,27 @@ namespace scene_2 {
             /* ===================================================== */
           }
         }
+      }
       /* ===================================================== */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
 
 
-
-
     void play_chess_2() {
-      Vector2 pos = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position - new Vector3(7, 7, 0);
-      pos = pos / new Vector2(56, 56);
-      pos = new Vector2((int)pos.x, (int)pos.y);
-      if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8)
-        Debug.Log(pos);
+      Vector2 pos = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position;
+      /* ===================================================== */
+      pos -=  new Vector2(7, 7);
+      pos /=  new Vector2(56, 56);
+      /* ===================================================== */
+      pos.x = (int)pos.x;
+      pos.y = (int)pos.y;
+      /* ===================================================== */
+      if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
+        if (Input.GetMouseButtonDown(0)) {
+          clicked = new Vector2(pos.x, 7 - pos.y);
+          Debug.Log(clicked);
+        }
+      }
     }
 
 
