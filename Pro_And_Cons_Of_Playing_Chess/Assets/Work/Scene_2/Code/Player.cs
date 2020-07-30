@@ -204,7 +204,7 @@ namespace scene_2 {
           if (board[i,j] == 1) {
             GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
             /* ===================================================== */
-            piece_object.name = "Chess Piece";
+            piece_object.name = i + "_" + j;
             piece_object.transform.SetParent(GameObject.Find("Chess Board").transform);
             /* ===================================================== */
             piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
@@ -246,7 +246,14 @@ namespace scene_2 {
           else if (clicked_2 == new Vector2(-1, -1)) {
              clicked_2 = new Vector2(pos.x, 7 - pos.y);
              /* ===================================================== */
-             Debug.Log("Make a move from " + clicked_1 + "to " + clicked_2);
+             GameObject piece_object = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
+             /* ===================================================== */
+             piece_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+             piece_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+             piece_object.GetComponent<RectTransform>().localPosition += new Vector3(clicked_2.x * 56 + 56 / 2, 0, 0);
+             piece_object.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
+             /* ===================================================== */
+             piece_object.name = clicked_2.y + "_" + clicked_2.x;
              /* ===================================================== */
              clicked_1 = new Vector2(-1, -1);
              clicked_2 = new Vector2(-1, -1);
