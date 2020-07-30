@@ -230,6 +230,10 @@ namespace scene_2 {
       selector.transform.SetParent(GameObject.Find("Chess Board").transform);
       selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
       /* ========= */
+      selector.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+      selector.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+      selector.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+      /* ========= */
       Vector2 s2 = new Vector2(selector.GetComponent<Image>().preferredWidth, selector.GetComponent<Image>().preferredHeight);
       selector.GetComponent<RectTransform>().sizeDelta = s2 * 7;
       /* ===================================================== */
@@ -251,8 +255,8 @@ namespace scene_2 {
         GameObject selector = GameObject.Find("Selector");
         selector.GetComponent<RectTransform>().localPosition = Vector3.zero;
         selector.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
-        selector.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56 + 56 / 2, 0, 0);
-        selector.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56 + 56 / 2, 0);
+        selector.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
+        selector.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
         /* ===================================================== */
         if (Input.GetMouseButtonDown(0)) {
           //clicked = new Vector2(pos.x, 7 - pos.y);
