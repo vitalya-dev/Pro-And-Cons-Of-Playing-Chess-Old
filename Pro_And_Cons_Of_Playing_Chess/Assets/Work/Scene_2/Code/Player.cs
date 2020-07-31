@@ -225,17 +225,32 @@ namespace scene_2 {
         }
       }
       /* ===================================================== */
-      GameObject selector = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
-      selector.name = "Selector";
-      selector.transform.SetParent(GameObject.Find("Chess Board").transform);
-      selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
+      GameObject selector_1 = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+      selector_1.name = "Selector 1";
+      selector_1.transform.SetParent(GameObject.Find("Chess Board").transform);
+      selector_1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
       /* ========= */
-      selector.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-      selector.GetComponent<RectTransform>().anchorMax = Vector2.zero;
-      selector.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+      selector_1.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      selector_1.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+      selector_1.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+      selector_1.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
       /* ========= */
-      Vector2 s2 = new Vector2(selector.GetComponent<Image>().preferredWidth, selector.GetComponent<Image>().preferredHeight);
-      selector.GetComponent<RectTransform>().sizeDelta = s2 * 7;
+      Vector2 s2 = new Vector2(selector_1.GetComponent<Image>().preferredWidth, selector_1.GetComponent<Image>().preferredHeight);
+      selector_1.GetComponent<RectTransform>().sizeDelta = s2 * 7;
+      /* ===================================================== */
+      GameObject selector_2 = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+      selector_2.name = "Selector 2";
+      selector_2.transform.SetParent(GameObject.Find("Chess Board").transform);
+      selector_2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_3");
+      selector_2.GetComponent<Image>().enabled = false;
+      /* ========= */
+      selector_2.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      selector_2.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+      selector_2.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+      selector_2.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+      /* ========= */
+      Vector2 s3 = new Vector2(selector_2.GetComponent<Image>().preferredWidth, selector_2.GetComponent<Image>().preferredHeight);
+      selector_2.GetComponent<RectTransform>().sizeDelta = s3 * 7;
       /* ===================================================== */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
@@ -251,22 +266,25 @@ namespace scene_2 {
       pos.y = (int)pos.y;
       /* ===================================================== */
       if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
+        GameObject selector_1 = GameObject.Find("Selector 1");
+        GameObject selector_2 = GameObject.Find("Selector 2");
         /* ===================================================== */
-        GameObject selector = GameObject.Find("Selector");
-        /* ===================================================== */
-        selector.GetComponent<RectTransform>().localPosition = Vector3.zero;
-        selector.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
-        selector.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
-        selector.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
+        selector_1.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        selector_1.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+        selector_1.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
+        selector_1.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
         /* ===================================================== */
         if (Input.GetMouseButtonDown(0)) {
-          //clicked = new Vector2(pos.x, 7 - pos.y);
           if (clicked_1 == new Vector2(-1, -1)) {
-            selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_3");
+            selector_1.name = "Selector 2";
+            selector_2.name = "Selector 1";
+            selector_2.GetComponent<Image>().enabled = true;
             /* ===================================================== */
             clicked_1 = new Vector2(pos.x, 7 - pos.y);
           } else if (clicked_2 == new Vector2(-1, -1)) {
-            selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
+            selector_1.name = "Selector 2";
+            selector_1.GetComponent<Image>().enabled = false;
+            selector_2.name = "Selector 1";
             /* ===================================================== */
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
             /* ===================================================== */
