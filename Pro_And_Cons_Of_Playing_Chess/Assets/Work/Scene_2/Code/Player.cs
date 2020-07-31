@@ -253,6 +253,7 @@ namespace scene_2 {
       if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
         /* ===================================================== */
         GameObject selector = GameObject.Find("Selector");
+        /* ===================================================== */
         selector.GetComponent<RectTransform>().localPosition = Vector3.zero;
         selector.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
         selector.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
@@ -260,24 +261,28 @@ namespace scene_2 {
         /* ===================================================== */
         if (Input.GetMouseButtonDown(0)) {
           //clicked = new Vector2(pos.x, 7 - pos.y);
-          if (clicked_1 == new Vector2(-1, -1))
+          if (clicked_1 == new Vector2(-1, -1)) {
+            selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_3");
+            /* ===================================================== */
             clicked_1 = new Vector2(pos.x, 7 - pos.y);
-          else if (clicked_2 == new Vector2(-1, -1)) {
-             clicked_2 = new Vector2(pos.x, 7 - pos.y);
-             /* ===================================================== */
-             board[(int)clicked_2.y, (int)clicked_2.x] = board[(int)clicked_1.y, (int)clicked_1.x];
-             board[(int)clicked_1.y, (int)clicked_1.x] = 0;
-             /* ===================================================== */
-             GameObject piece_object = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
-             piece_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
-             piece_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
-             piece_object.GetComponent<RectTransform>().localPosition += new Vector3(clicked_2.x * 56 + 56 / 2, 0, 0);
-             piece_object.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
-             /* ===================================================== */
-             piece_object.name = clicked_2.y + "_" + clicked_2.x;
-             /* ===================================================== */
-             clicked_1 = new Vector2(-1, -1);
-             clicked_2 = new Vector2(-1, -1);
+          } else if (clicked_2 == new Vector2(-1, -1)) {
+            selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
+            /* ===================================================== */
+            clicked_2 = new Vector2(pos.x, 7 - pos.y);
+            /* ===================================================== */
+            board[(int)clicked_2.y, (int)clicked_2.x] = board[(int)clicked_1.y, (int)clicked_1.x];
+            board[(int)clicked_1.y, (int)clicked_1.x] = 0;
+            /* ===================================================== */
+            GameObject piece = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
+            piece.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+            piece.GetComponent<RectTransform>().localPosition += new Vector3(clicked_2.x * 56 + 56 / 2, 0, 0);
+            piece.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
+            /* ===================================================== */
+            piece.name = clicked_2.y + "_" + clicked_2.x;
+            /* ===================================================== */
+            clicked_1 = new Vector2(-1, -1);
+            clicked_2 = new Vector2(-1, -1);
           }
         }
       }
