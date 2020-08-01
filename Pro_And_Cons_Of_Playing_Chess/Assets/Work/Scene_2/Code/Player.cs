@@ -181,7 +181,6 @@ namespace scene_2 {
     Vector2 clicked_1 = new Vector2(-1, -1);
     Vector2 clicked_2 = new Vector2(-1, -1);
 
-
     void play_chess_1() {
       GameObject board_object= Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
       /* ===================================================== */
@@ -238,19 +237,9 @@ namespace scene_2 {
       Vector2 s2 = new Vector2(selector_1.GetComponent<Image>().preferredWidth, selector_1.GetComponent<Image>().preferredHeight);
       selector_1.GetComponent<RectTransform>().sizeDelta = s2 * 7;
       /* ===================================================== */
-      GameObject selector_2 = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+      GameObject selector_2 = Instantiate(selector_1, selector_1.transform.parent);
       selector_2.name = "Selector 2";
-      selector_2.transform.SetParent(GameObject.Find("Chess Board").transform);
-      selector_2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_3");
       selector_2.GetComponent<Image>().enabled = false;
-      /* ========= */
-      selector_2.GetComponent<RectTransform>().localPosition = Vector3.zero;
-      selector_2.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-      selector_2.GetComponent<RectTransform>().anchorMax = Vector2.zero;
-      selector_2.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
-      /* ========= */
-      Vector2 s3 = new Vector2(selector_2.GetComponent<Image>().preferredWidth, selector_2.GetComponent<Image>().preferredHeight);
-      selector_2.GetComponent<RectTransform>().sizeDelta = s3 * 7;
       /* ===================================================== */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
