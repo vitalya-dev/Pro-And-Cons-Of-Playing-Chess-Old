@@ -263,7 +263,16 @@ namespace scene_2 {
         selector_1.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
         selector_1.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
         /* ===================================================== */
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(1)) {
+          if (clicked_1 != new Vector2(-1, -1)) {
+            selector_1.name = "Selector 2";
+            selector_1.GetComponent<Image>().enabled = false;
+            selector_2.name = "Selector 1";
+          }
+          /* ===================================================== */
+          clicked_1 = new Vector2(-1, -1);
+          clicked_2 = new Vector2(-1, -1);
+        } else if (Input.GetMouseButtonDown(0)) {
           if (clicked_1 == new Vector2(-1, -1)) {
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
