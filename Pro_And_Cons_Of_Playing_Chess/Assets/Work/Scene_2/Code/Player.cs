@@ -289,7 +289,7 @@ namespace scene_2 {
           } else if (clicked_2 == new Vector2(-1, -1)) {
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
             /* ===================================================== */
-            if (ChessRules.move(board, clicked_1, clicked_2)) {
+            if (ChessGame.white_move(board, clicked_1, clicked_2)) {
               GameObject piece = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
               piece.GetComponent<RectTransform>().localPosition = Vector3.zero;
               piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
