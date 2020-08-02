@@ -264,6 +264,8 @@ namespace scene_2 {
         selector_1.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
         /* ===================================================== */
         if (Input.GetMouseButtonDown(1)) {
+          GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
+          /* ===================================================== */
           if (clicked_1 != new Vector2(-1, -1)) {
             selector_1.name = "Selector 2";
             selector_1.GetComponent<Image>().enabled = false;
@@ -272,13 +274,17 @@ namespace scene_2 {
           /* ===================================================== */
           clicked_1 = new Vector2(-1, -1);
           clicked_2 = new Vector2(-1, -1);
+          /* ===================================================== */
         } else if (Input.GetMouseButtonDown(0)) {
+          GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
+          /* ===================================================== */
           if (clicked_1 == new Vector2(-1, -1)) {
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
             selector_2.GetComponent<Image>().enabled = true;
             /* ===================================================== */
             clicked_1 = new Vector2(pos.x, 7 - pos.y);
+            /* ===================================================== */
           } else if (clicked_2 == new Vector2(-1, -1)) {
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
             /* ===================================================== */
@@ -290,6 +296,8 @@ namespace scene_2 {
               piece.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
               /* ===================================================== */
               piece.name = clicked_2.y + "_" + clicked_2.x;
+            } else {
+              GameObject.Find("No").GetComponent<AudioSource>().Play();
             }
             /* ===================================================== */
             selector_1.name = "Selector 2";
