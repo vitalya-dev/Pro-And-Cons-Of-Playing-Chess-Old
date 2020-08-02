@@ -270,21 +270,22 @@ namespace scene_2 {
             selector_1.name = "Selector 2";
             selector_1.GetComponent<Image>().enabled = false;
             selector_2.name = "Selector 1";
+            /* ========== */
+            GameObject.Find("No 2").GetComponent<AudioSource>().Play();
           }
           /* ===================================================== */
           clicked_1 = new Vector2(-1, -1);
           clicked_2 = new Vector2(-1, -1);
           /* ===================================================== */
         } else if (Input.GetMouseButtonDown(0)) {
-          GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
-          /* ===================================================== */
           if (clicked_1 == new Vector2(-1, -1)) {
+            clicked_1 = new Vector2(pos.x, 7 - pos.y);
+            /* ===================================================== */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
             selector_2.GetComponent<Image>().enabled = true;
             /* ===================================================== */
-            clicked_1 = new Vector2(pos.x, 7 - pos.y);
-            /* ===================================================== */
+            GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
           } else if (clicked_2 == new Vector2(-1, -1)) {
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
             /* ===================================================== */
@@ -294,9 +295,12 @@ namespace scene_2 {
               piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
               piece.GetComponent<RectTransform>().localPosition += new Vector3(clicked_2.x * 56 + 56 / 2, 0, 0);
               piece.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
-              /* ===================================================== */
+              /* ======= */
               piece.name = clicked_2.y + "_" + clicked_2.x;
+              /* ======= */
+              GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
             } else {
+              /* ===================================================== */
               GameObject.Find("No").GetComponent<AudioSource>().Play();
             }
             /* ===================================================== */
