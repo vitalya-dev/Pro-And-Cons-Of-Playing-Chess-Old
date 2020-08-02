@@ -280,22 +280,21 @@ namespace scene_2 {
             /* ===================================================== */
             clicked_1 = new Vector2(pos.x, 7 - pos.y);
           } else if (clicked_2 == new Vector2(-1, -1)) {
+            clicked_2 = new Vector2(pos.x, 7 - pos.y);
+            /* ===================================================== */
+            if (ChessRules.move(board, clicked_1, clicked_2)) {
+              GameObject piece = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
+              piece.GetComponent<RectTransform>().localPosition = Vector3.zero;
+              piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+              piece.GetComponent<RectTransform>().localPosition += new Vector3(clicked_2.x * 56 + 56 / 2, 0, 0);
+              piece.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
+              /* ===================================================== */
+              piece.name = clicked_2.y + "_" + clicked_2.x;
+            }
+            /* ===================================================== */
             selector_1.name = "Selector 2";
             selector_1.GetComponent<Image>().enabled = false;
             selector_2.name = "Selector 1";
-            /* ===================================================== */
-            clicked_2 = new Vector2(pos.x, 7 - pos.y);
-            /* ===================================================== */
-            board[(int)clicked_2.y, (int)clicked_2.x] = board[(int)clicked_1.y, (int)clicked_1.x];
-            board[(int)clicked_1.y, (int)clicked_1.x] = 0;
-            /* ===================================================== */
-            GameObject piece = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
-            piece.GetComponent<RectTransform>().localPosition = Vector3.zero;
-            piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
-            piece.GetComponent<RectTransform>().localPosition += new Vector3(clicked_2.x * 56 + 56 / 2, 0, 0);
-            piece.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - clicked_2.y) * 56 + 56 / 2, 0);
-            /* ===================================================== */
-            piece.name = clicked_2.y + "_" + clicked_2.x;
             /* ===================================================== */
             clicked_1 = new Vector2(-1, -1);
             clicked_2 = new Vector2(-1, -1);
@@ -304,12 +303,9 @@ namespace scene_2 {
       }
     }
 
-
     void play_chess_3() {
       Destroy(GameObject.Find("Chess Board"));
     }
-
-
     /* ===================================================== */
 
     void sit_at_chair_2() {
