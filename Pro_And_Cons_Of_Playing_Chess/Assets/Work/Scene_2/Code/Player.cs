@@ -188,7 +188,7 @@ namespace scene_2 {
       /* ===================================================== */
       for (int i = 7; i >= 0; i--) {
         for (int j = 0; j < 8; j++) {
-          if (ChessGame.board[i,j] == 1) {
+          if (face_to_and_touch_to<Chess>().board[i,j] == 1) {
             GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
             /* ===================================================== */
             piece_object.name = i + "_" + j;
@@ -276,7 +276,7 @@ namespace scene_2 {
           } else if (clicked_2 == new Vector2(-1, -1)) {
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
             /* ===================================================== */
-            if (ChessGame.white_move(clicked_1, clicked_2)) {
+            if (face_to_and_touch_to<Chess>().white_move(clicked_1, clicked_2)) {
               GameObject piece = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
               piece.GetComponent<RectTransform>().localPosition = Vector3.zero;
               piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
