@@ -73,13 +73,16 @@ namespace scene_2 {
       /* ===================================================== */
       for (int i = 7; i >= 0; i--) {
         for (int j = 0; j < 8; j++) {
-          if (board[i,j] == 1) {
+          if (board[i,j] != 0) {
             GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
             /* ===================================================== */
             piece_object.name = i + "_" + j;
             piece_object.transform.SetParent(GameObject.Find("Chess Board").transform);
             /* ===================================================== */
-            piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
+            if (board[i,j] == 1)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
+            if (board[i,j] == -1)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_27");
             /* ===================================================== */
             Vector2 s1 = new Vector2(piece_object.GetComponent<Image>().preferredWidth, piece_object.GetComponent<Image>().preferredHeight);
             piece_object.GetComponent<RectTransform>().sizeDelta = s1 * 7;
