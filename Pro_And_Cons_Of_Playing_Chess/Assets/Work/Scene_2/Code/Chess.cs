@@ -28,8 +28,10 @@ namespace scene_2 {
       /* ========= */
       if (board[y1, x1] <= 0 || turn != 1)
         return false;
-      if (board[y1, x1] == 1)
-        return white_pawn_move(from, to);
+      if (board[y1, x1] == 1 && white_pawn_move(from, to)) {
+        turn = -1;
+        return true;
+      }
       else
         return false;
     }
@@ -41,8 +43,6 @@ namespace scene_2 {
       if ((y1 - y2) == 1 && (x1 - x2) == 0) {
         board[y2, x2] = board[y1, x1];
         board[y1, x1] = 0;
-        /* ========= */
-        turn = -1;
         /* ========= */
         return true;
       } else {
