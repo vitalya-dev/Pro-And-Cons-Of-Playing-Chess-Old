@@ -19,7 +19,7 @@ namespace scene_2 {
         Debug.Log("My Turn");
         for (int i = 0; i < 8; i++) {
           for (int j = 0; j < 8; j++) {
-            if (chess.board[i,j] != -1) {
+            if (chess.board[i,j] == -1) {
               chess.move(new Vector2(j, i), new Vector2(j, i + 1), -1);
             }
           }

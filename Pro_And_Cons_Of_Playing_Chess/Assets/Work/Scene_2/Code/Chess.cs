@@ -22,6 +22,38 @@ namespace scene_2 {
       {1, 0, 0, 0, 0, 0, 0, 0}, 
     };
 
+
+    void redraw_pieces() {
+      for (int i = 7; i >= 0; i--) {
+        for (int j = 0; j < 8; j++) {
+          if (board[i,j] != 0) {
+            GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+            /* ===================================================== */
+            piece_object.name = i + "_" + j;
+            piece_object.transform.SetParent(GameObject.Find("Chess Board").transform);
+            /* ===================================================== */
+            if (board[i,j] == 1)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
+            if (board[i,j] == -1)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_27");
+            /* ===================================================== */
+            Vector2 s1 = new Vector2(piece_object.GetComponent<Image>().preferredWidth, piece_object.GetComponent<Image>().preferredHeight);
+            piece_object.GetComponent<RectTransform>().sizeDelta = s1 * 7;
+            /* ===================================================== */
+            piece_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+            piece_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+            piece_object.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+            /* ===================================================== */
+            piece_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(j * 56 + 56 / 2, 0, 0);
+            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - i) * 56 + 56 / 2, 0);
+            /* ===================================================== */
+          }
+        }
+      }
+    }
+
     public bool move(Vector2 from, Vector2 to, int who) {
       int x1 = (int) from.x; int y1 = (int) from.y;
       int x2 = (int) to.x;   int y2 = (int) to.y;
@@ -93,34 +125,7 @@ namespace scene_2 {
       board_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
       board_object.GetComponent<RectTransform>().pivot = Vector2.zero;
       /* ===================================================== */
-      for (int i = 7; i >= 0; i--) {
-        for (int j = 0; j < 8; j++) {
-          if (board[i,j] != 0) {
-            GameObject piece_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
-            /* ===================================================== */
-            piece_object.name = i + "_" + j;
-            piece_object.transform.SetParent(GameObject.Find("Chess Board").transform);
-            /* ===================================================== */
-            if (board[i,j] == 1)
-              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
-            if (board[i,j] == -1)
-              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_27");
-            /* ===================================================== */
-            Vector2 s1 = new Vector2(piece_object.GetComponent<Image>().preferredWidth, piece_object.GetComponent<Image>().preferredHeight);
-            piece_object.GetComponent<RectTransform>().sizeDelta = s1 * 7;
-            /* ===================================================== */
-            piece_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
-            piece_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
-            piece_object.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-            /* ===================================================== */
-            piece_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
-            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
-            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(j * 56 + 56 / 2, 0, 0);
-            piece_object.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - i) * 56 + 56 / 2, 0);
-            /* ===================================================== */
-          }
-        }
-      }
+      redraw_pieces();
       /* ===================================================== */
       GameObject selector_1 = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
       selector_1.name = "Selector 1";
