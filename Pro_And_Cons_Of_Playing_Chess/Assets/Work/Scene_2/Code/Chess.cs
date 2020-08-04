@@ -9,7 +9,7 @@ namespace scene_2 {
   [SelectionBase]
   public class Chess : MonoBehaviour {
     /* ===================================================== */
-    int turn = 1;
+    public int turn = 1;
 
     public int[,] board = new int [,] {
       {0, 0, 0, 0, 0, 0, 0, 0}, 
@@ -22,19 +22,41 @@ namespace scene_2 {
       {1, 0, 0, 0, 0, 0, 0, 0}, 
     };
 
-    public bool white_move(Vector2 from, Vector2 to) {
+    public bool move(Vector2 from, Vector2 to, int who) {
       int x1 = (int) from.x; int y1 = (int) from.y;
       int x2 = (int) to.x;   int y2 = (int) to.y;
       /* ========= */
-      if (board[y1, x1] <= 0 || turn != 1)
+      if (turn != who || Mathf.Sign(board[y1, x1]) != who)
         return false;
-      if (board[y1, x1] == 1 && white_pawn_move(from, to)) {
-        turn = -1;
+      /* ========= */
+      if (board[y1, x1] == -1 && black_pawn_move(from, to)) {
+        turn *= -1;
         return true;
       }
-      else
-        return false;
+      if (board[y1, x1] == 1 && white_pawn_move(from, to)) {
+        turn *= -1;
+        return true;
+      }
+      /* ========= */
+      return false;
     }
+
+
+    /* ===================================================== */
+    bool black_pawn_move(Vector2 from, Vector2 to) {
+      int x1 = (int) from.x; int y1 = (int) from.y;
+      int x2 = (int) to.x;   int y2 = (int) to.y;
+      /* ========= */
+      if ((y1 - y2) == -1 && (x1 - x2) == 0) {
+        board[y2, x2] = board[y1, x1];
+        board[y1, x1] = 0;
+        /* ========= */
+        return true;
+      } else {
+        return false;
+      }
+    }
+
 
     bool white_pawn_move(Vector2 from, Vector2 to) {
       int x1 = (int) from.x; int y1 = (int) from.y;
@@ -164,7 +186,7 @@ namespace scene_2 {
           } else if (clicked_2 == new Vector2(-1, -1)) {
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
             /* ===================================================== */
-            if (white_move(clicked_1, clicked_2)) {
+            if (move(clicked_1, clicked_2, 1)) {
               GameObject piece = GameObject.Find(clicked_1.y + "_" + clicked_1.x);
               piece.GetComponent<RectTransform>().localPosition = Vector3.zero;
               piece.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
