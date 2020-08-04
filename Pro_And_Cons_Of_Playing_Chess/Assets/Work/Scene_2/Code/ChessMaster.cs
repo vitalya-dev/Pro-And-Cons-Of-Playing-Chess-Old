@@ -6,5 +6,8 @@ using UnityEngine;
 namespace scene_2 {
   [SelectionBase]
   public class ChessMaster : MonoBehaviour {
+    void Start() {
+      GetComponent<SpriteRenderer>().enabled = false;
+    }
   }
 }
