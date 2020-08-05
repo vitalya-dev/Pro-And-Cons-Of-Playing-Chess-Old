@@ -162,7 +162,10 @@ namespace scene_2 {
     }
 
     void redraw_selectors_2(Vector2 pos) {
-
+      redraw_selectors_1(pos);
+      /* ========= */
+      GameObject.Find("Selector 1").GetComponent<Image>().enabled = true;
+      GameObject.Find("Selector 2").GetComponent<Image>().enabled = true;
     }
 
 
@@ -181,8 +184,6 @@ namespace scene_2 {
       pos /=  new Vector2(56, 56);
       pos.x = (int)pos.x;
       pos.y = (int)pos.y;
-      /* ========= */
-      redraw_selectors_1(pos);
       /* ===================================================== */
       if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
         GameObject selector_1 = GameObject.Find("Selector 1");
@@ -195,7 +196,6 @@ namespace scene_2 {
           }
           clicked_1 = new Vector2(-1, -1);
           clicked_2 = new Vector2(-1, -1);
-          /* ===================================================== */
         } else if (Input.GetMouseButtonDown(0)) {
           if (clicked_1 == new Vector2(-1, -1)) {
             clicked_1 = new Vector2(pos.x, 7 - pos.y);
@@ -214,6 +214,11 @@ namespace scene_2 {
             clicked_2 = new Vector2(-1, -1);
           }
         }
+        /* ===================================================== */
+        if (clicked_1 == new Vector2(-1, -1))
+          redraw_selectors_1(pos);
+        else
+          redraw_selectors_2(pos);
       }
     }
 
