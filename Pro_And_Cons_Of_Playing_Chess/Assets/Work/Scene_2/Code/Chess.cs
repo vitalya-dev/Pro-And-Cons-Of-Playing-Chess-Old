@@ -26,6 +26,9 @@ namespace scene_2 {
       int x1 = (int) from.x; int y1 = (int) from.y;
       int x2 = (int) to.x;   int y2 = (int) to.y;
       /* ========= */
+      if (x1 > 7 || x1 < 0 || x2 > 7 || x2 < 0 || y1 > 7 || y1 < 0 || y2 > 7 || y2 < 0)
+        return false;
+      /* ========= */
       if (turn != who || Mathf.Sign(board[y1, x1]) != who)
         return false;
       /* ========= */
@@ -173,6 +176,8 @@ namespace scene_2 {
       redraw_board();
       redraw_pieces();
       redraw_selectors_1(Vector2.zero);
+      /* ========= */
+      GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
 
 
@@ -184,37 +189,42 @@ namespace scene_2 {
       pos /=  new Vector2(56, 56);
       pos.x = (int)pos.x;
       pos.y = (int)pos.y;
-      /* ===================================================== */
+      /* ========= */
       if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
         GameObject selector_1 = GameObject.Find("Selector 1");
         GameObject selector_2 = GameObject.Find("Selector 2");
-        /* ===================================================== */
         if (Input.GetMouseButtonDown(1)) {
+          GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
           if (clicked_1 != new Vector2(-1, -1)) {
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
+            /* ========= */
+            GameObject.Find("No 2").GetComponent<AudioSource>().Play();
           }
           clicked_1 = new Vector2(-1, -1);
           clicked_2 = new Vector2(-1, -1);
         } else if (Input.GetMouseButtonDown(0)) {
           if (clicked_1 == new Vector2(-1, -1)) {
             clicked_1 = new Vector2(pos.x, 7 - pos.y);
-            /* ===================================================== */
+            /* ========= */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
+            /* ========= */
+            GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
           } else if (clicked_2 == new Vector2(-1, -1)) {
             clicked_2 = new Vector2(pos.x, 7 - pos.y);
-            /* ===================================================== */
-            move(clicked_1, clicked_2, 1);
-            /* ===================================================== */
+            if (move(clicked_1, clicked_2, 1))
+              GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
+            else
+              GameObject.Find("No").GetComponent<AudioSource>().Play();
+            /* ========= */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
-            /* ===================================================== */
+            /* ========= */
             clicked_1 = new Vector2(-1, -1);
             clicked_2 = new Vector2(-1, -1);
           }
         }
-        /* ===================================================== */
         if (clicked_1 == new Vector2(-1, -1))
           redraw_selectors_1(pos);
         else
