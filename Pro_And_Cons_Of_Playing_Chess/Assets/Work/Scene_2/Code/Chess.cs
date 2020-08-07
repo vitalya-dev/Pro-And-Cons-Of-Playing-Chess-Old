@@ -11,15 +11,18 @@ namespace scene_2 {
     /* ===================================================== */
     public int turn = 1;
 
+
+
     public int[,] board = new int [,] {
-      {0, 0, 0, 0, 0, 0, 0, 0}, 
-      {0, 0, 0, 0, 0, -1, 0, 0},
-      {0, 0, 0, 0, 0, 0, 0, 0}, 
-      {0, 0, 0, 0, 0, 0, 0, 0}, 
-      {0, 0, 0, 0, 0, 0, 0, 0}, 
-      {0, 0, 0, 0, 0, 0, 0, 0}, 
-      {0, 0, 0, 0, 0, 0, 1, 0}, 
-      {1, 0, 0, 0, 0, 0, 0, 0}, 
+      // 0      1      2      3      4      5      6      7 //
+      {+0000, +0000, +0000, +0000, +0000, +0000, -1000, +0000}, //0
+      {+0000, +0000, +0000, +0000, +0000, +0000, +0005, +0000}, //1
+      {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //2
+      {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //3
+      {+0000, -0099, +0000, +0000, +0000, +0000, +0006, +0000}, //4
+      {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //5
+      {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //6
+      {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //7
     };
 
     public bool move(Vector2 from, Vector2 to, int who) {
@@ -91,8 +94,16 @@ namespace scene_2 {
             /* ===================================================== */
             if (board[i,j] == 1)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_26");
+            if (board[i,j] == 5)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy");
+            if (board[i,j] == 6)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_2");
             if (board[i,j] == -1)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_27");
+            if (board[i,j] == -99)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy");
+            if (board[i,j] == -1000)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_4");
             /* ===================================================== */
             Vector2 s = new Vector2(piece_object.GetComponent<Image>().preferredWidth, piece_object.GetComponent<Image>().preferredHeight);
             piece_object.GetComponent<RectTransform>().sizeDelta = s * 7;
