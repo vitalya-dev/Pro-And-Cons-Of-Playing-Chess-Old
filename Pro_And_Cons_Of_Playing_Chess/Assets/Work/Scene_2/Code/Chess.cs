@@ -11,7 +11,12 @@ namespace scene_2 {
     /* ===================================================== */
     public int turn = 1;
 
-
+    //The king (♔,♚)king (♔,♚)
+    //The queen (♕, ♛)
+    //The rook (/rʊk/; ♖,♜)
+    //The bishop (♗,♝)
+    //The knight (♘,♞)
+    //The pawn (♙,♟
 
     public int[,] board = new int [,] {
       // 0      1      2      3      4      5      6      7 //
@@ -77,7 +82,13 @@ namespace scene_2 {
         return false;
       }
     }
+
+    bool bishop_move(Vector2 from, Vector2 to) {
+      
+    }
+
     /* ===================================================== */
+
     Vector2 clicked_1 = new Vector2(-1, -1);
     Vector2 clicked_2 = new Vector2(-1, -1);
 
