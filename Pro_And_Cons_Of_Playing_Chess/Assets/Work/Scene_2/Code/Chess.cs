@@ -81,6 +81,8 @@ namespace scene_2 {
     }
 
     bool white_bishop_move(Vector2 from, Vector2 to) {
+      {var s = "{"; foreach (var m in bishop_moves(from)) s += m; Debug.Log(s + "}");}
+      /* ========= */
       int x1 = (int) from.x; int y1 = (int) from.y;
       int x2 = (int) to.x;   int y2 = (int) to.y;
       /* ========= */
