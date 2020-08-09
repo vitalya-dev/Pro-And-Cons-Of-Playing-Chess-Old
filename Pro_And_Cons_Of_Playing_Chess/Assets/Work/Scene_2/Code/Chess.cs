@@ -11,13 +11,6 @@ namespace scene_2 {
     /* ===================================================== */
     public int turn = 1;
 
-    //The king (♔,♚)king (♔,♚)
-    //The queen (♕, ♛)
-    //The rook (/rʊk/; ♖,♜)
-    //The bishop (♗,♝)
-    //The knight (♘,♞)
-    //The pawn (♙,♟
-
     public int[,] board = new int [,] {
       // 0      1      2      3      4      5      6      7 //
       {+0000, +0000, +0000, +0000, +0000, -0006, -1000, +0000}, //0
@@ -45,6 +38,10 @@ namespace scene_2 {
         return true;
       }
       if (board[y1, x1] == 1 && white_pawn_move(from, to)) {
+        turn *= -1;
+        return true;
+      }
+      if (board[y1, x1] == 5 && white_bishop_move(from, to)) {
         turn *= -1;
         return true;
       }
@@ -83,9 +80,33 @@ namespace scene_2 {
       }
     }
 
-    bool bishop_move(Vector2 from, Vector2 to) {
-      
+    bool white_bishop_move(Vector2 from, Vector2 to) {
+      int x1 = (int) from.x; int y1 = (int) from.y;
+      int x2 = (int) to.x;   int y2 = (int) to.y;
+      /* ========= */
+      board[y2, x2] = board[y1, x1];
+      board[y1, x1] = 0;
+      /* ========= */
+      return true;
     }
+
+    Vector2[] bishop_moves(Vector2 pos) {
+      int X = 0;
+      int Y = 1;
+      /* ========= */
+      List<Vector2> moves = new List<Vector2>();
+      /* ========= */
+      foreach (var d in new[] {new int[]{1, 1}, new int[]{1, -1}, new int[]{-1, 1}, new int[]{-1, -1}}) {
+        for (int i = 1; i < 8; i++) {
+          if (pos.y + d[Y] * i > 7 || pos.y + d[Y] * i < 0 || pos.x + d[X] * i > 7 || pos.x + d[X] * i < 0)
+            break;
+          else if (board[(int)(pos.y + d[Y] * i), (int)(pos.x + d[X] * i)] == 0)
+            moves.Add(new Vector2(pos.x + d[X] * i,  pos.y + d[Y] * i));
+        }
+      }
+      return moves.ToArray();
+    }
+
 
     /* ===================================================== */
 
