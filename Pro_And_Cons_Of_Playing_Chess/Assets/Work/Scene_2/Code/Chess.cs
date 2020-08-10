@@ -23,25 +23,22 @@ namespace scene_2 {
       {+0000, +0005, +0000, +0000, +0000, +0000, +0000, +0000}, //7
     };
 
-    public bool move(Vector2 from, Vector2 to, int who) {
-      int x1 = (int) from.x; int y1 = (int) from.y;
-      int x2 = (int) to.x;   int y2 = (int) to.y;
-      /* ========= */
-      if (x1 > 7 || x1 < 0 || x2 > 7 || x2 < 0 || y1 > 7 || y1 < 0 || y2 > 7 || y2 < 0)
+    public bool move(Vector2Int from, Vector2Int to, int who) {
+      if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0 || to.x > 7 || to.x < 0 || to.y > 7 || to.y < 0)
         return false;
       /* ========= */
-      if (turn != who || Mathf.Sign(board[y1, x1]) != who)
+      if (turn != who || Mathf.Sign(board[from.y, from.x]) != who)
         return false;
       /* ========= */
-      if (board[y1, x1] == -1 && black_pawn_move(from, to)) {
+      if (board[from.y, from.x] == -1 && black_pawn_move(from, to)) {
         turn *= -1;
         return true;
       }
-      if (board[y1, x1] == 1 && white_pawn_move(from, to)) {
+      if (board[from.y, from.x] == 1 && white_pawn_move(from, to)) {
         turn *= -1;
         return true;
       }
-      if (board[y1, x1] == 5 && white_bishop_move(from, to)) {
+      if (board[from.y, from.x] == 5 && white_bishop_move(from, to)) {
         turn *= -1;
         return true;
       }
@@ -51,13 +48,10 @@ namespace scene_2 {
 
 
     /* ===================================================== */
-    bool black_pawn_move(Vector2 from, Vector2 to) {
-      int x1 = (int) from.x; int y1 = (int) from.y;
-      int x2 = (int) to.x;   int y2 = (int) to.y;
-      /* ========= */
-      if ((y1 - y2) == -1 && (x1 - x2) == 0) {
-        board[y2, x2] = board[y1, x1];
-        board[y1, x1] = 0;
+    bool black_pawn_move(Vector2Int from, Vector2Int to) {
+      if ((from.y - to.y) == -1 && (from.x - to.x) == 0) {
+        board[to.y, to.x] = board[from.y, from.x];
+        board[from.y, from.x] = 0;
         /* ========= */
         return true;
       } else {
@@ -66,13 +60,10 @@ namespace scene_2 {
     }
 
 
-    bool white_pawn_move(Vector2 from, Vector2 to) {
-      int x1 = (int) from.x; int y1 = (int) from.y;
-      int x2 = (int) to.x;   int y2 = (int) to.y;
-      /* ========= */
-      if ((y1 - y2) == 1 && (x1 - x2) == 0) {
-        board[y2, x2] = board[y1, x1];
-        board[y1, x1] = 0;
+    bool white_pawn_move(Vector2Int from, Vector2Int to) {
+      if ((from.y - to.y) == 1 && (from.x - to.x) == 0) {
+        board[to.y, to.x] = board[from.y, from.x];
+        board[from.y, from.x] = 0;
         /* ========= */
         return true;
       } else {
@@ -80,19 +71,21 @@ namespace scene_2 {
       }
     }
 
-    bool white_bishop_move(Vector2 from, Vector2 to) {
-      {var s = "{"; foreach (var m in bishop_moves(from)) s += m; Debug.Log(s + "}");}
-      /* ========= */
-      int x1 = (int) from.x; int y1 = (int) from.y;
-      int x2 = (int) to.x;   int y2 = (int) to.y;
-      /* ========= */
-      board[y2, x2] = board[y1, x1];
-      board[y1, x1] = 0;
-      /* ========= */
-      return true;
+    bool white_bishop_move(Vector2Int from, Vector2Int to) {
+      {var s = to + "{"; foreach (var m in bishop_moves(from, 1)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in bishop_moves(from, 1)) {
+        if (to == m)  {
+          /* ========= */
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          return true;
+        }
+      }
+      return false;
     }
 
-    Vector2[] bishop_moves(Vector2 pos) {
+    Vector2[] bishop_moves(Vector2Int pos, int who) {
       int X = 0;
       int Y = 1;
       /* ========= */
@@ -100,20 +93,38 @@ namespace scene_2 {
       /* ========= */
       foreach (var d in new[] {new int[]{1, 1}, new int[]{1, -1}, new int[]{-1, 1}, new int[]{-1, -1}}) {
         for (int i = 1; i < 8; i++) {
-          if (pos.y + d[Y] * i > 7 || pos.y + d[Y] * i < 0 || pos.x + d[X] * i > 7 || pos.x + d[X] * i < 0)
-            break;
-          else if (board[(int)(pos.y + d[Y] * i), (int)(pos.x + d[X] * i)] == 0)
+          if (pos.y + d[Y] * i > 7 || pos.y + d[Y] * i < 0 || pos.x + d[X] * i > 7 || pos.x + d[X] * i < 0) break;
+          /* ========= */
+          int p = board[pos.y + d[Y] * i, pos.x + d[X] * i];
+          if (p == 0) {
             moves.Add(new Vector2(pos.x + d[X] * i,  pos.y + d[Y] * i));
+          } else if (Mathf.Sign(p) != who) {
+            moves.Add(new Vector2(pos.x + d[X] * i,  pos.y + d[Y] * i));
+            break;
+          } else {
+            break;
+          }
         }
       }
       return moves.ToArray();
     }
 
+    Vector2[] pawn_moves(Vector2 pos, int who) {
+      List<Vector2> moves = new List<Vector2>();
+      if (who == 1) {
+      }
+      else if (who == -1)  {
+
+      }
+      return moves.ToArray();
+    }
+
+
 
     /* ===================================================== */
 
-    Vector2 clicked_1 = new Vector2(-1, -1);
-    Vector2 clicked_2 = new Vector2(-1, -1);
+    Vector2Int clicked_1 = new Vector2Int(-1, -1);
+    Vector2Int clicked_2 = new Vector2Int(-1, -1);
 
     void redraw_pieces() {
       GameObject board_object = GameObject.Find("Chess Board");
@@ -231,35 +242,35 @@ namespace scene_2 {
     void play_chess_2() {
       redraw_pieces();
       /* ========= */
-      Vector2 pos = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position;
-      pos -=  new Vector2(7, 7);
-      pos /=  new Vector2(56, 56);
-      pos.x = (int)pos.x;
-      pos.y = (int)pos.y;
+      Vector2 pos_0 = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position;
+      pos_0 -=  new Vector2(7, 7);
+      pos_0 /=  new Vector2(56, 56);
       /* ========= */
-      if (pos.x >= 0 && pos.x < 8 && pos.y >= 0 && pos.y < 8) {
+      Vector2Int pos_1 = new Vector2Int((int)pos_0.x,  (int)pos_0.y);
+      /* ========= */
+      if (pos_1.x >= 0 && pos_1.x < 8 && pos_1.y >= 0 && pos_1.y < 8) {
         GameObject selector_1 = GameObject.Find("Selector 1");
         GameObject selector_2 = GameObject.Find("Selector 2");
         if (Input.GetMouseButtonDown(1)) {
           GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
-          if (clicked_1 != new Vector2(-1, -1)) {
+          if (clicked_1 != new Vector2Int(-1, -1)) {
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
             /* ========= */
             GameObject.Find("No 2").GetComponent<AudioSource>().Play();
           }
-          clicked_1 = new Vector2(-1, -1);
-          clicked_2 = new Vector2(-1, -1);
+          clicked_1 = new Vector2Int(-1, -1);
+          clicked_2 = new Vector2Int(-1, -1);
         } else if (Input.GetMouseButtonDown(0)) {
           if (clicked_1 == new Vector2(-1, -1)) {
-            clicked_1 = new Vector2(pos.x, 7 - pos.y);
+            clicked_1 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             /* ========= */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
             /* ========= */
             GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
           } else if (clicked_2 == new Vector2(-1, -1)) {
-            clicked_2 = new Vector2(pos.x, 7 - pos.y);
+            clicked_2 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             if (move(clicked_1, clicked_2, 1))
               GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
             else
@@ -268,14 +279,14 @@ namespace scene_2 {
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
             /* ========= */
-            clicked_1 = new Vector2(-1, -1);
-            clicked_2 = new Vector2(-1, -1);
+            clicked_1 = new Vector2Int(-1, -1);
+            clicked_2 = new Vector2Int(-1, -1);
           }
         }
         if (clicked_1 == new Vector2(-1, -1))
-          redraw_selectors_1(pos);
+          redraw_selectors_1(pos_1);
         else
-          redraw_selectors_2(pos);
+          redraw_selectors_2(pos_1);
       }
     }
 
