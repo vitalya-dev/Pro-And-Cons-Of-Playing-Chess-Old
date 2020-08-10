@@ -49,26 +49,32 @@ namespace scene_2 {
 
     /* ===================================================== */
     bool black_pawn_move(Vector2Int from, Vector2Int to) {
-      if ((from.y - to.y) == -1 && (from.x - to.x) == 0) {
-        board[to.y, to.x] = board[from.y, from.x];
-        board[from.y, from.x] = 0;
-        /* ========= */
-        return true;
-      } else {
-        return false;
+      {var s = to + "{"; foreach (var m in pawn_moves(from, -1)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in pawn_moves(from, -1)) {
+        if (to == m)  {
+          /* ========= */
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          return true;
+        }
       }
+      return false;
     }
 
 
     bool white_pawn_move(Vector2Int from, Vector2Int to) {
-      if ((from.y - to.y) == 1 && (from.x - to.x) == 0) {
-        board[to.y, to.x] = board[from.y, from.x];
-        board[from.y, from.x] = 0;
-        /* ========= */
-        return true;
-      } else {
-        return false;
+      {var s = to + "{"; foreach (var m in pawn_moves(from, 1)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in pawn_moves(from, 11)) {
+        if (to == m)  {
+          /* ========= */
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          return true;
+        }
       }
+      return false;
     }
 
     bool white_bishop_move(Vector2Int from, Vector2Int to) {
@@ -109,12 +115,23 @@ namespace scene_2 {
       return moves.ToArray();
     }
 
-    Vector2[] pawn_moves(Vector2 pos, int who) {
+    Vector2[] pawn_moves(Vector2Int pos, int who) {
       List<Vector2> moves = new List<Vector2>();
       if (who == 1) {
+        if (pos.y > 0 && board[pos.y - 1, pos.x] == 0)
+          moves.Add(new Vector2(pos.x, pos.y - 1));
+        if (pos.y > 0 && pos.x > 0 && board[pos.y - 1, pos.x - 1] != 0 && Mathf.Sign(board[pos.y - 1, pos.x - 1]) != who)
+          moves.Add(new Vector2(pos.x - 1, pos.y - 1));
+        if (pos.y > 0 && pos.x < 7 && board[pos.y - 1, pos.x + 1] != 0 && Mathf.Sign(board[pos.y - 1, pos.x + 1]) != who)
+          moves.Add(new Vector2(pos.x + 1, pos.y - 1));
       }
       else if (who == -1)  {
-
+        if (pos.y < 7 && board[pos.y + 1, pos.x] == 0)
+          moves.Add(new Vector2(pos.x, pos.y + 1));
+        if (pos.y < 7 && pos.x < 7 && board[pos.y + 1, pos.x + 1] != 0 && Mathf.Sign(board[pos.y + 1, pos.x + 1]) != who)
+          moves.Add(new Vector2(pos.x + 1, pos.y + 1));
+        if (pos.y < 7 && pos.x > 0 && board[pos.y + 1, pos.x - 1] != 0 && Mathf.Sign(board[pos.y + 1, pos.x - 1]) != who)
+          moves.Add(new Vector2(pos.x - 1, pos.y + 1));
       }
       return moves.ToArray();
     }
