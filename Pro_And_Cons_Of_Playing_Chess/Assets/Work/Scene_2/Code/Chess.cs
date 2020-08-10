@@ -30,15 +30,15 @@ namespace scene_2 {
       if (turn != who || Mathf.Sign(board[from.y, from.x]) != who)
         return false;
       /* ========= */
-      if (board[from.y, from.x] == -1 && black_pawn_move(from, to)) {
+      if (board[from.y, from.x] == -1 && pawn_move(from, to, -1)) {
         turn *= -1;
         return true;
       }
-      if (board[from.y, from.x] == 1 && white_pawn_move(from, to)) {
+      if (board[from.y, from.x] == 1 && pawn_move(from, to, 1)) {
         turn *= -1;
         return true;
       }
-      if (board[from.y, from.x] == 5 && white_bishop_move(from, to)) {
+      if (board[from.y, from.x] == 5 && bishop_move(from, to, 1)) {
         turn *= -1;
         return true;
       }
@@ -48,9 +48,9 @@ namespace scene_2 {
 
 
     /* ===================================================== */
-    bool black_pawn_move(Vector2Int from, Vector2Int to) {
-      {var s = to + "{"; foreach (var m in pawn_moves(from, -1)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in pawn_moves(from, -1)) {
+    bool pawn_move(Vector2Int from, Vector2Int to, int who) {
+      {var s = to + "{"; foreach (var m in pawn_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in pawn_moves(from, who)) {
         if (to == m)  {
           /* ========= */
           board[to.y, to.x] = board[from.y, from.x];
@@ -63,23 +63,9 @@ namespace scene_2 {
     }
 
 
-    bool white_pawn_move(Vector2Int from, Vector2Int to) {
-      {var s = to + "{"; foreach (var m in pawn_moves(from, 1)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in pawn_moves(from, 11)) {
-        if (to == m)  {
-          /* ========= */
-          board[to.y, to.x] = board[from.y, from.x];
-          board[from.y, from.x] = 0;
-          /* ========= */
-          return true;
-        }
-      }
-      return false;
-    }
-
-    bool white_bishop_move(Vector2Int from, Vector2Int to) {
-      {var s = to + "{"; foreach (var m in bishop_moves(from, 1)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in bishop_moves(from, 1)) {
+    bool bishop_move(Vector2Int from, Vector2Int to, int who) {
+      {var s = to + "{"; foreach (var m in bishop_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in bishop_moves(from, who)) {
         if (to == m)  {
           /* ========= */
           board[to.y, to.x] = board[from.y, from.x];
@@ -92,24 +78,16 @@ namespace scene_2 {
     }
 
     Vector2[] bishop_moves(Vector2Int pos, int who) {
-      int X = 0;
-      int Y = 1;
-      /* ========= */
       List<Vector2> moves = new List<Vector2>();
       /* ========= */
       foreach (var d in new[] {new int[]{1, 1}, new int[]{1, -1}, new int[]{-1, 1}, new int[]{-1, -1}}) {
         for (int i = 1; i < 8; i++) {
-          if (pos.y + d[Y] * i > 7 || pos.y + d[Y] * i < 0 || pos.x + d[X] * i > 7 || pos.x + d[X] * i < 0) break;
+          if (pos.y + d[1] * i > 7 || pos.y + d[1] * i < 0 || pos.x + d[0] * i > 7 || pos.x + d[0] * i < 0) break;
           /* ========= */
-          int p = board[pos.y + d[Y] * i, pos.x + d[X] * i];
-          if (p == 0) {
-            moves.Add(new Vector2(pos.x + d[X] * i,  pos.y + d[Y] * i));
-          } else if (Mathf.Sign(p) != who) {
-            moves.Add(new Vector2(pos.x + d[X] * i,  pos.y + d[Y] * i));
-            break;
-          } else {
-            break;
-          }
+          int p = board[pos.y + d[1] * i, pos.x + d[0] * i];
+          if (p == 0) moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i));
+          else if (Mathf.Sign(p) != who) { moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i)); break; }
+          else break;
         }
       }
       return moves.ToArray();
