@@ -42,6 +42,10 @@ namespace scene_2 {
         turn *= -1;
         return true;
       }
+      if (board[from.y, from.x] == 6 && rook_move(from, to, 1)) {
+        turn *= -1;
+        return true;
+      }
       /* ========= */
       return false;
     }
@@ -77,6 +81,22 @@ namespace scene_2 {
       return false;
     }
 
+    bool rook_move(Vector2Int from, Vector2Int to, int who) {
+      {var s = to + "{"; foreach (var m in bishop_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in rook_moves(from, who)) {
+        if (to == m)  {
+          /* ========= */
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          return true;
+        }
+      }
+      return false;
+    }
+
+
+
     Vector2[] bishop_moves(Vector2Int pos, int who) {
       List<Vector2> moves = new List<Vector2>();
       /* ========= */
@@ -92,6 +112,23 @@ namespace scene_2 {
       }
       return moves.ToArray();
     }
+
+    Vector2[] rook_moves(Vector2Int pos, int who) {
+      List<Vector2> moves = new List<Vector2>();
+      /* ========= */
+      foreach (var d in new[] {new int[]{0, 1}, new int[]{0, -1}, new int[]{1, 0}, new int[]{-1, 0}}) {
+        for (int i = 1; i < 8; i++) {
+          if (pos.y + d[1] * i > 7 || pos.y + d[1] * i < 0 || pos.x + d[0] * i > 7 || pos.x + d[0] * i < 0) break;
+          /* ========= */
+          int p = board[pos.y + d[1] * i, pos.x + d[0] * i];
+          if (p == 0) moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i));
+          else if (Mathf.Sign(p) != who) { moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i)); break; }
+          else break;
+        }
+      }
+      return moves.ToArray();
+    }
+
 
     Vector2[] pawn_moves(Vector2Int pos, int who) {
       List<Vector2> moves = new List<Vector2>();
