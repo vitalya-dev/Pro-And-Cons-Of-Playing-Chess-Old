@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace scene_2 {
       {+0000, +0000, +0000, +0000, +0000, -0001, +0005, +0000}, //1
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //2
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //3
-      {+0000, -0099, +0000, +0000, +0000, +0000, +0006, +0000}, //4
+      {+0000, +0099, +0000, +0000, +0000, +0000, +0006, +0000}, //4
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //5
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //6
       {+0000, +0005, +0000, +0000, +0000, +0000, +0000, +0000}, //7
@@ -42,6 +43,13 @@ namespace scene_2 {
         turn *= -1;
         return true;
       }
+
+      if (board[from.y, from.x] == 99 && queen_move(from, to, 1)) {
+        turn *= -1;
+        return true;
+      }
+
+
       if (board[from.y, from.x] == 6 && rook_move(from, to, 1)) {
         turn *= -1;
         return true;
@@ -82,7 +90,7 @@ namespace scene_2 {
     }
 
     bool rook_move(Vector2Int from, Vector2Int to, int who) {
-      {var s = to + "{"; foreach (var m in bishop_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      {var s = to + "{"; foreach (var m in rook_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
       foreach (var m in rook_moves(from, who)) {
         if (to == m)  {
           /* ========= */
@@ -94,6 +102,22 @@ namespace scene_2 {
       }
       return false;
     }
+
+    bool queen_move(Vector2Int from, Vector2Int to, int who) {
+      {var s = to + "{"; foreach (var m in queen_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in queen_moves(from, who)) {
+        if (to == m)  {
+          /* ========= */
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          return true;
+        }
+      }
+      return false;
+    }
+
+
 
 
 
@@ -128,6 +152,11 @@ namespace scene_2 {
       }
       return moves.ToArray();
     }
+
+    Vector2[] queen_moves(Vector2Int pos, int who) {
+      return bishop_moves(pos, who).Concat(rook_moves(pos, who)).ToArray();
+    }
+
 
 
     Vector2[] pawn_moves(Vector2Int pos, int who) {
@@ -181,6 +210,8 @@ namespace scene_2 {
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_3");
             if (board[i,j] == -99)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy");
+            if (board[i,j] == 99)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_2");
             if (board[i,j] == -1000)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_4");
             /* ===================================================== */
