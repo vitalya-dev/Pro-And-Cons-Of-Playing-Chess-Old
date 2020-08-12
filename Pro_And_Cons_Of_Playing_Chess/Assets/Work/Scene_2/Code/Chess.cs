@@ -14,7 +14,7 @@ namespace scene_2 {
 
     public int[,] board = new int [,] {
       // 0      1      2      3      4      5      6      7 //
-      {+0000, +0000, +0000, +0000, +0000, -0006, -1000, +0000}, //0
+      {+0000, +0000, +0000, +0000, +0000, -0006, 1000, +0000}, //0
       {+0000, +0000, +0000, +0000, +0000, -0001, +0005, +0000}, //1
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //2
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //3
@@ -44,16 +44,21 @@ namespace scene_2 {
         return true;
       }
 
+      if (board[from.y, from.x] == 6 && rook_move(from, to, 1)) {
+        turn *= -1;
+        return true;
+      }
+
       if (board[from.y, from.x] == 99 && queen_move(from, to, 1)) {
         turn *= -1;
         return true;
       }
 
-
-      if (board[from.y, from.x] == 6 && rook_move(from, to, 1)) {
+      if (board[from.y, from.x] == 1000 && king_move(from, to, 1)) {
         turn *= -1;
         return true;
       }
+
       /* ========= */
       return false;
     }
@@ -117,8 +122,40 @@ namespace scene_2 {
       return false;
     }
 
+    bool king_move(Vector2Int from, Vector2Int to, int who) {
+      {var s = to + "{"; foreach (var m in king_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      foreach (var m in king_moves(from, who)) {
+        if (to == m)  {
+          /* ========= */
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          return true;
+        }
+      }
+      return false;
+    }
 
 
+
+    Vector2[] king_moves(Vector2Int pos, int who) {
+      List<Vector2> moves = new List<Vector2>();
+      /* ========= */
+      foreach (var d in new[] {new int[]{1, 1}, new int[]{1, -1}, new int[]{-1, 1}, new int[]{-1, -1}}) {
+        if (pos.y + d[1] > 7 || pos.y + d[1] < 0 || pos.x + d[0] > 7 || pos.x + d[0] < 0) continue;
+        /* ========= */
+        int p = board[pos.y + d[1], pos.x + d[0]];
+        if (p == 0 || Mathf.Sign(p) != who) moves.Add(new Vector2(pos.x + d[0],  pos.y + d[1]));
+      }
+      foreach (var d in new[] {new int[]{0, 1}, new int[]{0, -1}, new int[]{1, 0}, new int[]{-1, 0}}) {
+        if (pos.y + d[1] > 7 || pos.y + d[1] < 0 || pos.x + d[0] > 7 || pos.x + d[0] < 0) continue;
+        /* ========= */
+        int p = board[pos.y + d[1], pos.x + d[0]];
+        if (p == 0 || Mathf.Sign(p) != who) moves.Add(new Vector2(pos.x + d[0],  pos.y + d[1]));
+      }
+      /* ========= */
+      return moves.ToArray();
+    }
 
 
     Vector2[] bishop_moves(Vector2Int pos, int who) {
@@ -156,8 +193,6 @@ namespace scene_2 {
     Vector2[] queen_moves(Vector2Int pos, int who) {
       return bishop_moves(pos, who).Concat(rook_moves(pos, who)).ToArray();
     }
-
-
 
     Vector2[] pawn_moves(Vector2Int pos, int who) {
       List<Vector2> moves = new List<Vector2>();
@@ -204,14 +239,16 @@ namespace scene_2 {
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy");
             if (board[i,j] == 6)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_2");
+            if (board[i,j] == 99)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_2");
+            if (board[i,j] == 1000)
+              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy");
             if (board[i,j] == -1)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_77_copy_27");
             if (board[i,j] == -6)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_3");
             if (board[i,j] == -99)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy");
-            if (board[i,j] == 99)
-              piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_2");
             if (board[i,j] == -1000)
               piece_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_76_copy_4");
             /* ===================================================== */
