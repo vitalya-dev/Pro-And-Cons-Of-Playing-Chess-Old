@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace scene_2 {
     }
 
     void think() {
-      Debug.Log("My Turn");
+      Debug.Log(score());
       for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
           if (chess.board[i,j] == -1) {
@@ -32,6 +33,14 @@ namespace scene_2 {
         }
       }
       state = "WAIT";
+    }
+
+    int score() {
+      int s = 0;
+      for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+          s += chess.board[i, j];
+      return s;
     }
   }
 }

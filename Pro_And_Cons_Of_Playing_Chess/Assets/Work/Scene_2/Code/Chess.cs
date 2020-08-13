@@ -14,15 +14,16 @@ namespace scene_2 {
 
     public int[,] board = new int [,] {
       // 0      1      2      3      4      5      6      7 //
-      {+0000, +0000, +0000, +0000, +0000, -0006, 1000, +0000}, //0
+      {+0000, +0000, +0000, +0000, +0000, -0006, -1000, +0000}, //0
       {+0000, +0000, +0000, +0000, +0000, -0001, +0005, +0000}, //1
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //2
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //3
-      {+0000, +0099, +0000, +0000, +0000, +0000, +0006, +0000}, //4
+      {+0000, -0099, +0000, +0000, +0000, +0000, +0006, +0000}, //4
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //5
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //6
-      {+0000, +0005, +0000, +0000, +0000, +0000, +0000, +0000}, //7
+      {+0000, +0005, +0000, +0000, +0000, +0000, +0000, +1000}, //7
     };
+    
 
     public bool move(Vector2Int from, Vector2Int to, int who) {
       if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0 || to.x > 7 || to.x < 0 || to.y > 7 || to.y < 0)
@@ -35,10 +36,12 @@ namespace scene_2 {
         turn *= -1;
         return true;
       }
+
       if (board[from.y, from.x] == 1 && pawn_move(from, to, 1)) {
         turn *= -1;
         return true;
       }
+
       if (board[from.y, from.x] == 5 && bishop_move(from, to, 1)) {
         turn *= -1;
         return true;
@@ -58,7 +61,6 @@ namespace scene_2 {
         turn *= -1;
         return true;
       }
-
       /* ========= */
       return false;
     }
@@ -66,7 +68,7 @@ namespace scene_2 {
 
     /* ===================================================== */
     bool pawn_move(Vector2Int from, Vector2Int to, int who) {
-      {var s = to + "{"; foreach (var m in pawn_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      //{var s = to + "{"; foreach (var m in pawn_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
       foreach (var m in pawn_moves(from, who)) {
         if (to == m)  {
           /* ========= */
@@ -81,7 +83,7 @@ namespace scene_2 {
 
 
     bool bishop_move(Vector2Int from, Vector2Int to, int who) {
-      {var s = to + "{"; foreach (var m in bishop_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      //{var s = to + "{"; foreach (var m in bishop_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
       foreach (var m in bishop_moves(from, who)) {
         if (to == m)  {
           /* ========= */
@@ -95,7 +97,7 @@ namespace scene_2 {
     }
 
     bool rook_move(Vector2Int from, Vector2Int to, int who) {
-      {var s = to + "{"; foreach (var m in rook_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      //{var s = to + "{"; foreach (var m in rook_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
       foreach (var m in rook_moves(from, who)) {
         if (to == m)  {
           /* ========= */
@@ -109,7 +111,7 @@ namespace scene_2 {
     }
 
     bool queen_move(Vector2Int from, Vector2Int to, int who) {
-      {var s = to + "{"; foreach (var m in queen_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      //{var s = to + "{"; foreach (var m in queen_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
       foreach (var m in queen_moves(from, who)) {
         if (to == m)  {
           /* ========= */
@@ -123,7 +125,7 @@ namespace scene_2 {
     }
 
     bool king_move(Vector2Int from, Vector2Int to, int who) {
-      {var s = to + "{"; foreach (var m in king_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
+      //{var s = to + "{"; foreach (var m in king_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
       foreach (var m in king_moves(from, who)) {
         if (to == m)  {
           /* ========= */
@@ -136,6 +138,17 @@ namespace scene_2 {
       return false;
     }
 
+
+    Vector2[] moves(Vector2Int from) {
+      if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0) return new Vector2[]{};
+      /* ========= */
+      if (board[from.y, from.x] == 1) return pawn_moves(from, 1);
+      if (board[from.y, from.x] == 5) return bishop_moves(from, 1);
+      if (board[from.y, from.x] == 6) return rook_moves(from, 1);
+      if (board[from.y, from.x] == 1000) return king_moves(from, 1);
+      /* ========= */
+      return new Vector2[]{};
+    }
 
 
     Vector2[] king_moves(Vector2Int pos, int who) {
@@ -362,11 +375,13 @@ namespace scene_2 {
           clicked_1 = new Vector2Int(-1, -1);
           clicked_2 = new Vector2Int(-1, -1);
         } else if (Input.GetMouseButtonDown(0)) {
-          if (clicked_1 == new Vector2(-1, -1)) {
+          if (clicked_1 == new Vector2Int(-1, -1)) {
             clicked_1 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             /* ========= */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
+            /* ========= */
+            {var s = "{"; foreach (var m in moves(clicked_1)) s += m; Debug.Log(s + "}");} // DEBUG
             /* ========= */
             GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
           } else if (clicked_2 == new Vector2(-1, -1)) {
