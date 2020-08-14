@@ -335,6 +335,33 @@ namespace scene_2 {
       selector_2.GetComponent<Image>().enabled = false;
     }
 
+    void highlight(Vector2[] moves) {
+      if (GameObject.Find("Chess Board/Highlight")) {
+        Destroy(GameObject.Find("Chess Board/Highlight"));
+      }
+      /* ========= */
+      GameObject h = new GameObject();
+      h.name = "Highlight";
+      h.transform.SetParent(GameObject.Find("Chess Board").transform);
+      h.transform.localPosition = Vector3.zero;
+      /* ========= */
+      foreach (var p in moves) {
+        GameObject m = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;;
+        m.transform.SetParent(h.transform);
+        m.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
+        m.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+        m.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        m.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+        m.GetComponent<RectTransform>().localPosition += new Vector3(p.x * 56, 0, 0);
+        m.GetComponent<RectTransform>().localPosition += new Vector3(0, (7 - p.y) * 56, 0);
+        /* ========= */
+        Vector2 s = new Vector2(m.GetComponent<Image>().preferredWidth, m.GetComponent<Image>().preferredHeight);
+        m.GetComponent<RectTransform>().sizeDelta = s * 7;
+      }
+    }
+
+
+
     void redraw_selectors_2(Vector2 pos) {
       redraw_selectors_1(pos);
       /* ========= */
@@ -371,6 +398,8 @@ namespace scene_2 {
             selector_2.name = "Selector 1";
             /* ========= */
             GameObject.Find("No 2").GetComponent<AudioSource>().Play();
+            /* ========= */
+            highlight(new Vector2[]{});
           }
           clicked_1 = new Vector2Int(-1, -1);
           clicked_2 = new Vector2Int(-1, -1);
@@ -378,10 +407,10 @@ namespace scene_2 {
           if (clicked_1 == new Vector2Int(-1, -1)) {
             clicked_1 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             /* ========= */
+            highlight(moves(clicked_1));
+            /* ========= */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
-            /* ========= */
-            {var s = "{"; foreach (var m in moves(clicked_1)) s += m; Debug.Log(s + "}");} // DEBUG
             /* ========= */
             GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
           } else if (clicked_2 == new Vector2(-1, -1)) {
@@ -396,6 +425,8 @@ namespace scene_2 {
             /* ========= */
             clicked_1 = new Vector2Int(-1, -1);
             clicked_2 = new Vector2Int(-1, -1);
+            /* ========= */
+            highlight(new Vector2[]{});
           }
         }
         if (clicked_1 == new Vector2(-1, -1))
