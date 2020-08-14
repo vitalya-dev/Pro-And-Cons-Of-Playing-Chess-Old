@@ -32,114 +32,21 @@ namespace scene_2 {
       if (turn != who || Mathf.Sign(board[from.y, from.x]) != who)
         return false;
       /* ========= */
-      if (board[from.y, from.x] == -1 && pawn_move(from, to, -1)) {
-        turn *= -1;
-        return true;
-      }
-
-      if (board[from.y, from.x] == 1 && pawn_move(from, to, 1)) {
-        turn *= -1;
-        return true;
-      }
-
-      if (board[from.y, from.x] == 5 && bishop_move(from, to, 1)) {
-        turn *= -1;
-        return true;
-      }
-
-      if (board[from.y, from.x] == 6 && rook_move(from, to, 1)) {
-        turn *= -1;
-        return true;
-      }
-
-      if (board[from.y, from.x] == 99 && queen_move(from, to, 1)) {
-        turn *= -1;
-        return true;
-      }
-
-      if (board[from.y, from.x] == 1000 && king_move(from, to, 1)) {
-        turn *= -1;
-        return true;
+      foreach (var m in xxx_moves(from)) {
+        if (to == m)  {
+          board[to.y, to.x] = board[from.y, from.x];
+          board[from.y, from.x] = 0;
+          /* ========= */
+          turn *= -1;
+          return true;
+        }
       }
       /* ========= */
       return false;
     }
 
-
     /* ===================================================== */
-    bool pawn_move(Vector2Int from, Vector2Int to, int who) {
-      //{var s = to + "{"; foreach (var m in pawn_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in pawn_moves(from, who)) {
-        if (to == m)  {
-          /* ========= */
-          board[to.y, to.x] = board[from.y, from.x];
-          board[from.y, from.x] = 0;
-          /* ========= */
-          return true;
-        }
-      }
-      return false;
-    }
-
-
-    bool bishop_move(Vector2Int from, Vector2Int to, int who) {
-      //{var s = to + "{"; foreach (var m in bishop_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in bishop_moves(from, who)) {
-        if (to == m)  {
-          /* ========= */
-          board[to.y, to.x] = board[from.y, from.x];
-          board[from.y, from.x] = 0;
-          /* ========= */
-          return true;
-        }
-      }
-      return false;
-    }
-
-    bool rook_move(Vector2Int from, Vector2Int to, int who) {
-      //{var s = to + "{"; foreach (var m in rook_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in rook_moves(from, who)) {
-        if (to == m)  {
-          /* ========= */
-          board[to.y, to.x] = board[from.y, from.x];
-          board[from.y, from.x] = 0;
-          /* ========= */
-          return true;
-        }
-      }
-      return false;
-    }
-
-    bool queen_move(Vector2Int from, Vector2Int to, int who) {
-      //{var s = to + "{"; foreach (var m in queen_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in queen_moves(from, who)) {
-        if (to == m)  {
-          /* ========= */
-          board[to.y, to.x] = board[from.y, from.x];
-          board[from.y, from.x] = 0;
-          /* ========= */
-          return true;
-        }
-      }
-      return false;
-    }
-
-    bool king_move(Vector2Int from, Vector2Int to, int who) {
-      //{var s = to + "{"; foreach (var m in king_moves(from, who)) s += m; Debug.Log(s + "}");} // DEBUG
-      foreach (var m in king_moves(from, who)) {
-        if (to == m)  {
-          /* ========= */
-          board[to.y, to.x] = board[from.y, from.x];
-          board[from.y, from.x] = 0;
-          /* ========= */
-          return true;
-        }
-      }
-      return false;
-    }
-
-
-    Vector2[] moves_from(Vector2Int from) {
+    Vector2[] xxx_moves(Vector2Int from) {
       if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0) return new Vector2[]{};
       /* ========= */
       if (board[from.y, from.x] == 1) return pawn_moves(from, 1);
@@ -233,9 +140,6 @@ namespace scene_2 {
       }
       return moves.ToArray();
     }
-
-
-
     /* ===================================================== */
 
     Vector2Int clicked_1 = new Vector2Int(-1, -1);
@@ -408,7 +312,7 @@ namespace scene_2 {
           if (Input.GetMouseButtonDown(0)) {
             clicked_1 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             /* ========= */
-            highlight(moves_from(clicked_1));
+            highlight(xxx_moves(clicked_1));
             /* ========= */
             selector_1.name = "Selector 2";
             selector_2.name = "Selector 1";
