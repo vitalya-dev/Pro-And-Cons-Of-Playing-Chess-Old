@@ -217,37 +217,23 @@ namespace scene_2 {
       board_object.GetComponent<RectTransform>().pivot = Vector2.zero;
     }
 
-    void redraw_selectors_1(Vector2 pos) {
-      GameObject selector_1;
-      if (!GameObject.Find("Selector 1")) {
-        selector_1 = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
-        selector_1.name = "Selector 1";
-        selector_1.transform.SetParent(GameObject.Find("Chess Board").transform);
-        selector_1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
-      } else {
-        selector_1 = GameObject.Find("Selector 1");
+    void redraw_selector(Vector2 pos) {
+      GameObject selector = GameObject.Find("Selector");
+      if (!selector) {
+        selector = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+        selector.name = "Selector";
+        selector.transform.SetParent(GameObject.Find("Chess Board").transform);
+        selector.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
+        /* ========= */
+        Vector2 s = new Vector2(selector.GetComponent<Image>().preferredWidth, selector.GetComponent<Image>().preferredHeight);
+        selector.GetComponent<RectTransform>().sizeDelta = s * 7;
       }
       /* ========= */
-      selector_1.GetComponent<Image>().enabled = true;
-      /* ========= */
-      selector_1.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
-      selector_1.GetComponent<RectTransform>().localPosition = Vector3.zero;
-      selector_1.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
-      selector_1.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
-      selector_1.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
-      /* ========= */
-      Vector2 s = new Vector2(selector_1.GetComponent<Image>().preferredWidth, selector_1.GetComponent<Image>().preferredHeight);
-      selector_1.GetComponent<RectTransform>().sizeDelta = s * 7;
-      /* ===================================================== */
-      GameObject selector_2;
-      if (!GameObject.Find("Selector 2")) {
-        selector_2 = Instantiate(selector_1, selector_1.transform.parent);
-        selector_2.name = "Selector 2";
-      } else {
-        selector_2 = GameObject.Find("Selector 2");
-      }
-      /* ========= */
-      selector_2.GetComponent<Image>().enabled = false;
+      selector.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+      selector.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      selector.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+      selector.GetComponent<RectTransform>().localPosition += new Vector3(pos.x * 56, 0, 0);
+      selector.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
     }
 
     void highlight(Vector2[] moves) {
@@ -276,19 +262,10 @@ namespace scene_2 {
     }
 
 
-
-    void redraw_selectors_2(Vector2 pos) {
-      redraw_selectors_1(pos);
-      /* ========= */
-      GameObject.Find("Selector 1").GetComponent<Image>().enabled = true;
-      GameObject.Find("Selector 2").GetComponent<Image>().enabled = true;
-    }
-
-
     void play_chess_1() {
       redraw_board();
       redraw_pieces();
-      redraw_selectors_1(Vector2.zero);
+      redraw_selector(Vector2.zero);
       /* ========= */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
@@ -300,23 +277,16 @@ namespace scene_2 {
       pos_0 /=  new Vector2(56, 56);
       /* ========= */
       Vector2Int pos_1 = new Vector2Int((int)pos_0.x,  (int)pos_0.y);
-      if (pos_1.x < 0 && pos_1.x > 7 && pos_1.y < 0 && pos_1.y > 7)
+      if (pos_1.x < 0 || pos_1.x > 7 || pos_1.y < 0 || pos_1.y > 7)
         return;
       /* ========= */
-      GameObject selector_1 = GameObject.Find("Selector 1");
-      GameObject selector_2 = GameObject.Find("Selector 2");
-      /* ========= */
+      redraw_selector(pos_1);
       switch (play_chess_state) {
         case "Clicked None":
-          redraw_selectors_1(pos_1);
-          /* ========= */
           if (Input.GetMouseButtonDown(0)) {
             clicked_1 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             /* ========= */
             highlight(xxx_moves(clicked_1));
-            /* ========= */
-            selector_1.name = "Selector 2";
-            selector_2.name = "Selector 1";
             /* ========= */
             GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
             /* ========= */
@@ -326,8 +296,6 @@ namespace scene_2 {
           }
           break;
         case "Clicked 1":
-          redraw_selectors_2(pos_1);
-          /* ========= */
           if (Input.GetMouseButtonDown(0)) {
             clicked_2 = new Vector2Int(pos_1.x, 7 - pos_1.y);
             /* ========= */
@@ -335,9 +303,6 @@ namespace scene_2 {
             /* ========= */
           } else if (Input.GetMouseButtonDown(1)) {
             GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
-            /* ========= */
-            selector_1.name = "Selector 2";
-            selector_2.name = "Selector 1";
             /* ========= */
             GameObject.Find("No 2").GetComponent<AudioSource>().Play();
             /* ========= */
@@ -351,9 +316,6 @@ namespace scene_2 {
             GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
           else
             GameObject.Find("No").GetComponent<AudioSource>().Play();
-          /* ========= */
-          selector_1.name = "Selector 2";
-          selector_2.name = "Selector 1";
           /* ========= */
           clicked_1 = new Vector2Int(-1, -1);
           clicked_2 = new Vector2Int(-1, -1);

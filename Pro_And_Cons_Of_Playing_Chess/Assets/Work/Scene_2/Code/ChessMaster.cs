@@ -29,6 +29,10 @@ namespace scene_2 {
         for (int j = 0; j < 8; j++) {
           if (chess.board[i,j] == -1) {
             chess.move(new Vector2Int(j, i), new Vector2Int(j, i + 1), -1);
+            /* ========= */
+            GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
+            GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
+            /* ========= */
           }
         }
       }
