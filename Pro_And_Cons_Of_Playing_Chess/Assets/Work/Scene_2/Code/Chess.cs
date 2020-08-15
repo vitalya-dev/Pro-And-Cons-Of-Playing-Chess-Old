@@ -38,6 +38,9 @@ namespace scene_2 {
           board[from.y, from.x] = 0;
           /* ========= */
           turn *= -1;
+          /* ========= */
+          redraw_pieces();
+          /* ========= */
           return true;
         }
       }
@@ -292,8 +295,6 @@ namespace scene_2 {
 
     
     void play_chess_2() {
-      redraw_pieces();
-      /* ========= */
       Vector2 pos_0 = Input.mousePosition - GameObject.Find("Chess Board").GetComponent<RectTransform>().position;
       pos_0 -=  new Vector2(7, 7);
       pos_0 /=  new Vector2(56, 56);
