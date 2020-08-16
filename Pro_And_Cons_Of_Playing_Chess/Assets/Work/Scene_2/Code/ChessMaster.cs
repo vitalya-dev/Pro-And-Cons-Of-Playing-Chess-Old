@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace scene_2 {
   [SelectionBase]
-  public class ChessMaster : MonoBehaviour {
+    public class ChessMaster : MonoBehaviour {
     
     Chess chess;
 
@@ -24,27 +24,13 @@ namespace scene_2 {
     }
 
     void think() {
-      Debug.Log(score());
-      for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-          if (chess.board[i,j] == -1) {
-            chess.move(new Vector2Int(j, i), new Vector2Int(j, i + 1), -1);
-            /* ========= */
-            GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
-            GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
-            /* ========= */
-          }
-        }
-      }
+      Vector2Int[] bm = chess.best_move(-1);
+      chess.move(bm[0], bm[1], -1);
+      /* ========= */
+      GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
+      GameObject.Find("Yeah").GetComponent<AudioSource>().Play();
+      /* ========= */
       state = "WAIT";
-    }
-
-    int score() {
-      int s = 0;
-      for (int i = 0; i < 8; i++)
-        for (int j = 0; j < 8; j++)
-          s += chess.board[i, j];
-      return s;
     }
   }
 }

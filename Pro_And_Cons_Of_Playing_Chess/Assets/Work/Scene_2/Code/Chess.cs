@@ -48,9 +48,59 @@ namespace scene_2 {
       return false;
     }
 
+    int score() {
+      int s = 0;
+      /* ========= */
+      for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+          s += board[i, j];
+      /* ========= */
+      return s;
+    }
+
+    
+    public Vector2Int[] best_move(int who) {
+      float s = Mathf.Infinity;
+      Vector2Int[] bm = new Vector2Int[]{-Vector2Int.one, -Vector2Int.one};
+      /* ========= */
+      foreach (var move in player_moves(who)) {
+        Vector2Int from = move.Key;
+        foreach (var to in move.Value) {
+          int a = board[from.y, from.x];
+          int b = board[to.y, to.x];
+          /* ========= */
+          board[to.y, to.x] = a;
+          board[from.y, from.x] = 0;
+          /* ========= */
+          if (score() < s) {
+            s = score();
+            bm[0] = from;
+            bm[1] = to;
+          }
+          /* ========= */
+          board[from.y, from.x] = a;
+          board[to.y, to.x] = b;
+        }
+      }
+      return bm;
+    }
+
+
     /* ===================================================== */
-    Vector2[] xxx_moves(Vector2Int from) {
-      if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0) return new Vector2[]{};
+    Dictionary<Vector2Int, Vector2Int[]> player_moves(int who) {
+      Dictionary<Vector2Int, Vector2Int[]> moves = new Dictionary<Vector2Int, Vector2Int[]>();
+      /* ========= */
+      for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+          if (Mathf.Sign(board[i, j]) == who)
+            moves.Add(new Vector2Int(j, i), xxx_moves(new Vector2Int(j, i)));
+      /* ========= */
+      return moves;
+    }
+
+
+    Vector2Int[] xxx_moves(Vector2Int from) {
+      if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0) return new Vector2Int[]{};
       /* ========= */
       if (board[from.y, from.x] == 1) return pawn_moves(from, 1);
       if (board[from.y, from.x] == 5) return bishop_moves(from, 1);
@@ -63,83 +113,83 @@ namespace scene_2 {
       if (board[from.y, from.x] == -99) return queen_moves(from, -1);
       if (board[from.y, from.x] == -1000) return king_moves(from, -1);
       /* ========= */
-      return new Vector2[]{};
+      return new Vector2Int[]{};
     }
 
 
-    Vector2[] king_moves(Vector2Int pos, int who) {
-      List<Vector2> moves = new List<Vector2>();
+    Vector2Int[] king_moves(Vector2Int pos, int who) {
+      List<Vector2Int> moves = new List<Vector2Int>();
       /* ========= */
       foreach (var d in new[] {new int[]{1, 1}, new int[]{1, -1}, new int[]{-1, 1}, new int[]{-1, -1}}) {
         if (pos.y + d[1] > 7 || pos.y + d[1] < 0 || pos.x + d[0] > 7 || pos.x + d[0] < 0) continue;
         /* ========= */
         int p = board[pos.y + d[1], pos.x + d[0]];
-        if (p == 0 || Mathf.Sign(p) != who) moves.Add(new Vector2(pos.x + d[0],  pos.y + d[1]));
+        if (p == 0 || Mathf.Sign(p) != who) moves.Add(new Vector2Int(pos.x + d[0],  pos.y + d[1]));
       }
       foreach (var d in new[] {new int[]{0, 1}, new int[]{0, -1}, new int[]{1, 0}, new int[]{-1, 0}}) {
         if (pos.y + d[1] > 7 || pos.y + d[1] < 0 || pos.x + d[0] > 7 || pos.x + d[0] < 0) continue;
         /* ========= */
         int p = board[pos.y + d[1], pos.x + d[0]];
-        if (p == 0 || Mathf.Sign(p) != who) moves.Add(new Vector2(pos.x + d[0],  pos.y + d[1]));
+        if (p == 0 || Mathf.Sign(p) != who) moves.Add(new Vector2Int(pos.x + d[0],  pos.y + d[1]));
       }
       /* ========= */
       return moves.ToArray();
     }
 
 
-    Vector2[] bishop_moves(Vector2Int pos, int who) {
-      List<Vector2> moves = new List<Vector2>();
+    Vector2Int[] bishop_moves(Vector2Int pos, int who) {
+      List<Vector2Int> moves = new List<Vector2Int>();
       /* ========= */
       foreach (var d in new[] {new int[]{1, 1}, new int[]{1, -1}, new int[]{-1, 1}, new int[]{-1, -1}}) {
         for (int i = 1; i < 8; i++) {
           if (pos.y + d[1] * i > 7 || pos.y + d[1] * i < 0 || pos.x + d[0] * i > 7 || pos.x + d[0] * i < 0) break;
           /* ========= */
           int p = board[pos.y + d[1] * i, pos.x + d[0] * i];
-          if (p == 0) moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i));
-          else if (Mathf.Sign(p) != who) { moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i)); break; }
+          if (p == 0) moves.Add(new Vector2Int(pos.x + d[0] * i,  pos.y + d[1] * i));
+          else if (Mathf.Sign(p) != who) { moves.Add(new Vector2Int(pos.x + d[0] * i,  pos.y + d[1] * i)); break; }
           else break;
         }
       }
       return moves.ToArray();
     }
 
-    Vector2[] rook_moves(Vector2Int pos, int who) {
-      List<Vector2> moves = new List<Vector2>();
+    Vector2Int[] rook_moves(Vector2Int pos, int who) {
+      List<Vector2Int> moves = new List<Vector2Int>();
       /* ========= */
       foreach (var d in new[] {new int[]{0, 1}, new int[]{0, -1}, new int[]{1, 0}, new int[]{-1, 0}}) {
         for (int i = 1; i < 8; i++) {
           if (pos.y + d[1] * i > 7 || pos.y + d[1] * i < 0 || pos.x + d[0] * i > 7 || pos.x + d[0] * i < 0) break;
           /* ========= */
           int p = board[pos.y + d[1] * i, pos.x + d[0] * i];
-          if (p == 0) moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i));
-          else if (Mathf.Sign(p) != who) { moves.Add(new Vector2(pos.x + d[0] * i,  pos.y + d[1] * i)); break; }
+          if (p == 0) moves.Add(new Vector2Int(pos.x + d[0] * i,  pos.y + d[1] * i));
+          else if (Mathf.Sign(p) != who) { moves.Add(new Vector2Int(pos.x + d[0] * i,  pos.y + d[1] * i)); break; }
           else break;
         }
       }
       return moves.ToArray();
     }
 
-    Vector2[] queen_moves(Vector2Int pos, int who) {
+    Vector2Int[] queen_moves(Vector2Int pos, int who) {
       return bishop_moves(pos, who).Concat(rook_moves(pos, who)).ToArray();
     }
 
-    Vector2[] pawn_moves(Vector2Int pos, int who) {
-      List<Vector2> moves = new List<Vector2>();
+    Vector2Int[] pawn_moves(Vector2Int pos, int who) {
+      List<Vector2Int> moves = new List<Vector2Int>();
       if (who == 1) {
         if (pos.y > 0 && board[pos.y - 1, pos.x] == 0)
-          moves.Add(new Vector2(pos.x, pos.y - 1));
+          moves.Add(new Vector2Int(pos.x, pos.y - 1));
         if (pos.y > 0 && pos.x > 0 && board[pos.y - 1, pos.x - 1] != 0 && Mathf.Sign(board[pos.y - 1, pos.x - 1]) != who)
-          moves.Add(new Vector2(pos.x - 1, pos.y - 1));
+          moves.Add(new Vector2Int(pos.x - 1, pos.y - 1));
         if (pos.y > 0 && pos.x < 7 && board[pos.y - 1, pos.x + 1] != 0 && Mathf.Sign(board[pos.y - 1, pos.x + 1]) != who)
-          moves.Add(new Vector2(pos.x + 1, pos.y - 1));
+          moves.Add(new Vector2Int(pos.x + 1, pos.y - 1));
       }
       else if (who == -1)  {
         if (pos.y < 7 && board[pos.y + 1, pos.x] == 0)
-          moves.Add(new Vector2(pos.x, pos.y + 1));
+          moves.Add(new Vector2Int(pos.x, pos.y + 1));
         if (pos.y < 7 && pos.x < 7 && board[pos.y + 1, pos.x + 1] != 0 && Mathf.Sign(board[pos.y + 1, pos.x + 1]) != who)
-          moves.Add(new Vector2(pos.x + 1, pos.y + 1));
+          moves.Add(new Vector2Int(pos.x + 1, pos.y + 1));
         if (pos.y < 7 && pos.x > 0 && board[pos.y + 1, pos.x - 1] != 0 && Mathf.Sign(board[pos.y + 1, pos.x - 1]) != who)
-          moves.Add(new Vector2(pos.x - 1, pos.y + 1));
+          moves.Add(new Vector2Int(pos.x - 1, pos.y + 1));
       }
       return moves.ToArray();
     }
@@ -236,7 +286,7 @@ namespace scene_2 {
       selector.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
     }
 
-    void highlight(Vector2[] moves) {
+    void highlight(Vector2Int[] moves) {
       if (GameObject.Find("Chess Board/Highlight")) {
         Destroy(GameObject.Find("Chess Board/Highlight"));
       }
@@ -306,7 +356,7 @@ namespace scene_2 {
             /* ========= */
             GameObject.Find("No 2").GetComponent<AudioSource>().Play();
             /* ========= */
-            highlight(new Vector2[]{});
+            highlight(new Vector2Int[]{});
             /* ========= */
             play_chess_state = "Clicked None";
           }
@@ -320,7 +370,7 @@ namespace scene_2 {
           clicked_1 = new Vector2Int(-1, -1);
           clicked_2 = new Vector2Int(-1, -1);
           /* ========= */
-          highlight(new Vector2[]{});
+          highlight(new Vector2Int[]{});
           /* ========= */
           play_chess_state = "Clicked None";
           /* ========= */
