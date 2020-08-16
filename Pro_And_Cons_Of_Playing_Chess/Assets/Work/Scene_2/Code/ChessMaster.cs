@@ -24,8 +24,8 @@ namespace scene_2 {
     }
 
     void think() {
-      Vector2Int[] bm = chess.best_move(-1);
-      chess.move(bm[0], bm[1], -1);
+      var bm = chess.best_move(-1);
+      chess.move(bm.Item1, bm.Item2, -1);
       /* ========= */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
       GameObject.Find("Yeah").GetComponent<AudioSource>().Play();

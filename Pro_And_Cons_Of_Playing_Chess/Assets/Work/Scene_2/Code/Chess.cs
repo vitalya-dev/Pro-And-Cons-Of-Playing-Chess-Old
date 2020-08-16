@@ -58,24 +58,34 @@ namespace scene_2 {
       return s;
     }
 
-    
-    public Vector2Int[] best_move(int who) {
-      float s = Mathf.Infinity;
-      Vector2Int[] bm = new Vector2Int[]{-Vector2Int.one, -Vector2Int.one};
+
+    public (Vector2Int, Vector2Int, float) best_move(int who) {
+      var bm = (-Vector2Int.one, -Vector2Int.one, Mathf.Infinity * who * -1);
       /* ========= */
       foreach (var move in player_moves(who)) {
-        Vector2Int from = move.Key;
-        foreach (var to in move.Value) {
+        Vector2Int from = move.Item1;
+        foreach (var to in move.Item2) {
           int a = board[from.y, from.x];
           int b = board[to.y, to.x];
           /* ========= */
           board[to.y, to.x] = a;
           board[from.y, from.x] = 0;
           /* ========= */
-          if (score() < s) {
-            s = score();
-            bm[0] = from;
-            bm[1] = to;
+          switch (who) {
+            case 1:
+              if (score() > bm.Item3) {
+                bm.Item1 = from;
+                bm.Item2 = to;
+                bm.Item3 = score();
+              }
+              break;
+            case -1:
+              if (score() < bm.Item3) {
+                bm.Item1 = from;
+                bm.Item2 = to;
+                bm.Item3 = score();
+              }
+              break;
           }
           /* ========= */
           board[from.y, from.x] = a;
@@ -87,13 +97,13 @@ namespace scene_2 {
 
 
     /* ===================================================== */
-    Dictionary<Vector2Int, Vector2Int[]> player_moves(int who) {
-      Dictionary<Vector2Int, Vector2Int[]> moves = new Dictionary<Vector2Int, Vector2Int[]>();
+    List<(Vector2Int, Vector2Int[])> player_moves(int who) {
+      var moves = new List<(Vector2Int, Vector2Int[])>();
       /* ========= */
       for (int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
           if (Mathf.Sign(board[i, j]) == who)
-            moves.Add(new Vector2Int(j, i), xxx_moves(new Vector2Int(j, i)));
+            moves.Add((new Vector2Int(j, i), xxx_moves(new Vector2Int(j, i))));
       /* ========= */
       return moves;
     }
