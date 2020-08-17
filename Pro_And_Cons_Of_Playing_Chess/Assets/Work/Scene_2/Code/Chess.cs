@@ -59,7 +59,10 @@ namespace scene_2 {
     }
 
 
-    public (Vector2Int, Vector2Int, float) best_move(int who) {
+    public (Vector2Int, Vector2Int, float) best_move(int who, int think_ahead = 1) {
+      if (think_ahead == 0)
+        return (-Vector2Int.one, -Vector2Int.one, score());
+      /* ========= */
       var bm = (-Vector2Int.one, -Vector2Int.one, Mathf.Infinity * who * -1);
       /* ========= */
       foreach (var move in player_moves(who)) {
@@ -71,19 +74,21 @@ namespace scene_2 {
           board[to.y, to.x] = a;
           board[from.y, from.x] = 0;
           /* ========= */
+          float s = best_move(who * -1, think_ahead - 1).Item3;        
+          /* ========= */
           switch (who) {
             case 1:
-              if (score() > bm.Item3) {
+              if (s > bm.Item3) {
                 bm.Item1 = from;
                 bm.Item2 = to;
-                bm.Item3 = score();
+                bm.Item3 = s;
               }
               break;
             case -1:
-              if (score() < bm.Item3) {
+              if (s < bm.Item3) {
                 bm.Item1 = from;
                 bm.Item2 = to;
-                bm.Item3 = score();
+                bm.Item3 = s;
               }
               break;
           }
