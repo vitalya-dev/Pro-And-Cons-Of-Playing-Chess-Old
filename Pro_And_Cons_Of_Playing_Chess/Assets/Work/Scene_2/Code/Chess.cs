@@ -215,6 +215,45 @@ namespace scene_2 {
     string play_chess_state = "Clicked None";
 
 
+    void show_target() {
+      GameObject arrow_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
+      /* ===================================================== */
+      arrow_object.name = "Target Arrow";
+      arrow_object.transform.SetParent(GameObject.Find("Chess Board").transform);
+      /* ===================================================== */
+      arrow_object.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Shape_1");
+      /* ===================================================== */
+      Vector2 s = new Vector2(arrow_object.GetComponent<Image>().preferredWidth, arrow_object.GetComponent<Image>().preferredHeight);
+      arrow_object.GetComponent<RectTransform>().sizeDelta = s * 7;
+      /* ===================================================== */
+      arrow_object.GetComponent<RectTransform>().anchorMin = Vector2.zero;
+      arrow_object.GetComponent<RectTransform>().anchorMax = Vector2.zero;
+      arrow_object.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+      /* ===================================================== */
+      arrow_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+      arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(7 * 56 + 56 / 2, 0, 0);
+      arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 8 * 56 + 56 / 2, 0);
+      /* ===================================================== */
+      GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
+      /* ===================================================== */
+      text_object.name = "Target Text";
+      text_object.transform.SetParent(GameObject.Find("Chess Board").transform);
+      /* ===================================================== */
+      text_object.GetComponent<TMPro.TextMeshProUGUI>().text = "Король";
+      text_object.GetComponent<TMPro.TextMeshProUGUI>().margin = new Vector4(0, 0, -190, -55);
+      /* ===================================================== */
+      text_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      text_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+      text_object.GetComponent<RectTransform>().localPosition += new Vector3(8 * 56 + 56 / 2, 0, 0);
+      text_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 9 * 56 + 56 / 2, 0);
+    }
+
+    void hide_target() {
+      Destroy(GameObject.Find("Chess Board/Target Arrow"));
+      Destroy(GameObject.Find("Chess Board/Target Text"));
+    }
+
     void redraw_pieces() {
       GameObject board_object = GameObject.Find("Chess Board");
       for (int i = 7; i >= 0; i--) {
@@ -330,7 +369,6 @@ namespace scene_2 {
     void play_chess_1() {
       redraw_board();
       redraw_pieces();
-      redraw_selector(Vector2.zero);
       /* ========= */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
     }
