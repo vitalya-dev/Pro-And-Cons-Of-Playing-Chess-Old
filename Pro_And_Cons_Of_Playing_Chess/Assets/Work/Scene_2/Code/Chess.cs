@@ -256,6 +256,10 @@ namespace scene_2 {
 
     void redraw_pieces() {
       GameObject board_object = GameObject.Find("Chess Board");
+      /* ========= */
+      if (!board_object)
+        return;
+      /* ========= */
       for (int i = 7; i >= 0; i--) {
         for (int j = 0; j < 8; j++) {
           if (board_object.transform.Find(i + "_" + j)) Destroy(board_object.transform.Find(i + "_" + j).gameObject);
