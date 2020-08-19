@@ -351,7 +351,7 @@ namespace scene_2 {
       selector.GetComponent<RectTransform>().localPosition += new Vector3(0, pos.y * 56, 0);
     }
 
-    void highlight(Vector2Int[] moves) {
+    public void highlight(Vector2Int[] moves) {
       if (GameObject.Find("Chess Board/Highlight")) {
         Destroy(GameObject.Find("Chess Board/Highlight"));
       }
