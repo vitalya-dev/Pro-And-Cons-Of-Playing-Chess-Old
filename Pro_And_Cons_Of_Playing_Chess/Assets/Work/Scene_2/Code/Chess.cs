@@ -215,7 +215,7 @@ namespace scene_2 {
     string play_chess_state = "Clicked None";
 
 
-    void show_target() {
+    void show_target_1() {
       GameObject arrow_object = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;
       /* ===================================================== */
       arrow_object.name = "Target Arrow";
@@ -234,6 +234,8 @@ namespace scene_2 {
       arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
       arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(7 * 56 + 56 / 2, 0, 0);
       arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 8 * 56 + 56 / 2, 0);
+    }
+    void show_target_2() {
       /* ===================================================== */
       GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
       /* ===================================================== */
@@ -249,10 +251,15 @@ namespace scene_2 {
       text_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 9 * 56 + 56 / 2, 0);
     }
 
-    void hide_target() {
+    void hide_target_1() {
       Destroy(GameObject.Find("Chess Board/Target Arrow"));
+    }
+
+    void hide_target_2() {
       Destroy(GameObject.Find("Chess Board/Target Text"));
     }
+
+
 
     void redraw_pieces() {
       GameObject board_object = GameObject.Find("Chess Board");
