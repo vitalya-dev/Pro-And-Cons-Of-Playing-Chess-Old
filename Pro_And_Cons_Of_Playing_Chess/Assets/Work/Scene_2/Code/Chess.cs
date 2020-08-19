@@ -364,7 +364,7 @@ namespace scene_2 {
       foreach (var p in moves) {
         GameObject m = Instantiate(Resources.Load("Etc/UIImage", typeof(GameObject))) as GameObject;;
         m.transform.SetParent(h.transform);
-        m.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78");
+        m.GetComponent<Image>().sprite = Resources.Load<Sprite>("Graphics/Layers/Layer_78_copy_3");
         m.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
         m.GetComponent<RectTransform>().localPosition = Vector3.zero;
         m.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);

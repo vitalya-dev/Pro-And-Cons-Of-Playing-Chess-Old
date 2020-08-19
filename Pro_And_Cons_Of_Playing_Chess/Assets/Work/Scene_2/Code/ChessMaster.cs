@@ -35,7 +35,7 @@ namespace scene_2 {
     }
 
     void think_2() {
-      chess.highlight(new Vector2Int[]{bm.Item2});
+      chess.highlight(new Vector2Int[]{bm.Item1, bm.Item2});
       /* ========= */
       GameObject.Find("Chess Touch").GetComponent<AudioSource>().Play();
       /* ========= */
