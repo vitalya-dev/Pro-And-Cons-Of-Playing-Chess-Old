@@ -234,7 +234,9 @@ namespace scene_2 {
       arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
       arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(7 * 56 + 56 / 2, 0, 0);
       arrow_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 8 * 56 + 56 / 2, 0);
+      /* ===================================================== */
     }
+
     void show_target_2() {
       /* ===================================================== */
       GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
@@ -251,12 +253,34 @@ namespace scene_2 {
       text_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 9 * 56 + 56 / 2, 0);
     }
 
+    void show_target_3() {
+      /* ===================================================== */
+      GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
+      /* ===================================================== */
+      text_object.name = "Target Text 2";
+      text_object.transform.SetParent(GameObject.Find("Chess Board").transform);
+      /* ===================================================== */
+      text_object.GetComponent<TMPro.TextMeshProUGUI>().text = "Возьми его за 2 хода";
+      text_object.GetComponent<TMPro.TextMeshProUGUI>().margin = new Vector4(0, 0, -210, -155);
+      /* ===================================================== */
+      text_object.GetComponent<RectTransform>().localPosition = Vector3.zero;
+      text_object.GetComponent<RectTransform>().localPosition += new Vector3(7, 7, 0);
+      text_object.GetComponent<RectTransform>().localPosition += new Vector3(8 * 56 + 56 / 2, 0, 0);
+      text_object.GetComponent<RectTransform>().localPosition += new Vector3(0, 7 * 56 + 56 / 2, 0);
+    }
+
+
+
     void hide_target_1() {
       Destroy(GameObject.Find("Chess Board/Target Arrow"));
     }
 
     void hide_target_2() {
       Destroy(GameObject.Find("Chess Board/Target Text"));
+    }
+
+    void hide_target_3() {
+      Destroy(GameObject.Find("Chess Board/Target Text 2"));
     }
 
 
@@ -378,6 +402,8 @@ namespace scene_2 {
 
 
     void play_chess_1() {
+      GameObject.Find("Pink Mist").GetComponent<SpriteRenderer>().enabled = true;
+      /* ========= */
       redraw_board();
       redraw_pieces();
       /* ========= */
@@ -443,9 +469,10 @@ namespace scene_2 {
     }
     
     void play_chess_3() {
-      Destroy(GameObject.Find("Chess Board"));
+      GameObject.Find("Pink Mist").GetComponent<SpriteRenderer>().enabled = false;
+      /* ========= */
+      Destroy(GameObject.Find("Chess Board"));    
     }
-    /* ===================================================== */
   }
 }
 
