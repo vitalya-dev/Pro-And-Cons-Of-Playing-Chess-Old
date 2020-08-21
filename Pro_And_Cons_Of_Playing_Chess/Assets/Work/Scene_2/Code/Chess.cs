@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace scene_2 {
   [SelectionBase]
-  public class Chess : MonoBehaviour {
+    public class Chess : MonoBehaviour {
     /* ===================================================== */
     public int turn = 1;
 
@@ -23,7 +23,7 @@ namespace scene_2 {
       {+0000, +0000, +0000, +0000, +0000, +0000, +0000, +0000}, //6
       {+0000, +0005, +0000, +0000, +0000, +0000, +0000, +1000}, //7
     };
-    
+
 
     public bool move(Vector2Int from, Vector2Int to, int who) {
       if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0 || to.x > 7 || to.x < 0 || to.y > 7 || to.y < 0)
@@ -48,12 +48,17 @@ namespace scene_2 {
       return false;
     }
 
-    int score() {
+    public bool game_over() {
+      return (score(1) < 1000 || score(-1) > -1000) ? true :  false;
+    }
+
+
+    int score(int who) {
       int s = 0;
       /* ========= */
       for (int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
-          s += board[i, j];
+          if (Mathf.Sign(board[i, j]) == who) s += board[i, j];
       /* ========= */
       return s;
     }
@@ -61,7 +66,7 @@ namespace scene_2 {
 
     public (Vector2Int, Vector2Int, float) best_move(int who, int think_ahead = 1) {
       if (think_ahead == 0)
-        return (-Vector2Int.one, -Vector2Int.one, score());
+        return (-Vector2Int.one, -Vector2Int.one, score(1) + score(-1));
       /* ========= */
       var bm = (-Vector2Int.one, -Vector2Int.one, Mathf.Infinity * who * -1);
       /* ========= */
@@ -376,6 +381,9 @@ namespace scene_2 {
     }
 
     public void highlight(Vector2Int[] moves) {
+      if (!GameObject.Find("Chess Board"))
+        return;
+      /* ========= */
       if (GameObject.Find("Chess Board/Highlight")) {
         Destroy(GameObject.Find("Chess Board/Highlight"));
       }
@@ -475,4 +483,5 @@ namespace scene_2 {
     }
   }
 }
+
 

@@ -85,6 +85,10 @@ namespace scene_2 {
     }
 
 
+    void what_next() {
+      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("AAA:");
+    }
+
     void idle() {
       am.Play("Idle");
       /* ===================================================== */
