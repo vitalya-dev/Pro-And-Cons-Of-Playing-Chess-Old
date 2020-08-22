@@ -55,7 +55,7 @@ namespace scene_2 {
     }
 
 
-    int score(int who) {
+    public int score(int who) {
       int s = 0;
       /* ========= */
       for (int i = 0; i < 8; i++)

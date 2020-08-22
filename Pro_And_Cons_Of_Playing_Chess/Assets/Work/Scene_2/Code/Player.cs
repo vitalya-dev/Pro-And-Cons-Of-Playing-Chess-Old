@@ -86,7 +86,9 @@ namespace scene_2 {
 
 
     void what_next() {
-      foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("AAA:");
+      var chess = GameObject.FindObjectOfType<Chess>();
+      if (chess.game_over() && chess.score(1) < 1000)
+        foreach (PlayMakerFSM fsm in GetComponents<PlayMakerFSM>()) fsm.SendEvent("LOSE:");
     }
 
     void idle() {
