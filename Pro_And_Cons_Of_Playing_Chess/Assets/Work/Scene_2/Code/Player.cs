@@ -133,6 +133,12 @@ namespace scene_2 {
 
     }
 
+    void lose_1() {
+      GameObject.Find("Microwave Ready").GetComponent<AudioSource>().Play();
+    }
+
+
+
     void get_dressed() {
       Cupboard cupboard = face_to_and_touch_to<Cupboard>();
       /* ===================================================== */
