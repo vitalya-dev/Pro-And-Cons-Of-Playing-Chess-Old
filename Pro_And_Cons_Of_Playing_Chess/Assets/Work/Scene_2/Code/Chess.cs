@@ -26,6 +26,8 @@ namespace scene_2 {
 
 
     public bool move(Vector2Int from, Vector2Int to, int who) {
+      if (game_over())
+        return false;
       if (from.x > 7 || from.x < 0 || from.y > 7 || from.y < 0 || to.x > 7 || to.x < 0 || to.y > 7 || to.y < 0)
         return false;
       /* ========= */

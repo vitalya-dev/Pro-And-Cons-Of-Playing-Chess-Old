@@ -25,6 +25,11 @@ namespace scene_2 {
 
     (Vector2Int, Vector2Int, float) bm;
     void think_1() {
+      if (chess.game_over()) {
+        state = "GAME OVER";
+        return;
+      }
+
       bm = chess.best_move(-1, 2);
       /* ========= */
       chess.highlight(new Vector2Int[]{bm.Item1});
