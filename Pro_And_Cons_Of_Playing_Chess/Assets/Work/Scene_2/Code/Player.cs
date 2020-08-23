@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace scene_2 {
   [SelectionBase]
@@ -134,19 +135,24 @@ namespace scene_2 {
     }
 
     void lose_1() {
-      GameObject.Find("Red").GetComponent<SpriteRenderer>().enabled = true;
-      GameObject.Find("Microwave Ready").GetComponent<AudioSource>().Play();
+      GameObject.Find("Red Mist").GetComponent<SpriteRenderer>().enabled = true;
+      GameObject.Find("Microwave Ready 1").GetComponent<AudioSource>().Play();
     }
 
 
     void lose_2() {
-      var c = GameObject.Find("Red").GetComponent<SpriteRenderer>().color;
-      Debug.Log(c);
-      GameObject.Find("Red").GetComponent<SpriteRenderer>().color = new Color(c.r, c.g, c.b, c.a + 0.01f);
+      var c = GameObject.Find("Red Mist").GetComponent<SpriteRenderer>().color;
+      GameObject.Find("Red Mist").GetComponent<SpriteRenderer>().color = Color.Lerp(c, new Color(c.r, c.g, c.b, 1), 0.01f);
     }
 
 
     void lose_3() {
+      GameObject.Find("Microwave Ready 1").GetComponent<AudioSource>().Stop();
+      GameObject.Find("Microwave Ready 2").GetComponent<AudioSource>().Play();
+      /* ===================================================== */
+      var c = GameObject.Find("Red Mist").GetComponent<SpriteRenderer>().color;
+      GameObject.Find("Red Mist").GetComponent<SpriteRenderer>().color = new Color(c.r, c.g, c.b, 1);
+      /* ===================================================== */
       GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
       text_object.transform.SetParent(GameObject.Find("Canvas").transform);
       text_object.GetComponent<RectTransform>().offsetMin = Vector2.zero;
@@ -157,6 +163,11 @@ namespace scene_2 {
       /* ===================================================== */
       text_object.name = GetInstanceID() + "_";
     }
+
+    void lose_4() {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 
 
     void get_dressed() {
