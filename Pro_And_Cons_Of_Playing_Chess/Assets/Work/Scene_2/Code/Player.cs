@@ -146,6 +146,18 @@ namespace scene_2 {
     }
 
 
+    void lose_3() {
+      GameObject text_object = Instantiate(Resources.Load("Etc/UIText", typeof(GameObject))) as GameObject;
+      text_object.transform.SetParent(GameObject.Find("Canvas").transform);
+      text_object.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+      text_object.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+      /* ===================================================== */
+      text_object.GetComponent<TMPro.TextMeshProUGUI>().alignment = TMPro.TextAlignmentOptions.Center;
+      text_object.GetComponent<TMPro.TextMeshProUGUI>().text = "Прожарен";
+      /* ===================================================== */
+      text_object.name = GetInstanceID() + "_";
+    }
+
 
     void get_dressed() {
       Cupboard cupboard = face_to_and_touch_to<Cupboard>();
