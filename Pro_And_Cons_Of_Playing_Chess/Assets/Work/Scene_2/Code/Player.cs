@@ -134,7 +134,15 @@ namespace scene_2 {
     }
 
     void lose_1() {
+      GameObject.Find("Red").GetComponent<SpriteRenderer>().enabled = true;
       GameObject.Find("Microwave Ready").GetComponent<AudioSource>().Play();
+    }
+
+
+    void lose_2() {
+      var c = GameObject.Find("Red").GetComponent<SpriteRenderer>().color;
+      Debug.Log(c);
+      GameObject.Find("Red").GetComponent<SpriteRenderer>().color = new Color(c.r, c.g, c.b, c.a + 0.01f);
     }
 
 
